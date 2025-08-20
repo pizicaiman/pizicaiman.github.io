@@ -13,10 +13,20 @@ permalink: /docs/devops/
 
 ## 文章列表
 
-{% for post in site.categories.devops %}
-- [{{ post.title }}]({{ post.url }}) - {{ post.date | date: "%Y-%m-%d" }}
-  {{ post.excerpt }}
-{% endfor %}
+<div class="posts-list">
+  {% assign sorted_pages = site.pages | where: "category", "devops" | sort: "date" | reverse %}
+  {% for page in sorted_pages %}
+    <div class="post-item">
+      <h3><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h3>
+      <p class="post-meta">
+        <span class="post-date">{{ page.date | date: "%Y-%m-%d" }}</span>
+      </p>
+      {% if page.excerpt %}
+        <p class="post-excerpt">{{ page.excerpt | strip_html | truncate: 160 }}</p>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
 
 ## 技术栈
 

@@ -23,20 +23,25 @@ defaults:
       path: "docs/devops"
       type: "pages"
     values:
-      layout: "post"
+      layout: "doc"
       category: "devops"
   - scope:
       path: "docs/llm"
       type: "pages"
     values:
-      layout: "post"
+      layout: "doc"
       category: "llm"
   - scope:
       path: "docs/web3"
       type: "pages"
     values:
-      layout: "post"
+      layout: "doc"
       category: "web3"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
 
 # 导航菜单
 navigation:
