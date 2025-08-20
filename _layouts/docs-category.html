@@ -4,7 +4,7 @@ layout: default
 ---
 
 <div class="docs-category">
-  <div class="category-header">
+  <div class="category-header {{ page.category }}">
     <h1>
       {% case page.category %}
         {% when "devops" %}🚀 DevOps & 云原生文档
@@ -18,7 +18,7 @@ layout: default
   <div class="docs-content">
     <div class="sidebar">
       <div class="sidebar-section">
-        <h3>文档目录</h3>
+        <h3>📚 文档目录</h3>
         <ul class="docs-nav">
           {% assign category_docs = site.pages | where: "category", page.category | sort: "date" | reverse %}
           {% for doc in category_docs %}
@@ -41,10 +41,10 @@ layout: default
         
         <div class="doc-meta">
           {% if page.date %}
-            <span class="doc-date">更新时间: {{ page.date | date: site.date_format }}</span>
+            <span class="doc-date">📅 更新时间: {{ page.date | date: site.date_format }}</span>
           {% endif %}
           {% if page.author %}
-            <span class="doc-author">作者: {{ page.author }}</span>
+            <span class="doc-author">✍️ 作者: {{ page.author }}</span>
           {% endif %}
         </div>
         
@@ -82,161 +82,4 @@ layout: default
   </div>
 </div>
 
-<style>
-.docs-category {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-}
-
-.category-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.category-header h1 {
-  margin-bottom: 1rem;
-}
-
-.category-header p {
-  color: #666;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.docs-content {
-  display: flex;
-  gap: 2rem;
-}
-
-.sidebar {
-  flex: 0 0 280px;
-  border-right: 1px solid #e1e4e8;
-  padding-right: 1.5rem;
-}
-
-.sidebar-section h3 {
-  margin-top: 0;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e1e4e8;
-}
-
-.docs-nav {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.docs-nav li {
-  margin-bottom: 0.8rem;
-}
-
-.docs-nav a {
-  text-decoration: none;
-  color: #586069;
-  display: block;
-  padding: 0.5rem;
-  border-radius: 4px;
-  transition: background-color 0.2s;
-}
-
-.docs-nav a:hover {
-  background-color: #f6f8fa;
-}
-
-.docs-nav a.active {
-  background-color: #0366d6;
-  color: white;
-}
-
-.doc-date {
-  font-size: 0.8rem;
-  color: #6a737d;
-  display: block;
-  margin-top: 0.2rem;
-}
-
-.main-content {
-  flex: 1;
-  min-width: 0;
-}
-
-.doc-content h1 {
-  margin-top: 0;
-  border-bottom: 1px solid #e1e4e8;
-  padding-bottom: 1rem;
-}
-
-.doc-meta {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #e1e4e8;
-  color: #6a737d;
-  font-size: 0.9rem;
-}
-
-.doc-body {
-  line-height: 1.7;
-}
-
-.doc-body h2 {
-  margin-top: 2rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e1e4e8;
-}
-
-.doc-body h3 {
-  margin-top: 1.5rem;
-}
-
-.doc-body code {
-  background-color: #f6f8fa;
-  padding: 0.2em 0.4em;
-  border-radius: 3px;
-  font-family: monospace;
-}
-
-.doc-body pre {
-  background-color: #f6f8fa;
-  padding: 1rem;
-  border-radius: 6px;
-  overflow-x: auto;
-}
-
-.doc-navigation {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #e1e4e8;
-}
-
-.prev-doc, .next-doc {
-  text-decoration: none;
-  color: #0366d6;
-  padding: 0.5rem 1rem;
-  border: 1px solid #e1e4e8;
-  border-radius: 6px;
-  transition: background-color 0.2s;
-}
-
-.prev-doc:hover, .next-doc:hover {
-  background-color: #f6f8fa;
-}
-
-@media (max-width: 768px) {
-  .docs-content {
-    flex-direction: column;
-  }
-  
-  .sidebar {
-    border-right: none;
-    border-bottom: 1px solid #e1e4e8;
-    padding-right: 0;
-    padding-bottom: 1.5rem;
-    margin-bottom: 2rem;
-  }
-}
-</style>
+<link rel="stylesheet" href="/assets/css/docs.css">

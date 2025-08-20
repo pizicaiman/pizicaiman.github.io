@@ -1,0 +1,279 @@
+/* 文档页面样式优化 */
+.docs-category {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.category-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  padding: 3rem 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  color: white;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.category-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.category-header > * {
+  position: relative;
+  z-index: 2;
+}
+
+.category-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.category-header p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.category-header.devops {
+  background-image: url('/assets/images/devops-bg.jpg');
+  background-color: #3498db;
+}
+
+.category-header.llm {
+  background-image: url('/assets/images/llm-bg.jpg');
+  background-color: #9b59b6;
+}
+
+.category-header.web3 {
+  background-image: url('/assets/images/web3-bg.jpg');
+  background-color: #2ecc71;
+}
+
+.docs-content {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.sidebar {
+  flex: 0 0 280px;
+  border-right: 1px solid #e1e4e8;
+  padding-right: 1.5rem;
+}
+
+.sidebar-section h3 {
+  margin-top: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.docs-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.docs-nav li {
+  margin-bottom: 0.8rem;
+}
+
+.docs-nav a {
+  text-decoration: none;
+  color: #586069;
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.docs-nav a:hover {
+  background-color: #f6f8fa;
+  border-color: #e1e4e8;
+}
+
+.docs-nav a.active {
+  background-color: #0366d6;
+  color: white;
+  border-color: #0366d6;
+}
+
+.doc-date {
+  font-size: 0.8rem;
+  color: #6a737d;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.doc-content h1 {
+  margin-top: 0;
+  border-bottom: 1px solid #e1e4e8;
+  padding-bottom: 1rem;
+}
+
+.doc-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e1e4e8;
+  color: #6a737d;
+  font-size: 0.9rem;
+}
+
+.doc-body {
+  line-height: 1.7;
+}
+
+.doc-body h2 {
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.doc-body h3 {
+  margin-top: 1.5rem;
+}
+
+.doc-body code {
+  background-color: #f6f8fa;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+.doc-body pre {
+  background-color: #f6f8fa;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.doc-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e1e4e8;
+}
+
+.prev-doc, .next-doc {
+  text-decoration: none;
+  color: #0366d6;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.prev-doc:hover, .next-doc:hover {
+  background-color: #f6f8fa;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 分类页面特殊样式 */
+.posts-list {
+  margin: 2rem 0;
+}
+
+.post-item {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.post-item:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.post-item h3 {
+  margin-top: 0;
+}
+
+.post-item h3 a {
+  text-decoration: none;
+  color: #0366d6;
+}
+
+.post-item h3 a:hover {
+  text-decoration: underline;
+}
+
+.post-meta {
+  margin: 0.5rem 0;
+}
+
+.post-excerpt {
+  color: #586069;
+  line-height: 1.6;
+}
+
+.stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f6f8fa;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.stat-item .stat-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0366d6;
+}
+
+.stat-item .stat-label {
+  color: #586069;
+}
+
+@media (max-width: 768px) {
+  .docs-content {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid #e1e4e8;
+    padding-right: 0;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .category-header h1 {
+    font-size: 2rem;
+  }
+  
+  .category-header p {
+    font-size: 1rem;
+  }
+  
+  .stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
