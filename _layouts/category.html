@@ -1,0 +1,21 @@
+<!-- _layouts/category.html -->
+---
+layout: default
+---
+
+<div class="category-page">
+  <h1 class="page-title">{{ page.title }}</h1>
+  
+  <div class="posts-list">
+    {% assign category_posts = site.pages | where: "category", page.category | sort: "date" | reverse %}
+    {% for post in category_posts %}
+      <div class="post-item">
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+        <div class="post-meta">
+          <span class="post-date">{{ post.date | date: site.date_format }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

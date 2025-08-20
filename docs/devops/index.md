@@ -2,6 +2,7 @@
 layout: category
 title: DevOps & 云原生
 category: devops
+permalink: /docs/devops/
 ---
 
 # DevOps & 云原生
