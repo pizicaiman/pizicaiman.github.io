@@ -5,7 +5,7 @@ date: 2024-02-15
 category: llm
 tags: [llm, architecture, enterprise]
 excerpt: 探讨在企业环境中部署和管理大语言模型应用的最佳架构实践
-permalink: /docs/llm/2024/enterprise-llm-arch/
+permalink: /docs/llm/2024/enterprise-llm-arch.html
 ---
 
 # 企业级LLM应用架构设计
@@ -40,30 +40,6 @@ permalink: /docs/llm/2024/enterprise-llm-arch/
 2. 访问控制策略
 3. 模型安全加固
 
-## 4. 部署方案
-
-### 4.1 基础设施
-- Kubernetes 集群
-- GPU 资源池
-- 监控告警
-
-### 4.2 CI/CD
-- 模型版本管理
-- 自动化部署
-- 灰度发布
-
-## 5. 最佳实践
-
-1. 采用模块化设计
-2. 实现监控告警
-3. 建立评估指标
-
 ## 总结
 
 构建稳定可靠的企业级LLM应用架构需要综合考虑性能、安全、成本等多个因素。
-
-## 参考资料
-
-1. [vLLM Documentation](https://vllm.ai/)
-2. [LangChain Documentation](https://langchain.org/)
-3. [Milvus Documentation](https://milvus.io/)

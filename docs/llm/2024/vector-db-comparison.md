@@ -5,7 +5,7 @@ date: 2024-02-20
 category: llm
 tags: [llm, vector-db, comparison]
 excerpt: 主流向量数据库的功能特点和性能对比
-permalink: /docs/llm/2024/vector-db-comparison/
+permalink: /docs/llm/2024/vector-db-comparison.html
 ---
 
 # 向量数据库选型对比

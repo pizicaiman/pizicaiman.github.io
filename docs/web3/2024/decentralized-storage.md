@@ -5,7 +5,7 @@ date: 2024-03-15
 category: web3
 tags: [web3, storage, ipfs]
 excerpt: 分析主流去中心化存储技术的原理和应用场景
-permalink: /docs/web3/2024/decentralized-storage/
+permalink: /docs/web3/2024/decentralized-storage.html
 ---
 
 # 去中心化存储方案
