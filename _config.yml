@@ -1,0 +1,108 @@
+# 基本配置
+title: Pizicai's Tech Blog
+description: 技术探索与实践 | DevOps | LLM | Web3
+author: Pizicai
+url: "https://pizicaiman.github.io"
+baseurl: ""
+language: zh-CN
+
+# 主题设置
+theme: jekyll-theme-minimal
+markdown: kramdown
+highlighter: rouge
+
+# 文章路径配置
+collections:
+  docs:
+    output: true
+    permalink: /:path/
+
+# 默认布局设置
+defaults:
+  - scope:
+      path: "docs/devops"
+      type: "pages"
+    values:
+      layout: "post"
+      category: "devops"
+  - scope:
+      path: "docs/llm"
+      type: "pages"
+    values:
+      layout: "post"
+      category: "llm"
+  - scope:
+      path: "docs/web3"
+      type: "pages"
+    values:
+      layout: "post"
+      category: "web3"
+
+# 导航菜单
+navigation:
+  - title: DevOps
+    url: /docs/devops/
+    category: devops
+  - title: LLM
+    url: /docs/llm/
+    category: llm
+  - title: Web3
+    url: /docs/web3/
+    category: web3
+  - title: About
+    url: /about/
+
+# 分类设置
+categories: 
+  - devops
+  - llm
+  - web3
+
+# 插件配置
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+
+# 分页设置
+paginate: 10
+paginate_path: "/blog/page:num/"
+
+# 时区和日期格式
+timezone: Asia/Shanghai
+date_format: "%Y-%m-%d"
+
+# 排除文件
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .github
+
+# 社交链接
+social:
+  github: pizicaiman
+  
+# SEO 优化
+twitter:
+  username: pizicaiman
+  card: summary_large_image
+
+# Google Analytics
+google_analytics: # 你的 GA ID
+
+# 评论系统设置
+comments:
+  provider: # 比如 disqus, gitalk 等
+
+# 站点地图设置
+sitemap:
+  filename: "/sitemap.xml"
+  exclude:
+    - "/atom.xml"
+    - "/feed.xml"
+    - "/feed/index.xml"
