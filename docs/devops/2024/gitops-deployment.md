@@ -5,7 +5,7 @@ date: 2024-01-25
 category: devops
 tags: [gitops, kubernetes, ci/cd]
 excerpt: 基于GitOps的持续部署实践方案
-permalink: /docs/devops/2024/gitops-deployment.html
+permalink: /docs/devops/2024/gitops-deployment/
 ---
 
 # GitOps持续部署方案

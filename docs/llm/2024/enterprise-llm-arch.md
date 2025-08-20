@@ -5,7 +5,7 @@ date: 2024-02-15
 category: llm
 tags: [llm, architecture, enterprise]
 excerpt: 探讨在企业环境中部署和管理大语言模型应用的最佳架构实践
-permalink: /docs/llm/2024/enterprise-llm-arch.html
+permalink: /docs/llm/2024/enterprise-llm-arch/
 ---
 
 # 企业级LLM应用架构设计

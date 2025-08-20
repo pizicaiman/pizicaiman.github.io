@@ -5,7 +5,7 @@ date: 2024-03-10
 category: web3
 tags: [web3, blockchain, cross-chain]
 excerpt: 深入分析跨链桥的工作原理和主流实现方案
-permalink: /docs/web3/2024/cross-chain-bridge.html
+permalink: /docs/web3/2024/cross-chain-bridge/
 ---
 
 # 跨链桥技术原理解析

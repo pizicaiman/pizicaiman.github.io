@@ -5,7 +5,7 @@ date: 2024-01-20
 category: devops
 tags: [kubernetes, multi-cluster, gitops]
 excerpt: 探讨在多云环境下Kubernetes集群的统一管理方案
-permalink: /docs/devops/2024/kubernetes-multi-cluster.html
+permalink: /docs/devops/2024/kubernetes-multi-cluster/
 ---
 
 # Kubernetes多集群管理实践
