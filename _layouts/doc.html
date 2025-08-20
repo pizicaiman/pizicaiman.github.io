@@ -21,36 +21,8 @@ layout: default
     <div class="doc-body">
       {{ content }}
     </div>
-    
-    <!-- 调试信息 -->
-    <div class="debug-info" style="margin: 3rem 0; padding: 1.5rem; background-color: #f8f9fa; border: 1px solid #e1e4e8; border-radius: 6px;">
-      <h2 style="margin-top: 0;">调试信息</h2>
-      
-      <h3>Page Variables</h3>
-      <pre style="overflow-x: auto;">{{ page | inspect }}</pre>
-      
-      <h3>Site Variables</h3>
-      <pre style="overflow-x: auto;">{{ site | inspect }}</pre>
-      
-      <h3>Current Date</h3>
-      <p>{{ 'now' | date: "%Y-%m-%d %H:%M:%S" }}</p>
-    </div>
   </article>
 </div>
-
-<style>
-.debug-info {
-  margin: 3rem 0;
-  padding: 1.5rem;
-  background-color: #f8f9fa;
-  border: 1px solid #e1e4e8;
-  border-radius: 6px;
-}
-
-.debug-info h2, .debug-info h3 {
-  margin-top: 0;
-}
-</style>
 
 <style>
 .doc-page {
