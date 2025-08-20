@@ -1,9 +1,13 @@
+<!-- docs/llm/index.md -->
 ---
-layout: category
-title: 大语言模型 (LLM) 文章
+layout: docs-category
+title: 大语言模型文档
 category: llm
+description: 关于大语言模型应用、Prompt Engineering、向量数据库等 AI 技术的深入分析和实践指南。
 permalink: /docs/llm/
 ---
+
+本分类包含大语言模型相关的技术文档，涵盖模型应用架构、提示词工程、向量检索等关键技术和实践案例。
 
 # 大语言模型 (LLM)
 

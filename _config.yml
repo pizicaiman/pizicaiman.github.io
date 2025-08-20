@@ -40,6 +40,8 @@ defaults:
 
 # 导航菜单
 navigation:
+  - title: 首页
+    url: /
   - title: DevOps
     url: /docs/devops/
     category: devops
@@ -49,7 +51,9 @@ navigation:
   - title: Web3
     url: /docs/web3/
     category: web3
-  - title: About
+  - title: 文档
+    url: /docs/
+  - title: 关于
     url: /about/
 
 # 分类设置

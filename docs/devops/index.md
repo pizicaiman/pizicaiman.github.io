@@ -1,9 +1,13 @@
+<!-- docs/devops/index.md -->
 ---
-layout: category
-title: DevOps & 云原生
+layout: docs-category
+title: DevOps & 云原生文档
 category: devops
+description: 涵盖 Kubernetes、Docker、CI/CD、GitOps 等云原生技术的最佳实践和经验总结。
 permalink: /docs/devops/
 ---
+
+在这里你可以找到关于 DevOps 和云原生技术的详细文档，包括容器化、自动化部署、监控告警等方面的实践指南。
 
 # DevOps & 云原生
 

@@ -1,0 +1,94 @@
+<!-- docs/index.html -->
+---
+layout: default
+title: 技术文档
+permalink: /docs/
+---
+
+<div class="docs-home">
+  <h1>技术文档中心</h1>
+  <p>欢迎访问我的技术文档中心，这里汇集了我在各个技术领域的实践总结。</p>
+  
+  <div class="category-grid">
+    {% for category in site.categories %}
+      <div class="category-card">
+        <h2>
+          <a href="/docs/{{ category | first }}/">
+            {% case category | first %}
+              {% when "devops" %}🚀 DevOps & 云原生
+              {% when "llm" %}🤖 大语言模型
+              {% when "web3" %}⛓️ Web3
+            {% endcase %}
+          </a>
+        </h2>
+        <p>
+          {% case category | first %}
+            {% when "devops" %}Kubernetes、Docker、CI/CD、GitOps 等云原生技术实践
+            {% when "llm" %}大语言模型应用、Prompt Engineering、向量数据库等 AI 技术
+            {% when "web3" %}区块链、智能合约、去中心化应用等 Web3 技术
+          {% endcase %}
+        </p>
+        <div class="category-stats">
+          文档数量: {{ category | last | size }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.docs-home {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.docs-home h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.docs-home p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 3rem;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.category-card {
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  padding: 1.5rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  box-shadow: 0 8px 24px rgba(140, 149, 159, 0.2);
+}
+
+.category-card h2 {
+  margin-top: 0;
+}
+
+.category-card h2 a {
+  text-decoration: none;
+  color: #0366d6;
+}
+
+.category-card p {
+  text-align: left;
+  color: #586069;
+  margin-bottom: 1.5rem;
+}
+
+.category-stats {
+  font-size: 0.9rem;
+  color: #6a737d;
+  font-weight: 500;
+}
+</style>

@@ -1,9 +1,13 @@
+<!-- docs/web3/index.md -->
 ---
-layout: category
-title: Web3 文章
+layout: docs-category
+title: Web3 文档
 category: web3
+description: 区块链、智能合约、去中心化应用等 Web3 技术的原理分析和开发指南。
 permalink: /docs/web3/
 ---
+
+探索 Web3 技术栈，包括区块链基础、智能合约开发、去中心化存储、跨链技术等前沿领域的技术文档。
 
 # Web3
 
