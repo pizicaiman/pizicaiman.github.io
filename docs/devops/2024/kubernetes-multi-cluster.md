@@ -8,8 +8,6 @@ excerpt: 探讨在多云环境下Kubernetes集群的统一管理方案
 permalink: /docs/devops/2024/kubernetes-multi-cluster/
 ---
 
-# Kubernetes多集群管理实践
-
 ## 背景
 
 在企业级场景中，多集群管理已经成为一个不可回避的话题。随着业务规模的扩大和多云战略的实施，企业往往需要管理分布在不同云厂商、不同地域的多个Kubernetes集群。
