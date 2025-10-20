@@ -1,117 +1,33 @@
-# 基本配置
-title: Pizicai's Tech Blog
-description: 技术探索与实践 | DevOps | LLM | Web3
-author: Pizicai
-url: "https://pizicaiman.github.io"
-baseurl: ""
-language: zh-CN
-
-# 主题设置
-theme: jekyll-theme-minimal
+title: Atlas Jekyll Theme
+desciption: >
+  A jekyll theme for personal website.
+email: yourusername@gmail.com
+baseurl: "/atlas-jekyll-theme" # the subpath of your site, e.g. /blog
+#replace nrdybhu1.github.io with your domainname.com
+url: "https://nrdybhu1.github.io" # the base hostname & protocol for your site
+twitter_username: jekyllrb
+github_username:  Jekyll
 markdown: kramdown
-highlighter: rouge
-
-# 文章路径配置
+page_excerpts: true
+favicon: "/img/atlas.png"
 collections:
-  docs:
+  posts:
+    permalink: "/blog/:title:output_ext"
     output: true
-    permalink: /:path/
-
-# 默认布局设置
 defaults:
-  - scope:
-      path: "docs/devops"
-      type: "pages"
-    values:
-      layout: "doc"
-      category: "devops"
-  - scope:
-      path: "docs/llm"
-      type: "pages"
-    values:
-      layout: "doc"
-      category: "llm"
-  - scope:
-      path: "docs/web3"
-      type: "pages"
-    values:
-      layout: "doc"
-      category: "web3"
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-
-# 导航菜单
-navigation:
-  - title: 首页
-    url: /
-  - title: DevOps
-    url: /docs/devops/
-    category: devops
-  - title: LLM
-    url: /docs/llm/
-    category: llm
-  - title: Web3
-    url: /docs/web3/
-    category: web3
-  - title: 文档
-    url: /docs/
-  - title: 关于
-    url: /about/
-
-# 分类设置
-categories: 
-  - devops
-  - llm
-  - web3
-
-# 插件配置
+- scope:
+    path: _posts
+    type: posts
+- scope:
+    path: ''
+  values:
+    image: "/img/preview.png"
 plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  - jekyll-paginate
+- jekyll-avatar
+- jekyll-feed
+- jekyll-redirect-from
+- jemoji
+- jekyll-paginate
 
-# 分页设置
-paginate: 10
-paginate_path: "/blog/page:num/"
-
-# 时区和日期格式
-timezone: Asia/Shanghai
-date_format: "%Y-%m-%d"
-
-# 排除文件
-exclude:
-  - README.md
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor
-  - .git
-  - .github
-
-# 社交链接
-social:
-  github: pizicaiman
-  
-# SEO 优化
-twitter:
-  username: pizicaiman
-  card: summary_large_image
-
-# Google Analytics
-google_analytics: # 你的 GA ID
-
-# 评论系统设置
-comments:
-  provider: # 比如 disqus, gitalk 等
-
-# 站点地图设置
-sitemap:
-  filename: "/sitemap.xml"
-  exclude:
-    - "/atom.xml"
-    - "/feed.xml"
-    - "/feed/index.xml"
+paginate: 5
+paginate_path: "/blog/page-:num/"
