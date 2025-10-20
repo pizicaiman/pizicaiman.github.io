@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: Kubernetes下通过ArgoCD实现多集群部署
@@ -8,10 +7,9 @@ tags: [kubernetes, cloud-native, alibaba-cloud, ack]
 excerpt: 深入解析阿里云ACK集群架构设计、最佳实践及企业级应用案例
 ---
 
+# Kubernetes下通过ArgoCD实现多集群部署
 
 本指南介绍如何通过ArgoCD实现Kubernetes多集群的GitOps持续部署。
-
----
 
 ## 一、环境准备
 
