@@ -3,7 +3,7 @@
 layout: docs-category
 title: DevOps & 云原生文档
 category: devops
-description: 涵盖 Kubernetes、Docker、CI/CD、GitOps 等云原生技术的最佳实践和经验总结。
+description: 系统设计风格与最佳实践，涵盖 Kubernetes、Docker、CI/CD、GitOps 等云原生技术。
 permalink: /docs/devops/
 ---
 
@@ -11,9 +11,9 @@ permalink: /docs/devops/
 /* 现代化页面设计 */
 .docs-category {
   max-width: 2400px !important;
-  padding: 3rem 2.5rem;
+  padding: 2rem 2rem;
   margin: 0 auto;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   min-height: 100vh;
   position: relative;
   overflow: hidden;
@@ -27,36 +27,45 @@ permalink: /docs/devops/
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(102, 126, 234, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(118, 75, 162, 0.2) 0%, transparent 50%);
   pointer-events: none;
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(1deg); }
 }
 
 .docs-content-wrapper {
   position: relative;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  padding: 3rem;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(25px);
+  border-radius: 28px;
+  padding: 2.5rem;
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.2);
-  margin: 2rem 0;
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  margin: 1.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* 标题样式 - 现代化设计 */
 .docs-category h2 {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin: 3rem 0 2rem 0;
+  font-size: 1.9rem;
+  font-weight: 800;
+  margin: 2.5rem 0 1.8rem 0;
   position: relative;
-  padding-left: 1rem;
+  padding-left: 1.2rem;
+  letter-spacing: -0.02em;
 }
 
 .docs-category h2::before {
@@ -65,10 +74,11 @@ permalink: /docs/devops/
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 4px;
-  height: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 2px;
+  width: 5px;
+  height: 2.2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
 }
 
 .docs-category h2:first-of-type {
@@ -105,17 +115,18 @@ permalink: /docs/devops/
 }
 
 .devops-post-item {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 2.2rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   box-shadow: 
-    0 4px 6px rgba(0, 0, 0, 0.05),
-    0 1px 3px rgba(0, 0, 0, 0.1);
+    0 8px 16px rgba(0, 0, 0, 0.08),
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .devops-post-item::before {
@@ -124,18 +135,20 @@ permalink: /docs/devops/
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   transform: scaleX(0);
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 20px 20px 0 0;
 }
 
 .devops-post-item:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px) scale(1.02);
   box-shadow: 
-    0 20px 25px rgba(0, 0, 0, 0.1),
-    0 10px 10px rgba(0, 0, 0, 0.04);
-  border-color: rgba(102, 126, 234, 0.3);
+    0 25px 35px rgba(0, 0, 0, 0.12),
+    0 15px 15px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border-color: rgba(102, 126, 234, 0.4);
 }
 
 .devops-post-item:hover::before {
@@ -164,14 +177,16 @@ permalink: /docs/devops/
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 .devops-post-title a:hover {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  transform: translateX(2px);
 }
 
 .devops-post-meta {
@@ -181,10 +196,12 @@ permalink: /docs/devops/
   font-size: 0.9rem;
   color: #718096;
   white-space: nowrap;
-  background: rgba(102, 126, 234, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-weight: 500;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.12) 0%, rgba(118, 75, 162, 0.08) 100%);
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .devops-post-excerpt {
@@ -247,15 +264,16 @@ permalink: /docs/devops/
 }
 
 .stat-number {
-  font-size: 3rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-size: 3.2rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 0.5rem;
   position: relative;
   z-index: 1;
+  text-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
 }
 
 .stat-label {
@@ -286,9 +304,11 @@ permalink: /docs/devops/
   position: absolute;
   top: 0;
   left: 0;
-  width: 4px;
+  width: 5px;
   height: 100%;
-  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 15px rgba(102, 126, 234, 0.4);
 }
 
 .tech-stack ul {
