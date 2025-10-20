@@ -1,7 +1,7 @@
-title: Atlas Jekyll Theme
+title: Pizicai's Tech Blog
 desciption: >
-  A jekyll theme for personal website.
-email: yourusername@gmail.com
+  技术探索与实践 | DevOps | LLM | Web3
+email: cai.jianfeng91@gmail.com
 baseurl: "/atlas-jekyll-theme" # the subpath of your site, e.g. /blog
 #replace nrdybhu1.github.io with your domainname.com
 url: "https://nrdybhu1.github.io" # the base hostname & protocol for your site
