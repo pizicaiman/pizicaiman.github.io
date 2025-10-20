@@ -100,6 +100,9 @@ permalink: /docs/
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .docs-header {
@@ -108,6 +111,7 @@ permalink: /docs/
   padding: 2rem 0;
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   border-radius: 1rem;
+  width: 100%;
 }
 
 .docs-header h1 {
@@ -159,6 +163,7 @@ permalink: /docs/
   background: white;
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  width: 100%;
 }
 
 .stat-item {
@@ -182,6 +187,7 @@ permalink: /docs/
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
   margin-bottom: 4rem;
+  width: 100%;
 }
 
 .category-card {
@@ -200,11 +206,13 @@ permalink: /docs/
 .category-icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .category-card h2 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
+  text-align: center;
 }
 
 .category-card h2 a {
@@ -221,6 +229,7 @@ permalink: /docs/
   color: #64748b;
   line-height: 1.6;
   margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .category-meta {
@@ -252,11 +261,13 @@ permalink: /docs/
   border-radius: 1rem;
   padding: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  width: 100%;
 }
 
 .recent-updates h2 {
   margin-bottom: 2rem;
   color: var(--text-color);
+  text-align: center;
 }
 
 .updates-grid {
@@ -301,6 +312,7 @@ permalink: /docs/
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 1rem;
+  justify-content: center;
 }
 
 .tag {
@@ -323,6 +335,10 @@ permalink: /docs/
   
   .updates-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .docs-home {
+    padding: 1rem 0.5rem;
   }
 }
 </style>
