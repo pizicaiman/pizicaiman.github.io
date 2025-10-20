@@ -15,16 +15,56 @@ DevOps 和云原生技术正在改变我们构建、部署和运维应用程序�
 
 ## 📚 文章列表
 
-<div class="posts-list">
+<style>
+.devops-posts-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2rem 0 2rem -1.5rem;
+}
+.devops-post-item {
+  width: calc(33.333% - 1.5rem);
+  margin: 0 0 1.5rem 1.5rem;
+  background: #fff;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  box-sizing: border-box;
+  padding: 1.2rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 300px;
+  max-width: 100%;
+}
+@media (max-width: 1100px) {
+  .devops-post-item { width: calc(50% - 1.5rem);}
+}
+@media (max-width: 700px) {
+  .devops-post-item { width: 100%; margin-left: 0;}
+  .devops-posts-list { margin-left: 0;}
+}
+.devops-post-meta-row {
+  display: flex;
+  align-items: center;
+  margin-top: 0.4rem;
+  gap: 1.5rem;
+}
+.devops-post-excerpt {
+  color: #6a737d;
+  font-size: 0.97rem;
+  margin-top: 0.6rem;
+}
+</style>
+<div class="devops-posts-list">
   {% assign sorted_pages = site.pages | where: "category", "devops" | sort: "date" | reverse %}
   {% for page in sorted_pages %}
-    <div class="post-item">
-      <h3><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h3>
-      <p class="post-meta">
+    <div class="devops-post-item">
+      <h3 style="margin-bottom:0.6rem;"><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h3>
+      <div class="devops-post-meta-row">
         <span class="post-date">📅 {{ page.date | date: "%Y-%m-%d" }}</span>
-      </p>
+        <!-- 可扩展：比如作者、标签等同排显示 -->
+      </div>
       {% if page.excerpt %}
-        <p class="post-excerpt">{{ page.excerpt | strip_html | truncate: 160 }}</p>
+        <div class="devops-post-excerpt">{{ page.excerpt | strip_html | truncate: 160 }}</div>
       {% endif %}
     </div>
   {% endfor %}
