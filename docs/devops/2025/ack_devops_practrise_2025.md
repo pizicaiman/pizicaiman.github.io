@@ -7,8 +7,6 @@ tags: [kubernetes, devops, alibaba-cloud, cicd]
 excerpt: 深入探讨阿里云ACK环境下的DevOps实践、持续集成/部署及自动化运维
 ---
 
-# 阿里云ACK DevOps实践指南
-
 ## 目录
 
 1. [DevOps工具链](#devops工具链)

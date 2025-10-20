@@ -7,8 +7,6 @@ tags: [kubernetes, container, alibaba-cloud, docker]
 excerpt: 深入探讨阿里云ACK环境下的容器化最佳实践、镜像管理及运行时优化
 ---
 
-# 阿里云ACK容器实践指南
-
 ## 目录
 
 1. [容器基础](#容器基础)

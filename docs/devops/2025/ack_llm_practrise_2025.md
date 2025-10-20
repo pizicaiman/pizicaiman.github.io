@@ -7,8 +7,6 @@ tags: [kubernetes, llm, alibaba-cloud, ai]
 excerpt: 详细探讨在阿里云ACK环境中部署和运维大语言模型的最佳实践
 ---
 
-# 阿里云ACK大语言模型部署实践
-
 ## 目录
 
 1. [架构设计](#架构设计)
