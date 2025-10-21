@@ -3,6 +3,94 @@ layout: default
 title: Pizicai's Tech Blog
 ---
 <style>
+.hero {
+  position: relative;
+  margin: 0 0 2rem 0;
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 1rem;
+  color: #ffffff;
+  background: radial-gradient(1200px 400px at 10% -10%, rgba(0, 102, 255, 0.35), transparent 60%),
+              radial-gradient(800px 300px at 90% 0%, rgba(0, 255, 204, 0.25), transparent 60%),
+              linear-gradient(135deg, #0a0f1f 0%, #0b1730 40%, #0e2147 100%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/img/tech-grid.svg');
+  background-size: 520px 520px;
+  background-repeat: repeat;
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 20%, rgba(0, 153, 255, 0.25), transparent 35%),
+              radial-gradient(circle at 20% 80%, rgba(0, 255, 170, 0.18), transparent 35%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 980px;
+}
+
+.hero h1 {
+  margin: 0 0 0.75rem 0;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.hero p.lead {
+  margin: 0 auto 1.25rem auto;
+  max-width: 780px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.btn-primary, .btn-secondary {
+  display: inline-block;
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: #0ea5e9;
+  color: #00121f;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.16); transform: translateY(-1px); }
 .home { 
   padding: 1.5rem 0; 
   max-width: 1200px; 
@@ -10,17 +98,8 @@ title: Pizicai's Tech Blog
   padding-left: 1rem; 
   padding-right: 1rem; 
 }
-.home h1 { 
-  margin: 0 0 0.75rem 0; 
-  font-size: 2rem; 
-  font-weight: 700; 
-  text-align: center; 
-}
-.home p.lead { 
-  color: #586069; 
-  margin: 0 0 1.25rem 0; 
-  text-align: center; 
-}
+.home h1 { display:none; }
+.home p.lead { display:none; }
 .section { 
   margin: 2rem 0; 
   max-width: 800px; 
@@ -128,8 +207,16 @@ title: Pizicai's Tech Blog
 </style>
 
 <div class="home">
-  <h1>技术探索与实践</h1>
-  <p class="lead">记录我在 DevOps、LLM 与 Web3 等方向的系统化学习与最佳实践。</p>
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>技术探索与实践</h1>
+      <p class="lead">记录我在 DevOps、LLM 与 Web3 等方向的系统化学习与最佳实践。</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="/docs/devops/">浏览文档</a>
+        <a class="btn-secondary" href="/about/">关于我</a>
+      </div>
+    </div>
+  </div>
 
   <div class="section links">
     <h2>🚀 DevOps & 云原生</h2>
