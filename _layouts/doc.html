@@ -59,7 +59,7 @@ layout: default
 .doc-layout {
   display: grid;
   grid-template-columns: 250px 1fr 280px;
-  gap: 2rem;
+  gap: 3rem;
   align-items: start;
 }
 
@@ -73,6 +73,7 @@ layout: default
   border: 1px solid #e1e4e8;
   max-height: calc(100vh - 4rem);
   overflow-y: auto;
+  margin-right: 1rem;
 }
 
 .toc-container h3 {
@@ -157,6 +158,7 @@ layout: default
 /* 中间文章内容 */
 .doc-main {
   min-width: 0;
+  margin-left: 1rem;
 }
 
 .doc-content h1 {
@@ -222,6 +224,7 @@ layout: default
   border: 1px solid #e1e4e8;
   max-height: calc(100vh - 4rem);
   overflow-y: auto;
+  margin-left: 1rem;
 }
 
 .recommendations-container h3 {
@@ -284,20 +287,38 @@ layout: default
 @media (max-width: 1200px) {
   .doc-layout {
     grid-template-columns: 200px 1fr 250px;
-    gap: 1.5rem;
+    gap: 2.5rem;
+  }
+  
+  .doc-sidebar {
+    margin-right: 0.75rem;
+  }
+  
+  .doc-main {
+    margin-left: 0.75rem;
+  }
+  
+  .doc-recommendations {
+    margin-left: 0.75rem;
   }
 }
 
 @media (max-width: 992px) {
   .doc-layout {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 2rem;
   }
   
   .doc-sidebar,
   .doc-recommendations {
     position: static;
     max-height: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .doc-main {
+    margin-left: 0;
   }
   
   .doc-sidebar {
