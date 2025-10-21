@@ -3,27 +3,128 @@ layout: default
 title: Pizicai's Tech Blog
 ---
 <style>
-.home { padding: 1.5rem 0; }
-.home h1 { margin: 0 0 0.75rem 0; font-size: 2rem; font-weight: 700; }
-.home p.lead { color: #586069; margin: 0 0 1.25rem 0; }
-.section { margin: 2rem 0; }
-.section h2 { margin: 0 0 0.75rem 0; font-size: 1.25rem; }
-.links ul { margin: 0.5rem 0 0 0; }
-.links li { margin: 0.35rem 0; }
-.links a { color: #0366d6; text-decoration: none; }
-.links a:hover { text-decoration: underline; }
-.grid { display: grid; grid-template-columns: 2fr 1fr; gap: 1.25rem; }
-.panel { border: 1px solid #e1e4e8; border-radius: 8px; padding: 0.75rem 1rem; background: #fff; }
-.panel h3 { margin: 0 0 0.5rem 0; font-size: 1.05rem; }
-.recent-list { list-style: none; margin: 0; padding: 0; }
-.recent-list li { display: flex; gap: 0.5rem; align-items: baseline; padding: 0.45rem 0; border-bottom: 1px solid #f1f1f1; }
-.recent-list li:last-child { border-bottom: 0; }
-.recent-list time { color: #6a737d; font-size: 0.9rem; }
-.recent-list a { color: #24292e; text-decoration: none; }
-.recent-list a:hover { color: #0366d6; text-decoration: underline; }
-.tag-cloud a { display: inline-block; margin: 0.25rem 0.5rem 0 0; color: #586069; text-decoration: none; }
-.tag-cloud a:hover { text-decoration: underline; }
-@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+.home { 
+  padding: 1.5rem 0; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding-left: 1rem; 
+  padding-right: 1rem; 
+}
+.home h1 { 
+  margin: 0 0 0.75rem 0; 
+  font-size: 2rem; 
+  font-weight: 700; 
+  text-align: center; 
+}
+.home p.lead { 
+  color: #586069; 
+  margin: 0 0 1.25rem 0; 
+  text-align: center; 
+}
+.section { 
+  margin: 2rem 0; 
+  max-width: 800px; 
+  margin-left: auto; 
+  margin-right: auto; 
+}
+.section h2 { 
+  margin: 0 0 0.75rem 0; 
+  font-size: 1.25rem; 
+  text-align: center; 
+}
+.links ul { 
+  margin: 0.5rem 0 0 0; 
+  text-align: center; 
+}
+.links li { 
+  margin: 0.35rem 0; 
+  display: inline-block; 
+  margin: 0.5rem 1rem; 
+}
+.links a { 
+  color: #0366d6; 
+  text-decoration: none; 
+  padding: 0.5rem 1rem; 
+  border: 1px solid #e1e4e8; 
+  border-radius: 6px; 
+  display: inline-block; 
+  transition: all 0.2s ease; 
+}
+.links a:hover { 
+  text-decoration: none; 
+  background-color: #f6f8fa; 
+  border-color: #0366d6; 
+}
+.grid { 
+  display: grid; 
+  grid-template-columns: 2fr 1fr; 
+  gap: 1.25rem; 
+  max-width: 1000px; 
+  margin: 0 auto; 
+}
+.panel { 
+  border: 1px solid #e1e4e8; 
+  border-radius: 8px; 
+  padding: 0.75rem 1rem; 
+  background: #fff; 
+}
+.panel h3 { 
+  margin: 0 0 0.5rem 0; 
+  font-size: 1.05rem; 
+  text-align: center; 
+}
+.recent-list { 
+  list-style: none; 
+  margin: 0; 
+  padding: 0; 
+}
+.recent-list li { 
+  display: flex; 
+  gap: 0.5rem; 
+  align-items: baseline; 
+  padding: 0.45rem 0; 
+  border-bottom: 1px solid #f1f1f1; 
+}
+.recent-list li:last-child { 
+  border-bottom: 0; 
+}
+.recent-list time { 
+  color: #6a737d; 
+  font-size: 0.9rem; 
+}
+.recent-list a { 
+  color: #24292e; 
+  text-decoration: none; 
+}
+.recent-list a:hover { 
+  color: #0366d6; 
+  text-decoration: underline; 
+}
+.tag-cloud { 
+  text-align: center; 
+}
+.tag-cloud a { 
+  display: inline-block; 
+  margin: 0.25rem 0.5rem 0 0; 
+  color: #586069; 
+  text-decoration: none; 
+}
+.tag-cloud a:hover { 
+  text-decoration: underline; 
+}
+.github-stats { 
+  text-align: center; 
+  margin: 2rem 0; 
+}
+@media (max-width: 900px) { 
+  .grid { 
+    grid-template-columns: 1fr; 
+  } 
+  .links li { 
+    display: block; 
+    margin: 0.5rem 0; 
+  }
+}
 </style>
 
 <div class="home">
@@ -79,7 +180,7 @@ title: Pizicai's Tech Blog
     </div>
   </div>
 
-  <div class="section">
+  <div class="section github-stats">
     <h2>📊 GitHub 统计</h2>
     <img alt="GitHub统计" src="https://github-readme-stats.vercel.app/api?username=pizicaiman&show_icons=true" />
   </div>
