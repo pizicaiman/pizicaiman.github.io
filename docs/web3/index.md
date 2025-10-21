@@ -1,4 +1,3 @@
-<!-- docs/web3/index.md -->
 ---
 layout: docs-category
 title: Web3 文档
