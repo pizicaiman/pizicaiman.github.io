@@ -96,7 +96,22 @@ title: Pizicai's Tech Blog
 }
 .github-stats { 
   text-align: center; 
-  margin: 2rem 0; 
+  margin: 2rem auto; 
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.github-stats h2 {
+  margin-bottom: 1rem;
+}
+
+.github-stats img {
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 @media (max-width: 900px) { 
   .grid { 
@@ -110,12 +125,12 @@ title: Pizicai's Tech Blog
 </style>
 
 <div class="home">
-  <!-- <div class="hero">
+  <div class="hero">
     <div class="hero-inner">
       <h1>技术探索与实践</h1>
       <p class="lead">记录我在 DevOps、LLM 与 Web3 等方向的系统化学习与最佳实践。</p>
     </div>
-  </div> -->
+  </div>
 
   <div class="section links">
     <h2>🚀 DevOps & 云原生</h2>
