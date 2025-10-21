@@ -59,23 +59,6 @@ title: Pizicai's Tech Blog
   color: rgba(255, 255, 255, 0.9);
 }
 
-.hero-actions {
-  display: flex;
-  gap: 0.75rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 0.75rem;
-}
-
-.btn-primary, .btn-secondary {
-  display: inline-block;
-  padding: 0.55rem 1rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
 .btn-primary {
   background: #0ea5e9;
   color: #00121f;
@@ -211,10 +194,6 @@ title: Pizicai's Tech Blog
     <div class="hero-inner">
       <h1>技术探索与实践</h1>
       <p class="lead">记录我在 DevOps、LLM 与 Web3 等方向的系统化学习与最佳实践。</p>
-      <div class="hero-actions">
-        <a class="btn-primary" href="/docs/devops/">浏览文档</a>
-        <a class="btn-secondary" href="/about/">关于我</a>
-      </div>
     </div>
   </div>
 
