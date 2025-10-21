@@ -1,4 +1,13 @@
-# 什么是Embedding
+---
+layout: doc
+title: 什么是Embedding
+date: 2024-02-15
+category: llm
+tags: [llm, architecture, enterprise]
+excerpt: 什么是Embedding
+permalink: /docs/llm/2025/enterprise-llm-arch/
+---
+
 
 ## 定义
 Embedding（嵌入）是将离散对象（如文本、图像、音频或类别特征）转换为连续向量空间中的实数向量的过程。这些向量能够捕捉原始对象的语义信息和上下文关系，使计算机能够理解和处理人类语言或其他复杂数据。

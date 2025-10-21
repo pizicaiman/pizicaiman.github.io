@@ -1,4 +1,13 @@
-# 什么是N-Gram
+---
+layout: doc
+title: 什么是N-Gram
+date: 2024-02-15
+category: llm
+tags: [llm, architecture, enterprise]
+excerpt: 什么是N-Gram
+permalink: /docs/llm/2025/enterprise-llm-arch/
+---
+
 
 ## 定义
 N-Gram是自然语言处理（NLP）中一种基于统计语言模型的基本技术，它表示文本中连续出现的N个项目（通常是单词或字符）的序列。这里的"N"是一个正整数，可以是1、2、3等，分别对应不同类型的N-Gram：
