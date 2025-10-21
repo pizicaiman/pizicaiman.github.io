@@ -43,6 +43,84 @@ layout: default
         <h3>推荐文章</h3>
         <div class="recommendations-list" id="recommendations-list">
           <!-- 推荐文章将通过JavaScript动态生成 -->
+        <script>
+        // 推荐文章推荐算法&展示(按同分类、不同自身页面，按最近日期排序，取前5)
+        (function () {
+          // 获取当前页面的主要元信息
+          const curCategory = '{{ page.category }}';
+          const curTitle = `{{ page.title }}`.trim();
+          const curUrl = '{{ page.url }}';
+
+          // 提取全站文档数据：推荐文章以 site.pages中过滤
+          const allDocs = [
+            {% assign recommended_pages = site.pages | where: "layout", "doc" | sort: "date" | reverse %}
+            {% for doc in recommended_pages %}
+              {
+                title: `{{ doc.title | escape }}`,
+                url: `{{ doc.url | relative_url }}`,
+                date: `{{ doc.date | date: "%Y-%m-%d" }}`,
+                category: `{{ doc.category }}`,
+                excerpt: {{ doc.excerpt | strip_newlines | jsonify }},
+              }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ].filter(d => d.title && d.url && d.category);
+
+          // 当前分类筛选、排除自己，按日期倒序前5
+          const recommendList = allDocs
+            .filter(doc => doc.category === curCategory && doc.url !== curUrl)
+            .slice(0, 5);
+
+          const $list = document.getElementById('recommendations-list');
+          if (recommendList.length === 0) {
+            $list.innerHTML = '<div class="empty">暂无推荐文章</div>';
+          } else {
+            $list.innerHTML = recommendList.map(doc =>
+              `<div class="recommendation-item">
+                 <span class="recommendation-date">${doc.date}</span>
+                 <a class="recommendation-title" href="${doc.url}">${doc.title}</a>
+                 ${doc.excerpt ? `<div class="recommendation-excerpt">${doc.excerpt.substring(0, 60)}${doc.excerpt.length > 60 ? '...' : ''}</div>` : ''}
+               </div>`
+            ).join('');
+          }
+        })();
+        </script>
+        <style>
+        .recommendations-list { margin-top: 1rem; }
+        .recommendation-item {
+          margin-bottom: 1.1rem;
+          padding: 0.3rem 0.2rem 0.6rem 0.2rem;
+          border-bottom: 1px solid #eee;
+        }
+        .recommendation-item:last-child {
+          border-bottom: none;
+        }
+        .recommendation-date {
+          color: #888;
+          font-size: 0.93rem;
+          margin-right: 0.2rem;
+        }
+        .recommendation-title {
+          font-weight: 600;
+          text-decoration: none;
+          color: #276fd7;
+        }
+        .recommendation-title:hover {
+          text-decoration: underline;
+          color: #174cae;
+        }
+        .recommendation-excerpt {
+          font-size: 0.98rem;
+          color: #415778;
+          margin-top: 0.16rem;
+          line-height: 1.45;
+        }
+        .recommendations-list .empty {
+          color: #b0b0b0;
+          font-size: 0.99rem;
+          text-align: center;
+          margin-top: 1.5rem;
+        }
+        </style>
         </div>
       </div>
     </aside>
