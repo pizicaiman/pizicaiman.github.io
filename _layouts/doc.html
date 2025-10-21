@@ -352,7 +352,9 @@ function generateTableOfContents() {
   }
   
   const tocList = document.createElement('ul');
-  tocList.className = 'toc-nav';
+  tocList.style.listStyle = 'none';
+  tocList.style.padding = '0';
+  tocList.style.margin = '0';
   
   headings.forEach((heading, index) => {
     // 为标题添加ID
@@ -361,10 +363,44 @@ function generateTableOfContents() {
     
     // 创建大纲项
     const li = document.createElement('li');
+    li.style.marginBottom = '0.5rem';
+    
     const a = document.createElement('a');
     a.href = '#' + id;
     a.textContent = heading.textContent;
     a.className = 'toc-' + heading.tagName.toLowerCase();
+    a.style.display = 'block';
+    a.style.padding = '0.5rem 0.75rem';
+    a.style.textDecoration = 'none';
+    a.style.color = '#586069';
+    a.style.fontSize = '0.9rem';
+    a.style.borderRadius = '4px';
+    a.style.transition = 'all 0.2s';
+    a.style.borderLeft = '3px solid transparent';
+    
+    // 根据标题级别设置不同的缩进
+    if (heading.tagName === 'H2') {
+      a.style.paddingLeft = '1rem';
+    } else if (heading.tagName === 'H3') {
+      a.style.paddingLeft = '1.5rem';
+      a.style.fontSize = '0.85rem';
+    } else if (heading.tagName === 'H4') {
+      a.style.paddingLeft = '2rem';
+      a.style.fontSize = '0.8rem';
+    }
+    
+    // 添加悬停效果
+    a.addEventListener('mouseenter', function() {
+      this.style.backgroundColor = '#e1e4e8';
+      this.style.color = '#0366d6';
+    });
+    
+    a.addEventListener('mouseleave', function() {
+      if (!this.classList.contains('active')) {
+        this.style.backgroundColor = '';
+        this.style.color = '#586069';
+      }
+    });
     
     li.appendChild(a);
     tocList.appendChild(li);
@@ -424,10 +460,9 @@ function generateRecommendations() {
 
 // 高亮当前章节
 function highlightCurrentSection() {
-  const tocLinks = document.querySelectorAll('.toc-nav a');
   const headings = document.querySelectorAll('.doc-body h2, .doc-body h3, .doc-body h4');
   
-  if (tocLinks.length === 0) return;
+  if (headings.length === 0) return;
   
   function updateActiveLink() {
     let current = '';
@@ -439,10 +474,19 @@ function highlightCurrentSection() {
       }
     });
     
+    // 更新所有大纲链接的激活状态
+    const tocLinks = document.querySelectorAll('#toc-nav a');
     tocLinks.forEach(link => {
       link.classList.remove('active');
       if (link.getAttribute('href') === '#' + current) {
         link.classList.add('active');
+        link.style.backgroundColor = '#0366d6';
+        link.style.color = 'white';
+        link.style.borderLeftColor = '#0366d6';
+      } else {
+        link.style.backgroundColor = '';
+        link.style.color = '#586069';
+        link.style.borderLeftColor = 'transparent';
       }
     });
   }
@@ -454,6 +498,7 @@ function highlightCurrentSection() {
   window.addEventListener('scroll', updateActiveLink);
   
   // 平滑滚动
+  const tocLinks = document.querySelectorAll('#toc-nav a');
   tocLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
