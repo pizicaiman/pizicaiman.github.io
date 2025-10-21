@@ -1,4 +1,3 @@
-<!-- docs/llm/index.md -->
 ---
 layout: docs-category
 title: 大语言模型文档
