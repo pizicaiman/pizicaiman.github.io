@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: doc
 title: Kubernetes下通过ArgoCD实现多集群部署
 date: 2025-01-25
 category: devops

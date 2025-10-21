@@ -1,0 +1,367 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fine-Tuning Guide for LLMs (2024) - Pizicai's Tech Blog</title>
+    <meta name="description" content="探讨在企业环境中部署和管理大语言模型应用的最佳架构实践">
+    
+    <!-- SEO 标签 -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Fine-Tuning Guide for LLMs (2024) | Pizicai’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Fine-Tuning Guide for LLMs (2024)" />
+<meta name="author" content="Pizicai" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="探讨在企业环境中部署和管理大语言模型应用的最佳架构实践" />
+<meta property="og:description" content="探讨在企业环境中部署和管理大语言模型应用的最佳架构实践" />
+<link rel="canonical" href="http://localhost:4000/docs/llm/2024/enterprise-llm-arch/" />
+<meta property="og:url" content="http://localhost:4000/docs/llm/2024/enterprise-llm-arch/" />
+<meta property="og:site_name" content="Pizicai’s Tech Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-02-15T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Fine-Tuning Guide for LLMs (2024)" />
+<meta name="twitter:site" content="@pizicaiman" />
+<meta name="twitter:creator" content="@Pizicai" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Pizicai"},"dateModified":"2024-02-15T00:00:00+08:00","datePublished":"2024-02-15T00:00:00+08:00","description":"探讨在企业环境中部署和管理大语言模型应用的最佳架构实践","headline":"Fine-Tuning Guide for LLMs (2024)","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/docs/llm/2024/enterprise-llm-arch/"},"url":"http://localhost:4000/docs/llm/2024/enterprise-llm-arch/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+    <!-- 代码高亮 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    
+    <style>
+      /* 基础样式 */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        color: #24292e;
+        margin: 0;
+      }
+      
+      .container {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      
+      header {
+        border-bottom: 1px solid #e1e4e8;
+        background-color: white;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+      
+      .site-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #24292e;
+        text-decoration: none;
+      }
+      
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+      }
+      
+      nav a {
+        text-decoration: none;
+        color: #586069;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      
+      nav a:hover {
+        color: #0366d6;
+      }
+      
+      main {
+        min-height: calc(100vh - 120px);
+        padding: 2rem 0;
+      }
+      
+      footer {
+        border-top: 1px solid #e1e4e8;
+        padding: 2rem 0;
+        text-align: center;
+        color: #6a737d;
+        font-size: 0.9rem;
+      }
+      
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="/" class="site-title">Pizicai's Tech Blog</a>
+          <nav>
+            <ul>
+              
+                <li>
+                  <a href="/" 
+                     class="">
+                    首页
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/devops/" 
+                     class="">
+                    DevOps
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/llm/" 
+                     class="">
+                    LLM
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/web3/" 
+                     class="">
+                    Web3
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/" 
+                     class="">
+                    文档
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/about/" 
+                     class="">
+                    关于
+                  </a>
+                </li>
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    
+    <main>
+      <div class="container">
+        <div class="doc-page">
+  <article class="doc-content">
+    <h1>Fine-Tuning Guide for LLMs (2024)</h1>
+    
+    <div class="doc-meta">
+      
+        <span class="doc-date">更新时间: 2024-02-15</span>
+      
+      
+      
+        <span class="doc-category">分类: llm</span>
+      
+    </div>
+    
+    <div class="doc-body">
+      <p>This guide provides step-by-step instructions for fine-tuning large language models (LLMs). The focus is on practical workflow, recommended practices, and important considerations for 2024.</p>
+
+<h2 id="1-prerequisites">1. Prerequisites</h2>
+
+<ul>
+  <li>Python 3.8+</li>
+  <li>PyTorch or TensorFlow (as needed)</li>
+  <li>A suitable GPU (NVIDIA, at least 12GB VRAM recommended)</li>
+  <li>Datasets in a structured format (JSON, CSV, or HuggingFace Datasets)</li>
+  <li><code class="language-plaintext highlighter-rouge">transformers</code>, <code class="language-plaintext highlighter-rouge">datasets</code>, and <code class="language-plaintext highlighter-rouge">accelerate</code> libraries (if using HuggingFace)</li>
+</ul>
+
+<hr />
+
+<h2 id="2-data-preparation">2. Data Preparation</h2>
+
+<ul>
+  <li><strong>Quality matters:</strong> Ensure your data is similar in style and content to your target domain.</li>
+  <li><strong>Formatting:</strong> Structure your data as prompt/response pairs for supervised fine-tuning.</li>
+  <li><strong>Cleaning:</strong> Remove repetitions, corrupt samples, and truncate overly long samples.</li>
+  <li><strong>Example (JSONL):</strong>
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What is the capital of France?"</span><span class="p">,</span><span class="w"> </span><span class="nl">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris."</span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="3-model-selection">3. Model Selection</h2>
+
+<ul>
+  <li>Choose a model checkpoint closest to your needs (e.g., <code class="language-plaintext highlighter-rouge">Llama-2-7b</code>, <code class="language-plaintext highlighter-rouge">GPT-3</code>, or open-source equivalents).</li>
+  <li>Ensure licensing compatibility for your intended use.</li>
+</ul>
+
+<hr />
+
+<h2 id="4-fine-tuning-workflow-huggingface-example">4. Fine-Tuning Workflow (HuggingFace Example)</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelForCausalLM</span><span class="p">,</span> <span class="n">Trainer</span><span class="p">,</span> <span class="n">TrainingArguments</span><span class="p">,</span> <span class="n">datasets</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s">'model_checkpoint'</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForCausalLM</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s">'model_checkpoint'</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">'path_to_your_dataset'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="n">batch</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s">'prompt'</span><span class="p">],</span> <span class="n">truncation</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">"max_length"</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
+
+<span class="n">tokenized_dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">.</span><span class="nb">map</span><span class="p">(</span><span class="n">tokenize</span><span class="p">,</span> <span class="n">batched</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">training_args</span> <span class="o">=</span> <span class="n">TrainingArguments</span><span class="p">(</span>
+    <span class="n">output_dir</span><span class="o">=</span><span class="s">'./results'</span><span class="p">,</span>
+    <span class="n">num_train_epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">per_device_train_batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">logging_dir</span><span class="o">=</span><span class="s">'./logs'</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">2e-5</span><span class="p">,</span>
+    <span class="n">fp16</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">trainer</span> <span class="o">=</span> <span class="n">Trainer</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">training_args</span><span class="p">,</span> <span class="n">train_dataset</span><span class="o">=</span><span class="n">tokenized_dataset</span><span class="p">[</span><span class="s">'train'</span><span class="p">])</span>
+<span class="n">trainer</span><span class="p">.</span><span class="n">train</span><span class="p">()</span>
+</code></pre></div></div>
+<p><em>(Adjust parameters to fit your data and hardware)</em></p>
+
+<hr />
+
+<h2 id="5-evaluation--best-practices">5. Evaluation &amp; Best Practices</h2>
+
+<ul>
+  <li><strong>Validation:</strong> Always set aside part of your data for validation.</li>
+  <li><strong>Overfitting:</strong> Monitor loss and use early stopping.</li>
+  <li><strong>Hyperparameters:</strong> Experiment for best results (batch size, learning rate).</li>
+  <li><strong>Ethics:</strong> Check the model output for biases and harmful content.</li>
+</ul>
+
+<hr />
+
+<h2 id="6-common-pitfalls">6. Common Pitfalls</h2>
+
+<ul>
+  <li>Using low-quality or misaligned data</li>
+  <li>Training for too many epochs (overfitting)</li>
+  <li>Ignoring license/usage restrictions</li>
+</ul>
+
+<hr />
+
+<h2 id="7-deployment">7. Deployment</h2>
+
+<ul>
+  <li>Test your model thoroughly before using in production.</li>
+  <li>Consider quantization or model distillation to optimize inference.</li>
+</ul>
+
+<hr />
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://huggingface.co/docs/transformers/training">HuggingFace Transformers Fine-Tuning Guide</a></li>
+  <li><a href="https://platform.openai.com/docs/guides/fine-tuning">OpenAI GPT Fine-Tuning</a></li>
+</ul>
+
+<hr />
+
+
+    </div>
+  </article>
+</div>
+
+<style>
+.doc-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.doc-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #e1e4e8;
+  border-bottom: 1px solid #e1e4e8;
+  color: #6a737d;
+  font-size: 0.9rem;
+}
+
+.doc-body {
+  line-height: 1.7;
+  margin-top: 2rem;
+}
+
+.doc-body h2 {
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.doc-body h3 {
+  margin-top: 1.5rem;
+}
+
+.doc-body code {
+  background-color: #f6f8fa;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+.doc-body pre {
+  background-color: #f6f8fa;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+</style>
+      </div>
+    </main>
+    
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Pizicai's Tech Blog. All rights reserved.</p>
+        <p>
+          <a href="https://github.com/pizicaiman" target="_blank">GitHub</a> | 
+          <a href="/about/">关于</a>
+        </p>
+      </div>
+    </footer>
+    
+    <script>
+      // 代码高亮
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightElement(block);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,302 @@
+<!-- _layouts/post.html -->
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">服务网格实践指南</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">2024-01-20</span>
+      
+      
+      
+        <span class="post-category">分类: devops</span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <h1 id="服务网格实践指南">服务网格实践指南</h1>
+
+<h2 id="目录">目录</h2>
+
+<ol>
+  <li><a href="#架构概述">架构概述</a></li>
+  <li><a href="#核心组件">核心组件</a></li>
+  <li><a href="#部署实践">部署实践</a></li>
+  <li><a href="#流量管理">流量管理</a></li>
+  <li><a href="#可观测性">可观测性</a></li>
+</ol>
+
+<h2 id="架构概述">架构概述</h2>
+
+<h3 id="服务网格架构">服务网格架构</h3>
+
+<pre><code class="language-mermaid">graph TD
+    A[控制平面] --&gt;|配置下发| B[数据平面]
+    B --&gt;|代理| C[微服务]
+    A --&gt;|监控| D[可观测性]
+    B --&gt;|指标| D
+</code></pre>
+
+<h3 id="核心功能">核心功能</h3>
+
+<ol>
+  <li>流量控制
+    <ul>
+      <li>负载均衡</li>
+      <li>熔断限流</li>
+      <li>故障注入</li>
+    </ul>
+  </li>
+  <li>安全管理
+    <ul>
+      <li>mTLS加密</li>
+      <li>访问控制</li>
+      <li>认证授权</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="核心组件">核心组件</h2>
+
+<h3 id="1-istio组件配置">1. Istio组件配置</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Istio配置示例</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">install.istio.io/v1alpha1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">IstioOperator</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">istio-control</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">profile</span><span class="pi">:</span> <span class="s">demo</span>
+  <span class="na">components</span><span class="pi">:</span>
+    <span class="na">pilot</span><span class="pi">:</span>
+      <span class="na">k8s</span><span class="pi">:</span>
+        <span class="na">resources</span><span class="pi">:</span>
+          <span class="na">requests</span><span class="pi">:</span>
+            <span class="na">cpu</span><span class="pi">:</span> <span class="s">500m</span>
+            <span class="na">memory</span><span class="pi">:</span> <span class="s">2048Mi</span>
+    <span class="na">ingressGateways</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">istio-ingressgateway</span>
+      <span class="na">enabled</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<h3 id="2-envoy配置">2. Envoy配置</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Envoy Sidecar配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">networking.istio.io/v1alpha3</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">EnvoyFilter</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">custom-filter</span>
+  <span class="na">namespace</span><span class="pi">:</span> <span class="s">istio-system</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">configPatches</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">applyTo</span><span class="pi">:</span> <span class="s">HTTP_FILTER</span>
+    <span class="na">match</span><span class="pi">:</span>
+      <span class="na">context</span><span class="pi">:</span> <span class="s">SIDECAR_INBOUND</span>
+      <span class="na">listener</span><span class="pi">:</span>
+        <span class="na">filterChain</span><span class="pi">:</span>
+          <span class="na">filter</span><span class="pi">:</span>
+            <span class="na">name</span><span class="pi">:</span> <span class="s">envoy.filters.network.http_connection_manager</span>
+    <span class="na">patch</span><span class="pi">:</span>
+      <span class="na">operation</span><span class="pi">:</span> <span class="s">INSERT_BEFORE</span>
+      <span class="na">value</span><span class="pi">:</span>
+        <span class="na">name</span><span class="pi">:</span> <span class="s">custom.filter</span>
+        <span class="na">typed_config</span><span class="pi">:</span>
+          <span class="s2">"</span><span class="s">@type"</span><span class="err">:</span> <span class="s">type.googleapis.com/udpa.type.v1.TypedStruct</span>
+          <span class="s">type_url</span><span class="err">:</span> <span class="s">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
+</code></pre></div></div>
+
+<h2 id="部署实践">部署实践</h2>
+
+<h3 id="1-网关配置">1. 网关配置</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Gateway配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">networking.istio.io/v1alpha3</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Gateway</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">bookinfo-gateway</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">selector</span><span class="pi">:</span>
+    <span class="na">istio</span><span class="pi">:</span> <span class="s">ingressgateway</span>
+  <span class="na">servers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">port</span><span class="pi">:</span>
+      <span class="na">number</span><span class="pi">:</span> <span class="m">80</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">http</span>
+      <span class="na">protocol</span><span class="pi">:</span> <span class="s">HTTP</span>
+    <span class="na">hosts</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">bookinfo.example.com"</span>
+</code></pre></div></div>
+
+<h3 id="2-虚拟服务">2. 虚拟服务</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># VirtualService配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">networking.istio.io/v1alpha3</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">VirtualService</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">reviews</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">hosts</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">reviews</span>
+  <span class="na">http</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">match</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">headers</span><span class="pi">:</span>
+        <span class="na">end-user</span><span class="pi">:</span>
+          <span class="na">exact</span><span class="pi">:</span> <span class="s">jason</span>
+    <span class="na">route</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">destination</span><span class="pi">:</span>
+        <span class="na">host</span><span class="pi">:</span> <span class="s">reviews</span>
+        <span class="na">subset</span><span class="pi">:</span> <span class="s">v2</span>
+  <span class="pi">-</span> <span class="na">route</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">destination</span><span class="pi">:</span>
+        <span class="na">host</span><span class="pi">:</span> <span class="s">reviews</span>
+        <span class="na">subset</span><span class="pi">:</span> <span class="s">v3</span>
+</code></pre></div></div>
+
+<h2 id="流量管理">流量管理</h2>
+
+<h3 id="1-流量控制">1. 流量控制</h3>
+
+<pre><code class="language-mermaid">graph LR
+    A[入口流量] --&gt;|Gateway| B[VirtualService]
+    B --&gt;|路由规则| C[DestinationRule]
+    C --&gt;|负载均衡| D[Service Endpoint]
+</code></pre>
+
+<h3 id="2-熔断配置">2. 熔断配置</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 熔断器配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">networking.istio.io/v1alpha3</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">DestinationRule</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">reviews</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">host</span><span class="pi">:</span> <span class="s">reviews</span>
+  <span class="na">trafficPolicy</span><span class="pi">:</span>
+    <span class="na">outlierDetection</span><span class="pi">:</span>
+      <span class="na">consecutive5xxErrors</span><span class="pi">:</span> <span class="m">5</span>
+      <span class="na">interval</span><span class="pi">:</span> <span class="s">10s</span>
+      <span class="na">baseEjectionTime</span><span class="pi">:</span> <span class="s">30s</span>
+</code></pre></div></div>
+
+<h2 id="可观测性">可观测性</h2>
+
+<h3 id="1-监控配置">1. 监控配置</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Prometheus监控配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">monitoring.coreos.com/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">ServiceMonitor</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">istio-component-monitor</span>
+  <span class="na">namespace</span><span class="pi">:</span> <span class="s">istio-system</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">selector</span><span class="pi">:</span>
+    <span class="na">matchLabels</span><span class="pi">:</span>
+      <span class="na">istio</span><span class="pi">:</span> <span class="s">pilot</span>
+  <span class="na">endpoints</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">port</span><span class="pi">:</span> <span class="s">http-monitoring</span>
+</code></pre></div></div>
+
+<h3 id="2-链路追踪">2. 链路追踪</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Jaeger配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">jaegertracing.io/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Jaeger</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">jaeger</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">strategy</span><span class="pi">:</span> <span class="s">production</span>
+  <span class="na">storage</span><span class="pi">:</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">elasticsearch</span>
+    <span class="na">options</span><span class="pi">:</span>
+      <span class="na">es</span><span class="pi">:</span>
+        <span class="na">server-urls</span><span class="pi">:</span> <span class="s">http://elasticsearch:9200</span>
+</code></pre></div></div>
+
+<h2 id="最佳实践">最佳实践</h2>
+
+<h3 id="1-性能优化">1. 性能优化</h3>
+
+<ol>
+  <li>资源配置
+    <ul>
+      <li>合理设置 CPU/内存限制</li>
+      <li>优化 Envoy 配置</li>
+      <li>调整并发连接数</li>
+    </ul>
+  </li>
+  <li>网络优化
+    <ul>
+      <li>启用 keepalive</li>
+      <li>配置合适的超时时间</li>
+      <li>优化重试策略</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="2-故障处理">2. 故障处理</h3>
+
+<pre><code class="language-mermaid">graph TD
+    A[发现故障] --&gt;|收集信息| B[定位问题]
+    B --&gt;|分析日志| C[确定原因]
+    C --&gt;|采取措施| D[解决问题]
+    D --&gt;|验证| E[恢复正常]
+</code></pre>
+
+<h2 id="学习路线">学习路线</h2>
+
+<pre><code class="language-mermaid">graph TD
+    A[微服务基础] --&gt;|1-2周| B[Istio原理]
+    B --&gt;|2周| C[部署实践]
+    C --&gt;|2周| D[流量管理]
+    D --&gt;|1-2周| E[可观测性]
+    
+    style A fill:#f9f,stroke:#333,stroke-width:4px
+    style E fill:#bbf,stroke:#333,stroke-width:4px
+</code></pre>
+
+<h2 id="故障排查">故障排查</h2>
+
+<h3 id="1-常见问题">1. 常见问题</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 检查Istio组件状态</span>
+kubectl get pods <span class="nt">-n</span> istio-system
+
+<span class="c"># 查看代理配置</span>
+istioctl proxy-config all &lt;pod-name&gt;.&lt;namespace&gt;
+
+<span class="c"># 验证配置</span>
+istioctl analyze
+</code></pre></div></div>
+
+<h3 id="2-调试工具">2. 调试工具</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 查看服务依赖</span>
+istioctl dashboard kiali
+
+<span class="c"># 检查指标</span>
+istioctl dashboard grafana
+
+<span class="c"># 查看追踪</span>
+istioctl dashboard jaeger
+</code></pre></div></div>
+
+<h2 id="参考资料">参考资料</h2>
+
+<ol>
+  <li><a href="https://istio.io/latest/docs/">Istio官方文档</a></li>
+  <li><a href="https://www.servicemesher.com/">Service Mesh最佳实践</a></li>
+  <li><a href="https://www.envoyproxy.io/docs/envoy/latest/">Envoy文档</a></li>
+  <li><a href="https://istio.io/latest/docs/ops/best-practices/performance/">服务网格性能优化指南</a></li>
+</ol>
+
+  </div>
+  
+  <div class="post-navigation">
+    
+    
+    
+  </div>
+</article>

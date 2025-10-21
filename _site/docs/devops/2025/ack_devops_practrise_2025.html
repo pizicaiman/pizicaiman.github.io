@@ -1,0 +1,558 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>阿里云ACK DevOps实践指南 - Pizicai's Tech Blog</title>
+    <meta name="description" content="深入探讨阿里云ACK环境下的DevOps实践、持续集成/部署及自动化运维">
+    
+    <!-- SEO 标签 -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>阿里云ACK DevOps实践指南 | Pizicai’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="阿里云ACK DevOps实践指南" />
+<meta name="author" content="Pizicai" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="深入探讨阿里云ACK环境下的DevOps实践、持续集成/部署及自动化运维" />
+<meta property="og:description" content="深入探讨阿里云ACK环境下的DevOps实践、持续集成/部署及自动化运维" />
+<link rel="canonical" href="http://localhost:4000/docs/devops/2025/ack_devops_practrise_2025.html" />
+<meta property="og:url" content="http://localhost:4000/docs/devops/2025/ack_devops_practrise_2025.html" />
+<meta property="og:site_name" content="Pizicai’s Tech Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-02-01T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="阿里云ACK DevOps实践指南" />
+<meta name="twitter:site" content="@pizicaiman" />
+<meta name="twitter:creator" content="@Pizicai" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Pizicai"},"dateModified":"2025-02-01T00:00:00+08:00","datePublished":"2025-02-01T00:00:00+08:00","description":"深入探讨阿里云ACK环境下的DevOps实践、持续集成/部署及自动化运维","headline":"阿里云ACK DevOps实践指南","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/docs/devops/2025/ack_devops_practrise_2025.html"},"url":"http://localhost:4000/docs/devops/2025/ack_devops_practrise_2025.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+    <!-- 代码高亮 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    
+    <style>
+      /* 基础样式 */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        color: #24292e;
+        margin: 0;
+      }
+      
+      .container {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      
+      header {
+        border-bottom: 1px solid #e1e4e8;
+        background-color: white;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+      
+      .site-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #24292e;
+        text-decoration: none;
+      }
+      
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+      }
+      
+      nav a {
+        text-decoration: none;
+        color: #586069;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      
+      nav a:hover {
+        color: #0366d6;
+      }
+      
+      main {
+        min-height: calc(100vh - 120px);
+        padding: 2rem 0;
+      }
+      
+      footer {
+        border-top: 1px solid #e1e4e8;
+        padding: 2rem 0;
+        text-align: center;
+        color: #6a737d;
+        font-size: 0.9rem;
+      }
+      
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="/" class="site-title">Pizicai's Tech Blog</a>
+          <nav>
+            <ul>
+              
+                <li>
+                  <a href="/" 
+                     class="">
+                    首页
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/devops/" 
+                     class="">
+                    DevOps
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/llm/" 
+                     class="">
+                    LLM
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/web3/" 
+                     class="">
+                    Web3
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/" 
+                     class="">
+                    文档
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/about/" 
+                     class="">
+                    关于
+                  </a>
+                </li>
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    
+    <main>
+      <div class="container">
+        <div class="doc-page">
+  <article class="doc-content">
+    <h1>阿里云ACK DevOps实践指南</h1>
+    
+    <div class="doc-meta">
+      
+        <span class="doc-date">更新时间: 2025-02-01</span>
+      
+      
+      
+        <span class="doc-category">分类: devops</span>
+      
+    </div>
+    
+    <div class="doc-body">
+      <h2 id="目录">目录</h2>
+
+<ol>
+  <li><a href="#devops工具链">DevOps工具链</a></li>
+  <li><a href="#持续集成">持续集成</a></li>
+  <li><a href="#持续部署">持续部署</a></li>
+  <li><a href="#自动化运维">自动化运维</a></li>
+  <li><a href="#最佳实践">最佳实践</a></li>
+</ol>
+
+<h2 id="devops工具链">DevOps工具链</h2>
+
+<h3 id="工具链架构">工具链架构</h3>
+
+<pre><code class="language-mermaid">graph LR
+    A[代码仓库] --&gt;|触发| B[构建系统]
+    B --&gt;|制品| C[镜像仓库]
+    C --&gt;|部署| D[ACK集群]
+    D --&gt;|监控| E[可观测性]
+    E --&gt;|反馈| A
+</code></pre>
+
+<h3 id="核心组件">核心组件</h3>
+
+<ol>
+  <li>代码管理
+    <ul>
+      <li>阿里云代码仓库</li>
+      <li>GitLab企业版</li>
+      <li>GitHub Enterprise</li>
+    </ul>
+  </li>
+  <li>构建工具
+    <ul>
+      <li>云效流水线</li>
+      <li>Jenkins</li>
+      <li>Tekton</li>
+    </ul>
+  </li>
+  <li>制品管理
+    <ul>
+      <li>ACR容器镜像服务</li>
+      <li>Harbor私有仓库</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="持续集成">持续集成</h2>
+
+<h3 id="1-流水线配置">1. 流水线配置</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 云效流水线示例</span>
+<span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">1.0'</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">demo-pipeline</span>
+<span class="na">triggers</span><span class="pi">:</span>
+  <span class="na">trigger</span><span class="pi">:</span> <span class="s">auto</span>
+  <span class="na">branches</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">master</span>
+    
+<span class="na">stages</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">编译构建</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">构建Java应用</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">maven@1.0</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">arguments</span><span class="pi">:</span> <span class="s1">'</span><span class="s">clean</span><span class="nv"> </span><span class="s">package</span><span class="nv"> </span><span class="s">-DskipTests'</span>
+          
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">制品推送</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">构建镜像</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">docker-build@1.0</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">./Dockerfile</span>
+          <span class="na">image</span><span class="pi">:</span> <span class="s">registry.cn-hangzhou.aliyuncs.com/demo/app:${PIPELINE_ID}</span>
+          
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">部署测试</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">部署到测试环境</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">acr-deploy@1.0</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">cluster_id</span><span class="pi">:</span> <span class="s">${TEST_CLUSTER_ID}</span>
+          <span class="na">namespace</span><span class="pi">:</span> <span class="s">test</span>
+</code></pre></div></div>
+
+<h3 id="2-自动化测试">2. 自动化测试</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 测试任务配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">batch/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Job</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">integration-test</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">template</span><span class="pi">:</span>
+    <span class="na">spec</span><span class="pi">:</span>
+      <span class="na">containers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">test</span>
+        <span class="na">image</span><span class="pi">:</span> <span class="s">maven:3.8-jdk-11</span>
+        <span class="na">command</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">mvn"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">test"</span><span class="pi">]</span>
+        <span class="na">env</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">TEST_DATABASE_URL</span>
+          <span class="na">valueFrom</span><span class="pi">:</span>
+            <span class="na">configMapKeyRef</span><span class="pi">:</span>
+              <span class="na">name</span><span class="pi">:</span> <span class="s">test-config</span>
+              <span class="na">key</span><span class="pi">:</span> <span class="s">database_url</span>
+      <span class="na">restartPolicy</span><span class="pi">:</span> <span class="s">Never</span>
+</code></pre></div></div>
+
+<h2 id="持续部署">持续部署</h2>
+
+<h3 id="1-gitops实践">1. GitOps实践</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ArgoCD应用配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">argoproj.io/v1alpha1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Application</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">demo-app</span>
+  <span class="na">namespace</span><span class="pi">:</span> <span class="s">argocd</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">project</span><span class="pi">:</span> <span class="s">default</span>
+  <span class="na">source</span><span class="pi">:</span>
+    <span class="na">repoURL</span><span class="pi">:</span> <span class="s">https://github.com/your-org/demo-app.git</span>
+    <span class="na">targetRevision</span><span class="pi">:</span> <span class="s">HEAD</span>
+    <span class="na">path</span><span class="pi">:</span> <span class="s">k8s</span>
+  <span class="na">destination</span><span class="pi">:</span>
+    <span class="na">server</span><span class="pi">:</span> <span class="s">https://kubernetes.default.svc</span>
+    <span class="na">namespace</span><span class="pi">:</span> <span class="s">production</span>
+  <span class="na">syncPolicy</span><span class="pi">:</span>
+    <span class="na">automated</span><span class="pi">:</span>
+      <span class="na">prune</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">selfHeal</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<h3 id="2-灰度发布">2. 灰度发布</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 金丝雀发布配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">flagger.app/v1beta1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Canary</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">demo-app</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">targetRef</span><span class="pi">:</span>
+    <span class="na">apiVersion</span><span class="pi">:</span> <span class="s">apps/v1</span>
+    <span class="na">kind</span><span class="pi">:</span> <span class="s">Deployment</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">demo-app</span>
+  <span class="na">progressDeadlineSeconds</span><span class="pi">:</span> <span class="m">60</span>
+  <span class="na">service</span><span class="pi">:</span>
+    <span class="na">port</span><span class="pi">:</span> <span class="m">80</span>
+    <span class="na">targetPort</span><span class="pi">:</span> <span class="m">8080</span>
+  <span class="na">analysis</span><span class="pi">:</span>
+    <span class="na">interval</span><span class="pi">:</span> <span class="s">1m</span>
+    <span class="na">threshold</span><span class="pi">:</span> <span class="m">10</span>
+    <span class="na">maxWeight</span><span class="pi">:</span> <span class="m">50</span>
+    <span class="na">stepWeight</span><span class="pi">:</span> <span class="m">10</span>
+    <span class="na">metrics</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">request-success-rate</span>
+      <span class="na">threshold</span><span class="pi">:</span> <span class="m">99</span>
+      <span class="na">interval</span><span class="pi">:</span> <span class="s">1m</span>
+</code></pre></div></div>
+
+<h2 id="自动化运维">自动化运维</h2>
+
+<h3 id="1-监控配置">1. 监控配置</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Prometheus监控配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">monitoring.coreos.com/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">ServiceMonitor</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">demo-app</span>
+  <span class="na">namespace</span><span class="pi">:</span> <span class="s">monitoring</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">selector</span><span class="pi">:</span>
+    <span class="na">matchLabels</span><span class="pi">:</span>
+      <span class="na">app</span><span class="pi">:</span> <span class="s">demo-app</span>
+  <span class="na">endpoints</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">port</span><span class="pi">:</span> <span class="s">metrics</span>
+    <span class="na">interval</span><span class="pi">:</span> <span class="s">15s</span>
+</code></pre></div></div>
+
+<h3 id="2-日志采集">2. 日志采集</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 日志采集配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">logging.alibabacloud.com/v1alpha1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">AliyunLogConfig</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">demo-app</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">logstore</span><span class="pi">:</span> <span class="s">app-logs</span>
+  <span class="na">shardCount</span><span class="pi">:</span> <span class="m">2</span>
+  <span class="na">logtailConfig</span><span class="pi">:</span>
+    <span class="na">inputType</span><span class="pi">:</span> <span class="s">file</span>
+    <span class="na">configName</span><span class="pi">:</span> <span class="s">demo-app</span>
+    <span class="na">inputDetail</span><span class="pi">:</span>
+      <span class="na">logType</span><span class="pi">:</span> <span class="s">json</span>
+      <span class="na">filePaths</span><span class="pi">:</span> 
+      <span class="pi">-</span> <span class="s">/var/log/app/*.log</span>
+</code></pre></div></div>
+
+<h2 id="最佳实践">最佳实践</h2>
+
+<h3 id="1-发布策略">1. 发布策略</h3>
+
+<pre><code class="language-mermaid">graph TD
+    A[代码提交] --&gt;|自动构建| B[测试环境]
+    B --&gt;|自动测试| C{测试通过}
+    C --&gt;|是| D[预发环境]
+    C --&gt;|否| A
+    D --&gt;|人工确认| E[生产环境]
+</code></pre>
+
+<h3 id="2-质量保证">2. 质量保证</h3>
+
+<ol>
+  <li>代码质量
+    <ul>
+      <li>SonarQube静态检查</li>
+      <li>单元测试覆盖率</li>
+      <li>代码审查流程</li>
+    </ul>
+  </li>
+  <li>安全扫描
+    <ul>
+      <li>依赖检查</li>
+      <li>镜像扫描</li>
+      <li>配置审计</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="故障排查">故障排查</h2>
+
+<h3 id="1-流水线问题">1. 流水线问题</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 查看构建日志</span>
+aliyun devops pipeline-log <span class="nt">--pipeline-id</span> xxx
+
+<span class="c"># 检查构建状态</span>
+aliyun devops pipeline-status <span class="nt">--pipeline-id</span> xxx
+</code></pre></div></div>
+
+<h3 id="2-部署问题">2. 部署问题</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 查看部署历史</span>
+kubectl rollout <span class="nb">history </span>deployment/demo-app
+
+<span class="c"># 回滚部署</span>
+kubectl rollout undo deployment/demo-app <span class="nt">--to-revision</span><span class="o">=</span>2
+</code></pre></div></div>
+
+<h2 id="运维效率提升">运维效率提升</h2>
+
+<h3 id="1-自动化脚本">1. 自动化脚本</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 自动化运维脚本示例
+</span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">aliyun.acs.ack</span> <span class="kn">import</span> <span class="n">AckClient</span>
+
+<span class="k">def</span> <span class="nf">check_cluster_health</span><span class="p">():</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">AckClient</span><span class="p">()</span>
+    <span class="n">clusters</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">list_clusters</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">:</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">cluster</span><span class="p">.</span><span class="n">get_health_status</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">!=</span> <span class="s">'healthy'</span><span class="p">:</span>
+            <span class="n">send_alert</span><span class="p">(</span><span class="sa">f</span><span class="s">"集群 </span><span class="si">{</span><span class="n">cluster</span><span class="p">.</span><span class="n">name</span><span class="si">}</span><span class="s"> 状态异常"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="2-运维工具">2. 运维工具</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 常用运维命令别名</span>
+<span class="nb">alias </span><span class="nv">k</span><span class="o">=</span><span class="s1">'kubectl'</span>
+<span class="nb">alias </span><span class="nv">kg</span><span class="o">=</span><span class="s1">'kubectl get'</span>
+<span class="nb">alias </span><span class="nv">kd</span><span class="o">=</span><span class="s1">'kubectl describe'</span>
+<span class="nb">alias </span><span class="nv">kl</span><span class="o">=</span><span class="s1">'kubectl logs'</span>
+</code></pre></div></div>
+
+<h2 id="学习路线">学习路线</h2>
+
+<pre><code class="language-mermaid">graph TD
+    A[DevOps基础] --&gt;|1-2周| B[工具链使用]
+    B --&gt;|2周| C[CI/CD实践]
+    C --&gt;|2周| D[自动化运维]
+    D --&gt;|1-2周| E[最佳实践]
+    
+    style A fill:#f9f,stroke:#333,stroke-width:4px
+    style E fill:#bbf,stroke:#333,stroke-width:4px
+</code></pre>
+
+<h2 id="参考资料">参考资料</h2>
+
+<ol>
+  <li><a href="https://help.aliyun.com/product/152362.html">阿里云DevOps文档</a></li>
+  <li><a href="https://help.aliyun.com/document_detail/86208.html">ACK DevOps最佳实践</a></li>
+  <li><a href="https://argo-cd.readthedocs.io/en/stable/">GitOps工具使用指南</a></li>
+  <li><a href="https://cloudnative.to/blog/cloud-native-devops/">云原生DevOps实践</a></li>
+</ol>
+
+    </div>
+  </article>
+</div>
+
+<style>
+.doc-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.doc-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #e1e4e8;
+  border-bottom: 1px solid #e1e4e8;
+  color: #6a737d;
+  font-size: 0.9rem;
+}
+
+.doc-body {
+  line-height: 1.7;
+  margin-top: 2rem;
+}
+
+.doc-body h2 {
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.doc-body h3 {
+  margin-top: 1.5rem;
+}
+
+.doc-body code {
+  background-color: #f6f8fa;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+.doc-body pre {
+  background-color: #f6f8fa;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+</style>
+      </div>
+    </main>
+    
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Pizicai's Tech Blog. All rights reserved.</p>
+        <p>
+          <a href="https://github.com/pizicaiman" target="_blank">GitHub</a> | 
+          <a href="/about/">关于</a>
+        </p>
+      </div>
+    </footer>
+    
+    <script>
+      // 代码高亮
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightElement(block);
+        });
+      });
+    </script>
+  </body>
+</html>

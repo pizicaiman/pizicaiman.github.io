@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: doc
 title: 阿里云ACK DevOps实践指南
 date: 2025-02-01
 category: devops

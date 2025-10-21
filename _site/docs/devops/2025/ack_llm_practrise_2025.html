@@ -1,0 +1,536 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>阿里云ACK大语言模型部署实践 - Pizicai's Tech Blog</title>
+    <meta name="description" content="详细探讨在阿里云ACK环境中部署和运维大语言模型的最佳实践">
+    
+    <!-- SEO 标签 -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>阿里云ACK大语言模型部署实践 | Pizicai’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="阿里云ACK大语言模型部署实践" />
+<meta name="author" content="Pizicai" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="详细探讨在阿里云ACK环境中部署和运维大语言模型的最佳实践" />
+<meta property="og:description" content="详细探讨在阿里云ACK环境中部署和运维大语言模型的最佳实践" />
+<link rel="canonical" href="http://localhost:4000/docs/devops/2025/ack_llm_practrise_2025.html" />
+<meta property="og:url" content="http://localhost:4000/docs/devops/2025/ack_llm_practrise_2025.html" />
+<meta property="og:site_name" content="Pizicai’s Tech Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-02-05T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="阿里云ACK大语言模型部署实践" />
+<meta name="twitter:site" content="@pizicaiman" />
+<meta name="twitter:creator" content="@Pizicai" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Pizicai"},"dateModified":"2025-02-05T00:00:00+08:00","datePublished":"2025-02-05T00:00:00+08:00","description":"详细探讨在阿里云ACK环境中部署和运维大语言模型的最佳实践","headline":"阿里云ACK大语言模型部署实践","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/docs/devops/2025/ack_llm_practrise_2025.html"},"url":"http://localhost:4000/docs/devops/2025/ack_llm_practrise_2025.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+    <!-- 代码高亮 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    
+    <style>
+      /* 基础样式 */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        color: #24292e;
+        margin: 0;
+      }
+      
+      .container {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      
+      header {
+        border-bottom: 1px solid #e1e4e8;
+        background-color: white;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+      
+      .site-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #24292e;
+        text-decoration: none;
+      }
+      
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+      }
+      
+      nav a {
+        text-decoration: none;
+        color: #586069;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      
+      nav a:hover {
+        color: #0366d6;
+      }
+      
+      main {
+        min-height: calc(100vh - 120px);
+        padding: 2rem 0;
+      }
+      
+      footer {
+        border-top: 1px solid #e1e4e8;
+        padding: 2rem 0;
+        text-align: center;
+        color: #6a737d;
+        font-size: 0.9rem;
+      }
+      
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="/" class="site-title">Pizicai's Tech Blog</a>
+          <nav>
+            <ul>
+              
+                <li>
+                  <a href="/" 
+                     class="">
+                    首页
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/devops/" 
+                     class="">
+                    DevOps
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/llm/" 
+                     class="">
+                    LLM
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/web3/" 
+                     class="">
+                    Web3
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/" 
+                     class="">
+                    文档
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/about/" 
+                     class="">
+                    关于
+                  </a>
+                </li>
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    
+    <main>
+      <div class="container">
+        <div class="doc-page">
+  <article class="doc-content">
+    <h1>阿里云ACK大语言模型部署实践</h1>
+    
+    <div class="doc-meta">
+      
+        <span class="doc-date">更新时间: 2025-02-05</span>
+      
+      
+      
+        <span class="doc-category">分类: devops</span>
+      
+    </div>
+    
+    <div class="doc-body">
+      <h2 id="目录">目录</h2>
+
+<ol>
+  <li><a href="#架构设计">架构设计</a></li>
+  <li><a href="#环境配置">环境配置</a></li>
+  <li><a href="#模型部署">模型部署</a></li>
+  <li><a href="#性能优化">性能优化</a></li>
+  <li><a href="#运维管理">运维管理</a></li>
+</ol>
+
+<h2 id="架构设计">架构设计</h2>
+
+<h3 id="整体架构">整体架构</h3>
+
+<pre><code class="language-mermaid">graph TD
+    A[用户请求] --&gt;|API网关| B[负载均衡]
+    B --&gt;|Service| C[推理服务]
+    C --&gt;|GPU节点池| D[模型实例]
+    D --&gt;|分布式存储| E[模型文件]
+    C --&gt;|向量数据库| F[知识库]
+</code></pre>
+
+<h3 id="核心组件">核心组件</h3>
+
+<ol>
+  <li>推理框架
+    <ul>
+      <li>vLLM</li>
+      <li>Triton Server</li>
+      <li>TensorRT-LLM</li>
+    </ul>
+  </li>
+  <li>资源管理
+    <ul>
+      <li>GPU共享调度</li>
+      <li>显存优化</li>
+      <li>动态批处理</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="环境配置">环境配置</h2>
+
+<h3 id="1-gpu节点配置">1. GPU节点配置</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># GPU节点池配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">apps/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">NodePool</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">gpu-pool</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">nodeConfig</span><span class="pi">:</span>
+    <span class="na">instanceTypes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">ecs.gn7i-c16g1.4xlarge</span>
+    <span class="na">systemDisk</span><span class="pi">:</span>
+      <span class="na">category</span><span class="pi">:</span> <span class="s">cloud_essd</span>
+      <span class="na">size</span><span class="pi">:</span> <span class="m">200</span>
+  <span class="na">scaling</span><span class="pi">:</span>
+    <span class="na">minSize</span><span class="pi">:</span> <span class="m">1</span>
+    <span class="na">maxSize</span><span class="pi">:</span> <span class="m">10</span>
+</code></pre></div></div>
+
+<h3 id="2-运行时配置">2. 运行时配置</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 安装NVIDIA设备插件</span>
+kubectl apply <span class="nt">-f</span> https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v0.14.1/nvidia-device-plugin.yml
+
+<span class="c"># 验证GPU可用性</span>
+kubectl get nodes <span class="s2">"-o=custom-columns=NAME:.metadata.name,GPU:.status.allocatable.nvidia</span><span class="se">\.</span><span class="s2">com/gpu"</span>
+</code></pre></div></div>
+
+<h2 id="模型部署">模型部署</h2>
+
+<h3 id="1-模型服务部署">1. 模型服务部署</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># vLLM服务部署</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">apps/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Deployment</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">llm-inference</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">replicas</span><span class="pi">:</span> <span class="m">3</span>
+  <span class="na">selector</span><span class="pi">:</span>
+    <span class="na">matchLabels</span><span class="pi">:</span>
+      <span class="na">app</span><span class="pi">:</span> <span class="s">llm-inference</span>
+  <span class="na">template</span><span class="pi">:</span>
+    <span class="na">metadata</span><span class="pi">:</span>
+      <span class="na">labels</span><span class="pi">:</span>
+        <span class="na">app</span><span class="pi">:</span> <span class="s">llm-inference</span>
+    <span class="na">spec</span><span class="pi">:</span>
+      <span class="na">containers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">vllm</span>
+        <span class="na">image</span><span class="pi">:</span> <span class="s">vllm/vllm-openai</span>
+        <span class="na">resources</span><span class="pi">:</span>
+          <span class="na">limits</span><span class="pi">:</span>
+            <span class="na">nvidia.com/gpu</span><span class="pi">:</span> <span class="m">1</span>
+          <span class="na">requests</span><span class="pi">:</span>
+            <span class="na">nvidia.com/gpu</span><span class="pi">:</span> <span class="m">1</span>
+        <span class="na">env</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">MODEL_NAME</span>
+          <span class="na">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">THUDM/chatglm3-6b"</span>
+        <span class="na">volumeMounts</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">model-cache</span>
+          <span class="na">mountPath</span><span class="pi">:</span> <span class="s">/root/.cache/huggingface</span>
+      <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">model-cache</span>
+        <span class="na">persistentVolumeClaim</span><span class="pi">:</span>
+          <span class="na">claimName</span><span class="pi">:</span> <span class="s">model-storage</span>
+</code></pre></div></div>
+
+<h3 id="2-向量数据库配置">2. 向量数据库配置</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Milvus配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">milvus.io/v1beta1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Milvus</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">my-release</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">components</span><span class="pi">:</span>
+    <span class="na">proxy</span><span class="pi">:</span>
+      <span class="na">replicas</span><span class="pi">:</span> <span class="m">2</span>
+    <span class="na">queryNode</span><span class="pi">:</span>
+      <span class="na">replicas</span><span class="pi">:</span> <span class="m">2</span>
+    <span class="na">dataNode</span><span class="pi">:</span>
+      <span class="na">replicas</span><span class="pi">:</span> <span class="m">2</span>
+</code></pre></div></div>
+
+<h2 id="性能优化">性能优化</h2>
+
+<h3 id="1-推理性能优化">1. 推理性能优化</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 批处理配置示例
+</span><span class="kn">from</span> <span class="nn">vllm</span> <span class="kn">import</span> <span class="n">LLMEngine</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">LLMEngine</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s">"THUDM/chatglm3-6b"</span><span class="p">,</span>
+    <span class="n">tensor_parallel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">max_batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">gpu_memory_utilization</span><span class="o">=</span><span class="mf">0.95</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="2-资源配置优化">2. 资源配置优化</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># HPA配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">autoscaling/v2</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">HorizontalPodAutoscaler</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">llm-inference-hpa</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">scaleTargetRef</span><span class="pi">:</span>
+    <span class="na">apiVersion</span><span class="pi">:</span> <span class="s">apps/v1</span>
+    <span class="na">kind</span><span class="pi">:</span> <span class="s">Deployment</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">llm-inference</span>
+  <span class="na">minReplicas</span><span class="pi">:</span> <span class="m">1</span>
+  <span class="na">maxReplicas</span><span class="pi">:</span> <span class="m">10</span>
+  <span class="na">metrics</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">Resource</span>
+    <span class="na">resource</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">nvidia.com/gpu</span>
+      <span class="na">target</span><span class="pi">:</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">Utilization</span>
+        <span class="na">averageUtilization</span><span class="pi">:</span> <span class="m">80</span>
+</code></pre></div></div>
+
+<h2 id="运维管理">运维管理</h2>
+
+<h3 id="1-监控配置">1. 监控配置</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Prometheus监控配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">monitoring.coreos.com/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">ServiceMonitor</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">llm-monitor</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">selector</span><span class="pi">:</span>
+    <span class="na">matchLabels</span><span class="pi">:</span>
+      <span class="na">app</span><span class="pi">:</span> <span class="s">llm-inference</span>
+  <span class="na">endpoints</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">port</span><span class="pi">:</span> <span class="s">metrics</span>
+    <span class="na">interval</span><span class="pi">:</span> <span class="s">15s</span>
+</code></pre></div></div>
+
+<h3 id="2-日志管理">2. 日志管理</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 日志采集配置</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">logging.alibabacloud.com/v1alpha1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">AliyunLogConfig</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">llm-logs</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">logstore</span><span class="pi">:</span> <span class="s">llm-inference</span>
+  <span class="na">logtailConfig</span><span class="pi">:</span>
+    <span class="na">inputType</span><span class="pi">:</span> <span class="s">file</span>
+    <span class="na">configName</span><span class="pi">:</span> <span class="s">llm-log</span>
+    <span class="na">inputDetail</span><span class="pi">:</span>
+      <span class="na">logType</span><span class="pi">:</span> <span class="s">json</span>
+      <span class="na">logPath</span><span class="pi">:</span> <span class="s">/var/log/llm</span>
+      <span class="na">filePattern</span><span class="pi">:</span> <span class="s2">"</span><span class="s">*.log"</span>
+</code></pre></div></div>
+
+<h2 id="最佳实践">最佳实践</h2>
+
+<h3 id="1-高可用配置">1. 高可用配置</h3>
+
+<pre><code class="language-mermaid">graph LR
+    A[入口网关] --&gt;|主可用区| B[LLM服务组1]
+    A --&gt;|备可用区| C[LLM服务组2]
+    B --&gt;|共享| D[分布式存储]
+    C --&gt;|共享| D
+</code></pre>
+
+<h3 id="2-成本优化">2. 成本优化</h3>
+
+<ol>
+  <li>资源调度
+    <ul>
+      <li>使用抢占式实例</li>
+      <li>自动弹性伸缩</li>
+      <li>GPU共享技术</li>
+    </ul>
+  </li>
+  <li>模型优化
+    <ul>
+      <li>模型量化</li>
+      <li>知识蒸馏</li>
+      <li>模型并行</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="排障指南">排障指南</h2>
+
+<h3 id="1-常见问题处理">1. 常见问题处理</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 检查GPU状态</span>
+nvidia-smi
+
+<span class="c"># 查看容器日志</span>
+kubectl logs <span class="nt">-f</span> deployment/llm-inference
+
+<span class="c"># 检查模型加载</span>
+kubectl <span class="nb">exec</span> <span class="nt">-it</span> &lt;pod-name&gt; <span class="nt">--</span> nvidia-smi
+</code></pre></div></div>
+
+<h3 id="2-性能诊断">2. 性能诊断</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 性能分析</span>
+kubectl top pods
+kubectl describe node &lt;node-name&gt;
+</code></pre></div></div>
+
+<h2 id="学习路线">学习路线</h2>
+
+<pre><code class="language-mermaid">graph TD
+    A[LLM基础] --&gt;|1-2周| B[ACK环境搭建]
+    B --&gt;|2周| C[模型部署优化]
+    C --&gt;|2周| D[运维实践]
+    D --&gt;|1-2周| E[性能调优]
+    
+    style A fill:#f9f,stroke:#333,stroke-width:4px
+    style E fill:#bbf,stroke:#333,stroke-width:4px
+</code></pre>
+
+<h2 id="参考资料">参考资料</h2>
+
+<ol>
+  <li><a href="https://help.aliyun.com/product/85222.html">阿里云ACK文档</a></li>
+  <li><a href="https://vllm.ai/">vLLM文档</a></li>
+  <li><a href="https://github.com/triton-inference-server/server">Triton推理服务器</a></li>
+  <li><a href="https://github.com/NVIDIA/gpu-operator">NVIDIA GPU Operator</a></li>
+</ol>
+
+    </div>
+  </article>
+</div>
+
+<style>
+.doc-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.doc-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #e1e4e8;
+  border-bottom: 1px solid #e1e4e8;
+  color: #6a737d;
+  font-size: 0.9rem;
+}
+
+.doc-body {
+  line-height: 1.7;
+  margin-top: 2rem;
+}
+
+.doc-body h2 {
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.doc-body h3 {
+  margin-top: 1.5rem;
+}
+
+.doc-body code {
+  background-color: #f6f8fa;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+.doc-body pre {
+  background-color: #f6f8fa;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+</style>
+      </div>
+    </main>
+    
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Pizicai's Tech Blog. All rights reserved.</p>
+        <p>
+          <a href="https://github.com/pizicaiman" target="_blank">GitHub</a> | 
+          <a href="/about/">关于</a>
+        </p>
+      </div>
+    </footer>
+    
+    <script>
+      // 代码高亮
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightElement(block);
+        });
+      });
+    </script>
+  </body>
+</html>

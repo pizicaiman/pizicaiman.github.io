@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: doc
 title: CKS认证考试实战指南
 date: 2025-01-15
 category: devops

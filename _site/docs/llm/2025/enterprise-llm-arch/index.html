@@ -1,0 +1,367 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>什么是向量数据库 - Pizicai's Tech Blog</title>
+    <meta name="description" content="什么是向量数据库">
+    
+    <!-- SEO 标签 -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>什么是向量数据库 | Pizicai’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="什么是向量数据库" />
+<meta name="author" content="Pizicai" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="什么是向量数据库" />
+<meta property="og:description" content="什么是向量数据库" />
+<link rel="canonical" href="http://localhost:4000/docs/llm/2025/enterprise-llm-arch/" />
+<meta property="og:url" content="http://localhost:4000/docs/llm/2025/enterprise-llm-arch/" />
+<meta property="og:site_name" content="Pizicai’s Tech Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-02-15T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="什么是向量数据库" />
+<meta name="twitter:site" content="@pizicaiman" />
+<meta name="twitter:creator" content="@Pizicai" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Pizicai"},"dateModified":"2024-02-15T00:00:00+08:00","datePublished":"2024-02-15T00:00:00+08:00","description":"什么是向量数据库","headline":"什么是向量数据库","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/docs/llm/2025/enterprise-llm-arch/"},"url":"http://localhost:4000/docs/llm/2025/enterprise-llm-arch/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+    <!-- 代码高亮 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    
+    <style>
+      /* 基础样式 */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        color: #24292e;
+        margin: 0;
+      }
+      
+      .container {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      
+      header {
+        border-bottom: 1px solid #e1e4e8;
+        background-color: white;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+      
+      .site-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #24292e;
+        text-decoration: none;
+      }
+      
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+      }
+      
+      nav a {
+        text-decoration: none;
+        color: #586069;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      
+      nav a:hover {
+        color: #0366d6;
+      }
+      
+      main {
+        min-height: calc(100vh - 120px);
+        padding: 2rem 0;
+      }
+      
+      footer {
+        border-top: 1px solid #e1e4e8;
+        padding: 2rem 0;
+        text-align: center;
+        color: #6a737d;
+        font-size: 0.9rem;
+      }
+      
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="/" class="site-title">Pizicai's Tech Blog</a>
+          <nav>
+            <ul>
+              
+                <li>
+                  <a href="/" 
+                     class="">
+                    首页
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/devops/" 
+                     class="">
+                    DevOps
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/llm/" 
+                     class="">
+                    LLM
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/web3/" 
+                     class="">
+                    Web3
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/" 
+                     class="">
+                    文档
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/about/" 
+                     class="">
+                    关于
+                  </a>
+                </li>
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    
+    <main>
+      <div class="container">
+        <div class="doc-page">
+  <article class="doc-content">
+    <h1>什么是向量数据库</h1>
+    
+    <div class="doc-meta">
+      
+        <span class="doc-date">更新时间: 2024-02-15</span>
+      
+      
+      
+        <span class="doc-category">分类: llm</span>
+      
+    </div>
+    
+    <div class="doc-body">
+      <h2 id="定义">定义</h2>
+<p>向量数据库（Vector Database）是一种专门用于存储、索引和查询高维向量数据的数据库系统。它能够高效处理Embedding向量（如文本、图像、音频等转换而来的向量），并通过向量相似度搜索快速找到与查询向量相似的结果。</p>
+
+<h2 id="核心价值">核心价值</h2>
+<p>传统关系型数据库和NoSQL数据库主要优化结构化数据和简单查询，而向量数据库专为高维向量设计，解决了以下关键问题：</p>
+<ul>
+  <li>高效存储和管理海量高维向量</li>
+  <li>提供毫秒级相似性搜索能力</li>
+  <li>支持动态向量数据的插入和更新</li>
+  <li>可扩展性以应对数据量增长</li>
+</ul>
+
+<h2 id="工作原理">工作原理</h2>
+<h3 id="核心技术向量索引">核心技术：向量索引</h3>
+<p>向量数据库通过特殊的索引结构加速相似性搜索，常见索引算法包括：</p>
+<ul>
+  <li><strong>近似最近邻（ANN）算法</strong>：
+    <ul>
+      <li><strong>LSH（Locality-Sensitive Hashing）</strong>：基于哈希的索引方法</li>
+      <li><strong>IVF（Inverted File）</strong>：倒排文件索引，如IVF-Flat、IVF-PQ</li>
+      <li><strong>HNSW（Hierarchical Navigable Small World）</strong>：层次化图结构索引</li>
+      <li><strong>Annoy（Approximate Nearest Neighbors Oh Yeah）</strong>：基于树的索引结构</li>
+      <li><strong>R树/R*树</strong>：多维空间索引</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="相似度度量方法">相似度度量方法</h3>
+<p>向量数据库支持多种相似度计算方式：</p>
+<ul>
+  <li><strong>欧氏距离（Euclidean Distance）</strong>：最常用的距离度量方式</li>
+  <li><strong>余弦相似度（Cosine Similarity）</strong>：衡量向量方向的相似度</li>
+  <li><strong>内积（Inner Product）</strong>：衡量向量空间中的投影相似度</li>
+  <li><strong>汉明距离（Hamming Distance）</strong>：用于二进制向量的相似度计算</li>
+  <li><strong>曼哈顿距离（Manhattan Distance）</strong>：L1范数距离</li>
+</ul>
+
+<h2 id="主要特点">主要特点</h2>
+<ol>
+  <li><strong>高维向量优化</strong>：专为50-10000+维度向量设计</li>
+  <li><strong>高性能搜索</strong>：支持百万至十亿级向量的毫秒级查询</li>
+  <li><strong>灵活部署</strong>：支持本地、云端和混合部署模式</li>
+  <li><strong>多模态数据支持</strong>：统一存储和查询文本、图像、音频等多种类型向量</li>
+  <li><strong>丰富的API</strong>：提供RESTful、gRPC等多种接口</li>
+  <li><strong>元数据过滤</strong>：结合向量相似度和结构化元数据进行复合查询</li>
+  <li><strong>分布式架构</strong>：支持水平扩展以处理大规模数据</li>
+</ol>
+
+<h2 id="典型应用场景">典型应用场景</h2>
+<ol>
+  <li><strong>语义搜索</strong>：基于向量相似度实现跨模态内容搜索</li>
+  <li><strong>推荐系统</strong>：计算用户和物品Embedding相似度进行精准推荐</li>
+  <li><strong>计算机视觉</strong>：图像检索、相似商品识别、人脸识别</li>
+  <li><strong>自然语言处理</strong>：文本聚类、相似文档匹配、问答系统</li>
+  <li><strong>大语言模型应用</strong>：
+    <ul>
+      <li>知识库检索增强生成（RAG）</li>
+      <li>上下文窗口扩展</li>
+      <li>向量存储和管理</li>
+    </ul>
+  </li>
+  <li><strong>异常检测</strong>：识别向量空间中的离群点</li>
+  <li><strong>生物信息学</strong>：基因序列分析、蛋白质结构比对</li>
+</ol>
+
+<h2 id="主流向量数据库产品">主流向量数据库产品</h2>
+<ul>
+  <li><strong>Milvus</strong>：开源向量数据库，支持多种索引算法和分布式部署</li>
+  <li><strong>FAISS</strong>：Facebook开源的高效相似度搜索库</li>
+  <li><strong>Pinecone</strong>：云原生向量数据库服务</li>
+  <li><strong>Weaviate</strong>：开源的实时向量搜索引擎</li>
+  <li><strong>Qdrant</strong>：专为扩展和过滤优化的向量数据库</li>
+  <li><strong>Chroma</strong>：轻量级开源向量数据库，适合开发和原型设计</li>
+  <li><strong>Elasticsearch</strong>：通过向量插件支持向量搜索功能</li>
+  <li><strong>Redis</strong>：通过Redis Vector Similarity Search模块支持向量搜索</li>
+</ul>
+
+<h2 id="与传统数据库的区别">与传统数据库的区别</h2>
+<p>| 特性 | 向量数据库 | 关系型数据库 | NoSQL数据库 |
+|——|————|————–|————-|
+| 数据类型 | 高维向量 | 结构化数据 | 非结构化/半结构化数据 |
+| 查询方式 | 相似度搜索 | SQL查询 | 键值/文档查询 |
+| 索引结构 | 特殊向量索引 | B树/哈希索引 | 各种专用索引 |
+| 主要应用 | AI应用、相似性搜索 | 事务处理、报表 | 大数据存储、实时应用 |</p>
+
+<h2 id="选型考量因素">选型考量因素</h2>
+<ol>
+  <li><strong>性能需求</strong>：查询延迟、吞吐量要求</li>
+  <li><strong>数据规模</strong>：向量数量和维度</li>
+  <li><strong>部署环境</strong>：本地、云端或混合架构</li>
+  <li><strong>功能需求</strong>：动态更新、元数据过滤、分布式能力</li>
+  <li><strong>成本预算</strong>：开源vs商业解决方案</li>
+  <li><strong>社区支持</strong>：文档质量、更新频率、问题响应速度</li>
+</ol>
+
+<h2 id="发展趋势">发展趋势</h2>
+<ul>
+  <li><strong>与大语言模型深度集成</strong>：优化RAG架构和性能</li>
+  <li><strong>多模态数据统一管理</strong>：支持更多类型的非结构化数据</li>
+  <li><strong>实时分析能力</strong>：结合流处理技术实现动态数据索引</li>
+  <li><strong>边缘计算支持</strong>：轻量级版本适配边缘设备</li>
+  <li><strong>标准化接口</strong>：向量数据库查询语言标准化</li>
+</ul>
+
+    </div>
+  </article>
+</div>
+
+<style>
+.doc-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.doc-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #e1e4e8;
+  border-bottom: 1px solid #e1e4e8;
+  color: #6a737d;
+  font-size: 0.9rem;
+}
+
+.doc-body {
+  line-height: 1.7;
+  margin-top: 2rem;
+}
+
+.doc-body h2 {
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.doc-body h3 {
+  margin-top: 1.5rem;
+}
+
+.doc-body code {
+  background-color: #f6f8fa;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+.doc-body pre {
+  background-color: #f6f8fa;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+</style>
+      </div>
+    </main>
+    
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Pizicai's Tech Blog. All rights reserved.</p>
+        <p>
+          <a href="https://github.com/pizicaiman" target="_blank">GitHub</a> | 
+          <a href="/about/">关于</a>
+        </p>
+      </div>
+    </footer>
+    
+    <script>
+      // 代码高亮
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightElement(block);
+        });
+      });
+    </script>
+  </body>
+</html>

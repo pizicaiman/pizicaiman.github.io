@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: doc
 title: 阿里云ACK大语言模型部署实践
 date: 2025-02-05
 category: devops

@@ -1,0 +1,301 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GitOps持续部署方案 - Pizicai's Tech Blog</title>
+    <meta name="description" content="基于GitOps的持续部署实践方案">
+    
+    <!-- SEO 标签 -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>GitOps持续部署方案 | Pizicai’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="GitOps持续部署方案" />
+<meta name="author" content="Pizicai" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="基于GitOps的持续部署实践方案" />
+<meta property="og:description" content="基于GitOps的持续部署实践方案" />
+<link rel="canonical" href="http://localhost:4000/docs/devops/2024/gitops-deployment/" />
+<meta property="og:url" content="http://localhost:4000/docs/devops/2024/gitops-deployment/" />
+<meta property="og:site_name" content="Pizicai’s Tech Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-01-25T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="GitOps持续部署方案" />
+<meta name="twitter:site" content="@pizicaiman" />
+<meta name="twitter:creator" content="@Pizicai" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Pizicai"},"dateModified":"2024-01-25T00:00:00+08:00","datePublished":"2024-01-25T00:00:00+08:00","description":"基于GitOps的持续部署实践方案","headline":"GitOps持续部署方案","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/docs/devops/2024/gitops-deployment/"},"url":"http://localhost:4000/docs/devops/2024/gitops-deployment/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+    <!-- 代码高亮 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    
+    <style>
+      /* 基础样式 */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        color: #24292e;
+        margin: 0;
+      }
+      
+      .container {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      
+      header {
+        border-bottom: 1px solid #e1e4e8;
+        background-color: white;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+      
+      .site-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #24292e;
+        text-decoration: none;
+      }
+      
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+      }
+      
+      nav a {
+        text-decoration: none;
+        color: #586069;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      
+      nav a:hover {
+        color: #0366d6;
+      }
+      
+      main {
+        min-height: calc(100vh - 120px);
+        padding: 2rem 0;
+      }
+      
+      footer {
+        border-top: 1px solid #e1e4e8;
+        padding: 2rem 0;
+        text-align: center;
+        color: #6a737d;
+        font-size: 0.9rem;
+      }
+      
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="/" class="site-title">Pizicai's Tech Blog</a>
+          <nav>
+            <ul>
+              
+                <li>
+                  <a href="/" 
+                     class="">
+                    首页
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/devops/" 
+                     class="">
+                    DevOps
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/llm/" 
+                     class="">
+                    LLM
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/web3/" 
+                     class="">
+                    Web3
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/docs/" 
+                     class="">
+                    文档
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/about/" 
+                     class="">
+                    关于
+                  </a>
+                </li>
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    
+    <main>
+      <div class="container">
+        <div class="doc-page">
+  <article class="doc-content">
+    <h1>GitOps持续部署方案</h1>
+    
+    <div class="doc-meta">
+      
+        <span class="doc-date">更新时间: 2024-01-25</span>
+      
+      
+      
+        <span class="doc-category">分类: devops</span>
+      
+    </div>
+    
+    <div class="doc-body">
+      <h1 id="gitops持续部署方案">GitOps持续部署方案</h1>
+
+<h2 id="概述">概述</h2>
+
+<p>GitOps是一种基于Git的运维方式，通过将基础设施和应用程序的声明性描述存储在Git中，实现自动化的持续部署。</p>
+
+<h2 id="核心组件">核心组件</h2>
+
+<h3 id="git仓库">Git仓库</h3>
+
+<p>作为唯一的可信源，存储所有配置和部署代码。</p>
+
+<h3 id="cicd工具">CI/CD工具</h3>
+
+<p>如ArgoCD、Flux等，负责监控Git仓库变化并自动同步到集群。</p>
+
+<h3 id="kubernetes集群">Kubernetes集群</h3>
+
+<p>作为应用运行环境，通过声明式API管理应用状态。</p>
+
+<h2 id="实施步骤">实施步骤</h2>
+
+<ol>
+  <li>建立Git仓库结构</li>
+  <li>配置CI/CD工具</li>
+  <li>定义部署策略</li>
+  <li>实施监控和告警</li>
+</ol>
+
+<h2 id="最佳实践">最佳实践</h2>
+
+<ul>
+  <li>使用分支策略管理不同环境</li>
+  <li>实施严格的代码审查流程</li>
+  <li>配置自动化测试</li>
+  <li>建立完善的监控体系</li>
+</ul>
+
+    </div>
+  </article>
+</div>
+
+<style>
+.doc-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.doc-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #e1e4e8;
+  border-bottom: 1px solid #e1e4e8;
+  color: #6a737d;
+  font-size: 0.9rem;
+}
+
+.doc-body {
+  line-height: 1.7;
+  margin-top: 2rem;
+}
+
+.doc-body h2 {
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.doc-body h3 {
+  margin-top: 1.5rem;
+}
+
+.doc-body code {
+  background-color: #f6f8fa;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+.doc-body pre {
+  background-color: #f6f8fa;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+</style>
+      </div>
+    </main>
+    
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Pizicai's Tech Blog. All rights reserved.</p>
+        <p>
+          <a href="https://github.com/pizicaiman" target="_blank">GitHub</a> | 
+          <a href="/about/">关于</a>
+        </p>
+      </div>
+    </footer>
+    
+    <script>
+      // 代码高亮
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightElement(block);
+        });
+      });
+    </script>
+  </body>
+</html>
