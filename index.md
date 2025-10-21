@@ -113,6 +113,29 @@ title: Pizicai's Tech Blog
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+/* Hero区域居中样式 */
+.hero {
+  text-align: center;
+  margin: 0 auto 2rem auto;
+  max-width: 800px;
+  padding: 2rem 1rem;
+}
+
+.hero h1 {
+  margin: 0 0 0.75rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #24292e;
+}
+
+.hero p.lead {
+  color: #586069;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
 @media (max-width: 900px) { 
   .grid { 
     grid-template-columns: 1fr; 
@@ -121,15 +144,25 @@ title: Pizicai's Tech Blog
     display: block; 
     margin: 0.5rem 0; 
   }
+  
+  .hero {
+    padding: 1.5rem 1rem;
+  }
+  
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+  
+  .hero p.lead {
+    font-size: 1rem;
+  }
 }
 </style>
 
 <div class="home">
   <div class="hero">
-    <div class="hero-inner">
-      <h1>技术探索与实践</h1>
-      <p class="lead">记录我在 DevOps、LLM 与 Web3 等方向的系统化学习与最佳实践。</p>
-    </div>
+    <h1>技术探索与实践</h1>
+    <p class="lead">记录我在 DevOps、LLM 与 Web3 等方向的系统化学习与最佳实践。</p>
   </div>
 
   <div class="section links">
