@@ -36,94 +36,6 @@ layout: default
         </div>
       </article>
     </main>
-
-    <!-- 右侧推荐文章 -->
-    <aside class="doc-recommendations">
-      <div class="recommendations-container">
-        <h3>推荐文章</h3>
-        <div class="recommendations-list" id="recommendations-list">
-          <!-- 推荐文章将通过JavaScript动态生成 -->
-        <script>
-        // 推荐文章推荐算法&展示(按同分类、不同自身页面，按最近日期排序，取前5)
-        (function () {
-          // 获取当前页面的主要元信息
-          const curCategory = '{{ page.category }}';
-          const curTitle = `{{ page.title }}`.trim();
-          const curUrl = '{{ page.url }}';
-
-          // 提取全站文档数据：推荐文章以 site.pages中过滤
-          const allDocs = [
-            {% assign recommended_pages = site.pages | where: "layout", "doc" | sort: "date" | reverse %}
-            {% for doc in recommended_pages %}
-              {
-                title: `{{ doc.title | escape }}`,
-                url: `{{ doc.url | relative_url }}`,
-                date: `{{ doc.date | date: "%Y-%m-%d" }}`,
-                category: `{{ doc.category }}`,
-                excerpt: {{ doc.excerpt | strip_newlines | jsonify }},
-              }{% unless forloop.last %},{% endunless %}
-            {% endfor %}
-          ].filter(d => d.title && d.url && d.category);
-
-          // 当前分类筛选、排除自己，按日期倒序前5
-          const recommendList = allDocs
-            .filter(doc => doc.category === curCategory && doc.url !== curUrl)
-            .slice(0, 5);
-
-          const $list = document.getElementById('recommendations-list');
-          if (recommendList.length === 0) {
-            $list.innerHTML = '<div class="empty">暂无推荐文章</div>';
-          } else {
-            $list.innerHTML = recommendList.map(doc =>
-              `<div class="recommendation-item">
-                 <span class="recommendation-date">${doc.date}</span>
-                 <a class="recommendation-title" href="${doc.url}">${doc.title}</a>
-                 ${doc.excerpt ? `<div class="recommendation-excerpt">${doc.excerpt.substring(0, 60)}${doc.excerpt.length > 60 ? '...' : ''}</div>` : ''}
-               </div>`
-            ).join('');
-          }
-        })();
-        </script>
-        <style>
-        .recommendations-list { margin-top: 1rem; }
-        .recommendation-item {
-          margin-bottom: 1.1rem;
-          padding: 0.3rem 0.2rem 0.6rem 0.2rem;
-          border-bottom: 1px solid #eee;
-        }
-        .recommendation-item:last-child {
-          border-bottom: none;
-        }
-        .recommendation-date {
-          color: #888;
-          font-size: 0.93rem;
-          margin-right: 0.2rem;
-        }
-        .recommendation-title {
-          font-weight: 600;
-          text-decoration: none;
-          color: #276fd7;
-        }
-        .recommendation-title:hover {
-          text-decoration: underline;
-          color: #174cae;
-        }
-        .recommendation-excerpt {
-          font-size: 0.98rem;
-          color: #415778;
-          margin-top: 0.16rem;
-          line-height: 1.45;
-        }
-        .recommendations-list .empty {
-          color: #b0b0b0;
-          font-size: 0.99rem;
-          text-align: center;
-          margin-top: 1.5rem;
-        }
-        </style>
-        </div>
-      </div>
-    </aside>
   </div>
 </div>
 
@@ -292,75 +204,6 @@ layout: default
   overflow-x: auto;
 }
 
-/* 右侧推荐文章 */
-.doc-recommendations {
-  position: sticky;
-  top: 2rem;
-  background: #f8f9fa;
-  border-radius: 8px;
-  padding: 1.5rem;
-  border: 1px solid #e1e4e8;
-  max-height: calc(100vh - 4rem);
-  overflow-y: auto;
-  margin-left: 1rem;
-}
-
-.recommendations-container h3 {
-  margin: 0 0 1rem 0;
-  font-size: 1.1rem;
-  color: #24292e;
-  border-bottom: 1px solid #e1e4e8;
-  padding-bottom: 0.5rem;
-}
-
-.recommendations-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.recommendation-item {
-  background: white;
-  border: 1px solid #e1e4e8;
-  border-radius: 6px;
-  padding: 1rem;
-  transition: all 0.2s;
-  text-decoration: none;
-  color: inherit;
-}
-
-.recommendation-item:hover {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transform: translateY(-1px);
-  text-decoration: none;
-  color: inherit;
-}
-
-.recommendation-item h4 {
-  margin: 0 0 0.5rem 0;
-  font-size: 0.95rem;
-  color: #0366d6;
-  line-height: 1.3;
-}
-
-.recommendation-item p {
-  margin: 0;
-  font-size: 0.85rem;
-  color: #586069;
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.recommendation-meta {
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: #6a737d;
-}
-
 /* 响应式设计 */
 @media (max-width: 1200px) {
   .doc-layout {
@@ -375,10 +218,6 @@ layout: default
   .doc-main {
     margin-left: 0.75rem;
   }
-  
-  .doc-recommendations {
-    margin-left: 0.75rem;
-  }
 }
 
 @media (max-width: 992px) {
@@ -387,8 +226,7 @@ layout: default
     gap: 2rem;
   }
   
-  .doc-sidebar,
-  .doc-recommendations {
+  .doc-sidebar {
     position: static;
     max-height: none;
     margin-left: 0;
@@ -406,10 +244,6 @@ layout: default
   .doc-main {
     order: 1;
   }
-  
-  .doc-recommendations {
-    order: 3;
-  }
 }
 
 @media (max-width: 768px) {
@@ -421,45 +255,16 @@ layout: default
     gap: 0.5rem;
   }
   
-  .doc-sidebar,
-  .doc-recommendations {
+  .doc-sidebar {
     padding: 1rem;
-  }
-  
-  .recommendations-list {
-    gap: 0.75rem;
-  }
-  
-  .recommendation-item {
-    padding: 0.75rem;
   }
 }
 </style>
-
-<!-- 推荐文章数据 -->
-<script>
-window.sitePosts = [
-  {% for post in site.posts limit: 20 %}
-  {
-    title: "{{ post.title | escape }}",
-    url: "{{ post.url | relative_url }}",
-    excerpt: "{{ post.excerpt | strip_html | truncate: 100 | escape }}",
-    category: "{{ post.category | default: 'uncategorized' }}",
-    date: "{{ post.date | date: '%Y-%m-%d' }}"
-  }{% unless forloop.last %},{% endunless %}
-  {% endfor %}
-];
-
-window.currentPageCategory = "{{ page.category }}";
-</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // 生成文章大纲
   generateTableOfContents();
-  
-  // 生成推荐文章
-  generateRecommendations();
   
   // 监听滚动事件，高亮当前章节
   highlightCurrentSection();
@@ -538,54 +343,6 @@ function generateTableOfContents() {
   
   tocNav.innerHTML = '';
   tocNav.appendChild(tocList);
-}
-
-// 生成推荐文章
-function generateRecommendations() {
-  const recommendationsList = document.getElementById('recommendations-list');
-  
-  // 获取当前页面信息
-  const currentTitle = document.querySelector('.doc-content h1').textContent;
-  const currentCategory = window.currentPageCategory;
-  
-  // 使用全局的文章数据
-  const allPosts = window.sitePosts || [];
-  
-  // 过滤掉当前文章，优先显示同分类文章
-  let filteredPosts = allPosts.filter(post => post.title !== currentTitle);
-  
-  // 按分类优先级排序
-  filteredPosts.sort((a, b) => {
-    if (a.category === currentCategory && b.category !== currentCategory) return -1;
-    if (a.category !== currentCategory && b.category === currentCategory) return 1;
-    return 0;
-  });
-  
-  // 随机选择3-4篇文章
-  const shuffled = filteredPosts.sort(() => 0.5 - Math.random());
-  const selectedPosts = shuffled.slice(0, Math.min(4, shuffled.length));
-  
-  if (selectedPosts.length === 0) {
-    recommendationsList.innerHTML = '<p style="color: #6a737d; font-size: 0.9rem; margin: 0;">暂无推荐文章</p>';
-    return;
-  }
-  
-  selectedPosts.forEach(post => {
-    const item = document.createElement('a');
-    item.className = 'recommendation-item';
-    item.href = post.url;
-    
-    item.innerHTML = `
-      <h4>${post.title}</h4>
-      <p>${post.excerpt}</p>
-      <div class="recommendation-meta">
-        <span>${post.category.toUpperCase()}</span> • 
-        <span>${new Date(post.date).toLocaleDateString('zh-CN')}</span>
-      </div>
-    `;
-    
-    recommendationsList.appendChild(item);
-  });
 }
 
 // 高亮当前章节
