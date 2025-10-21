@@ -168,9 +168,9 @@ title: Pizicai's Tech Blog
   <div class="section links">
     <h2>🚀 DevOps & 云原生</h2>
     <ul>
-      <li><a href="/docs/devops/2024/kubernetes-multi-cluster/">Kubernetes 多集群管理实践</a></li>
-      <li><a href="/docs/devops/2024/gitops-deployment/">GitOps 持续部署方案</a></li>
-      <li><a href="/docs/devops/">查看全部文档</a></li>
+      <li><a href="/docs/cloudnative/2024/kubernetes-multi-cluster/">Kubernetes 多集群管理实践</a></li>
+      <li><a href="/docs/cloudnative/2024/gitops-deployment/">GitOps 持续部署方案</a></li>
+      <li><a href="/docs/cloudnative/">查看全部文档</a></li>
     </ul>
   </div>
 
