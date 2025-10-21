@@ -93,8 +93,8 @@ total_mem_gb_hours = total_node * mem_per_node * hours_per_month  # 10*4*720 = 2
 - CPU 成本：2,000 元（20,000 × 10%）
 - 内存成本：770 元（14,000 × 5.5%）
 
-# 若每台ECS为2核4G，假设10台每月总价 total_cost（单位：元），其中磁盘成本 disk_cost（元），剩余为CPU/内存消耗。
-# 假定按整机规格，将磁盘成本单独扣除，剩余部分按“CPU:内存”比例分摊。
+若每台ECS为2核4G，假设10台每月总价 total_cost（单位：元），其中磁盘成本 disk_cost（元），剩余为CPU/内存消耗。
+假定按整机规格，将磁盘成本单独扣除，剩余部分按“CPU:内存”比例分摊。
 
 total_cost = 10000       # 假定10台整月总价，比如1万元
 disk_cost = 1000         # 假定10台每月总磁盘成本为1000元
@@ -106,10 +106,10 @@ total_nodes = 10
 total_cpu = cpu_per_node * total_nodes   # 2*10 = 20核
 total_mem = mem_per_node * total_nodes   # 4*10 = 40G
 
-# 剩余分摊额度
+#### 剩余分摊额度
 cost_for_cpu_mem = total_cost - disk_cost    # 9000元
 
-# 通常按资源规格比例拆分（比如1核:2G，CPU/内存成本比=20:40=1:2），可自定义权重
+#### 通常按资源规格比例拆分（比如1核:2G，CPU/内存成本比=20:40=1:2），可自定义权重
 cpu_ratio = total_cpu
 mem_ratio = total_mem
 
@@ -120,19 +120,19 @@ print(f"磁盘成本: {disk_cost}元")
 print(f"CPU成本: {cpu_cost}元")
 print(f"内存成本: {mem_cost}元")
 
-# 若需要单价
+#### 若需要单价
 cpu_hour_price = cpu_cost / (total_cpu * 720)          # 每核时单价
 mem_gb_hour_price = mem_cost / (total_mem * 720)       # 每GB时单价
 
 print(f"CPU单价: {cpu_hour_price:.2f} 元/核时")
 print(f"内存单价: {mem_gb_hour_price:.2f} 元/GB时")
 
-# 示例输出
-# 磁盘成本: 1000元
-# CPU成本: 3000元
-# 内存成本: 6000元
-# CPU单价: 0.21 元/核时
-# 内存单价: 0.21 元/GB时
+> 示例输出
+- 磁盘成本: 1000元
+- CPU成本: 3000元
+- 内存成本: 6000元
+- CPU单价: 0.21 元/核时
+- 内存单价: 0.21 元/GB时
 
 
 ### 2. 按资源 Quota/预留量分摊
