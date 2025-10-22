@@ -1,53 +1,53 @@
 ---
 layout: docs-category
-title: 信息安全
-category: security
-description: 信息安全技术与实践，涵盖网络安全、数据保护、加密技术等关键知识点
-permalink: /docs/security/
+title: Linux
+category: linux
+description: Linux系统管理与运维实践，涵盖系统配置、性能优化、安全加固等关键知识点
+permalink: /docs/linux/
 ---
 
 <div class="category-intro">
-  <h1>🔒 信息安全文档</h1>
+  <h1>🐧 Linux 文档</h1>
   
   <p>
-    在数字化时代，信息安全已成为个人和组织必须面对的重要课题。
-    本系列文档旨在分享我在信息安全领域的技术实践和防护经验。
+    Linux作为开源操作系统的核心，是系统管理员和开发人员必须掌握的重要技能。
+    本系列文档旨在分享我在Linux系统管理与运维方面的实践经验。
   </p>
   
   <div class="category-highlights">
     <h2>📘 文档亮点</h2>
     <ul>
-      <li><strong>实战导向</strong> - 基于真实安全事件的分析和防护方案</li>
-      <li><strong>技术深度</strong> - 涵盖从基础概念到高级攻防技术</li>
-      <li><strong>体系完整</strong> - 构建完整的安全防护知识体系</li>
-      <li><strong>持续更新</strong> - 紧跟最新安全威胁和防护技术</li>
+      <li><strong>实用性强</strong> - 提供可直接应用的命令和配置示例</li>
+      <li><strong>系统全面</strong> - 从基础操作到高级系统管理</li>
+      <li><strong>问题导向</strong> - 针对常见问题提供解决方案</li>
+      <li><strong>版本兼容</strong> - 涵盖多个主流Linux发行版</li>
     </ul>
   </div>
   
   <div class="tech-stack">
     <h2>📚 涉及领域</h2>
     <p>
-      这些文档涵盖了以下核心安全领域：
+      这些文档涵盖了以下核心Linux领域：
     </p>
     <ul>
-      <li><strong>网络安全</strong> - 防火墙、入侵检测、网络隔离技术</li>
-      <li><strong>数据保护</strong> - 数据加密、备份策略、隐私保护</li>
-      <li><strong>身份认证</strong> - 多因素认证、单点登录、权限管理</li>
-      <li><strong>应用安全</strong> - 代码审计、漏洞扫描、安全开发</li>
-      <li><strong>安全运维</strong> - 安全监控、日志分析、应急响应</li>
-      <li><strong>合规管理</strong> - 安全标准、法规遵循、风险评估</li>
+      <li><strong>系统管理</strong> - 用户管理、文件系统、进程管理</li>
+      <li><strong>网络配置</strong> - 网络接口配置、防火墙、DNS</li>
+      <li><strong>性能优化</strong> - 系统调优、资源监控、瓶颈分析</li>
+      <li><strong>安全管理</strong> - 权限控制、安全加固、审计日志</li>
+      <li><strong>服务管理</strong> - systemd、服务配置、自动启动</li>
+      <li><strong>Shell脚本</strong> - Bash脚本编程、自动化任务</li>
     </ul>
   </div>
 </div>
 
 ## 📖 文档概览
 
-信息安全在数字化时代变得越来越重要，无论是个人隐私保护还是企业数据安全都需要专业的安全技术支撑。这些文档将帮助您理解信息安全的核心原理和实践方法。
+Linux作为最流行的开源操作系统之一，广泛应用于服务器、云计算和嵌入式设备等领域。掌握Linux系统管理和运维技能对于技术人员至关重要。
 
 ## 📚 文章列表
 
 <div class="posts-list">
-  {% assign sorted_pages = site.pages | where: "category", "security" | sort: "date" | reverse %}
+  {% assign sorted_pages = site.pages | where: "category", "linux" | sort: "date" | reverse %}
   {% for page in sorted_pages %}
     <div class="post-item">
       <h3><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h3>
@@ -68,7 +68,7 @@ permalink: /docs/security/
   padding: 1.5rem;
   background-color: #f6f8fa;
   border-radius: 8px;
-  border-left: 4px solid #e74c3c;
+  border-left: 4px solid #3498db;
 }
 
 .category-intro h1 {

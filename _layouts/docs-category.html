@@ -7,12 +7,28 @@
       <nav>
         <ul>
           {% for item in site.navigation %}
-            <li>
-              <a href="{{ item.url | relative_url }}" 
-                 class="{% if page.url == item.url %}active{% endif %}">
-                {{ item.title }}
-              </a>
-            </li>
+            {% if item.subitems %}
+              <li class="dropdown">
+                <a href="{{ item.url | relative_url }}" class="{% if page.url == item.url %}active{% endif %}">
+                  {{ item.title }}
+                </a>
+                <div class="dropdown-content">
+                  {% for subitem in item.subitems %}
+                    <a href="{{ subitem.url | relative_url }}" 
+                       class="{% if page.url == subitem.url %}active{% endif %}">
+                      {{ subitem.title }}
+                    </a>
+                  {% endfor %}
+                </div>
+              </li>
+            {% else %}
+              <li>
+                <a href="{{ item.url | relative_url }}" 
+                   class="{% if page.url == item.url %}active{% endif %}">
+                  {{ item.title }}
+                </a>
+              </li>
+            {% endif %}
           {% endfor %}
         </ul>
       </nav>
@@ -33,6 +49,8 @@
         {% when "management" %}🎯 管理文档
         {% when "security" %}🔒 信息安全文档
         {% when "philosophy" %}🧠 哲学文化文档
+        {% when "sre" %}🎯 SRE 文档
+        {% when "linux" %}🐧 Linux 文档
       {% endcase %}
     </h1>
     <p>{{ page.description }}</p>
@@ -145,11 +163,54 @@
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s ease;
+    position: relative;
   }
   
-  nav a:hover,
+  nav a:hover {
+    color: #0366d6;
+  }
+  
   nav a.active {
     color: #0366d6;
+  }
+  
+  /* 下拉菜单样式 */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 9999;
+    border-radius: 6px;
+    top: 100%;
+    left: 0;
+    margin-top: 0;
+    padding: 0.5rem 0;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .dropdown-content a {
+    color: #586069;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: normal;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f6f8fa;
+    color: #0366d6;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
   }
   
   /* 响应式设计 */

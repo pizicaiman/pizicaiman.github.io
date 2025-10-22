@@ -74,6 +74,18 @@ defaults:
       layout: "doc"
       category: "philosophy"
   - scope:
+      path: "docs/sre"
+      type: "pages"
+    values:
+      layout: "doc"
+      category: "sre"
+  - scope:
+      path: "docs/linux"
+      type: "pages"
+    values:
+      layout: "doc"
+      category: "linux"
+  - scope:
       path: ""
       type: "posts"
     values:
@@ -83,33 +95,44 @@ defaults:
 navigation:
   - title: 首页
     url: /
-  - title: DevOps
-    url: /docs/cloudnative/
-    category: cloudnative
+  - title: 文档
+    url: /docs/
+  - title: 云原生
+    url: /docs/
+    subitems:
+      - title: DevOps
+        url: /docs/cloudnative/
+        category: cloudnative
+      - title: SRE
+        url: /docs/sre/
+        category: sre
+      - title: Linux
+        url: /docs/linux/
+        category: linux
   - title: LLM
     url: /docs/llm/
     category: llm
-  - title: Maths
-    url: /docs/maths/
-    category: maths
-  - title: Physics
-    url: /docs/physics/
-    category: physics
-  - title: Finance
-    url: /docs/finance/
-    category: finance
-  - title: Management
-    url: /docs/management/
-    category: management
-  - title: Security
-    url: /docs/security/
-    category: security
-  - title: Philosophy
-    url: /docs/philosophy/
-    category: philosophy
   - title: Web3
     url: /docs/web3/
     category: web3
+  - title: 物理学
+    url: /docs/physics/
+    category: physics
+  - title: 数学
+    url: /docs/maths/
+    category: maths
+  - title: 哲学文化
+    url: /docs/philosophy/
+    category: philosophy
+  - title: 财经
+    url: /docs/finance/
+    category: finance
+  - title: 管理
+    url: /docs/management/
+    category: management
+  - title: 信息安全
+    url: /docs/security/
+    category: security
   - title: 关于
     url: /about/
 
@@ -124,6 +147,8 @@ categories:
   - security
   - philosophy
   - web3
+  - sre
+  - linux
 
 # 插件配置
 plugins:

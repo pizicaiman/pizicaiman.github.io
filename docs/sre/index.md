@@ -1,53 +1,53 @@
 ---
 layout: docs-category
-title: 信息安全
-category: security
-description: 信息安全技术与实践，涵盖网络安全、数据保护、加密技术等关键知识点
-permalink: /docs/security/
+title: SRE
+category: sre
+description: 站点可靠性工程（SRE）实践，涵盖可靠性原则、监控告警、容量规划、故障处理等关键知识点
+permalink: /docs/sre/
 ---
 
 <div class="category-intro">
-  <h1>🔒 信息安全文档</h1>
+  <h1>🎯 SRE 文档</h1>
   
   <p>
-    在数字化时代，信息安全已成为个人和组织必须面对的重要课题。
-    本系列文档旨在分享我在信息安全领域的技术实践和防护经验。
+    站点可靠性工程（SRE）是确保大规模系统稳定运行的关键实践方法。
+    本系列文档旨在分享我在SRE领域的学习心得和实践经验。
   </p>
   
   <div class="category-highlights">
     <h2>📘 文档亮点</h2>
     <ul>
-      <li><strong>实战导向</strong> - 基于真实安全事件的分析和防护方案</li>
-      <li><strong>技术深度</strong> - 涵盖从基础概念到高级攻防技术</li>
-      <li><strong>体系完整</strong> - 构建完整的安全防护知识体系</li>
-      <li><strong>持续更新</strong> - 紧跟最新安全威胁和防护技术</li>
+      <li><strong>实践导向</strong> - 基于真实生产环境的SRE实践总结</li>
+      <li><strong>系统全面</strong> - 涵盖从基础概念到高级实践的完整知识体系</li>
+      <li><strong>案例丰富</strong> - 通过真实案例分析SRE工作方法</li>
+      <li><strong>工具介绍</strong> - 介绍SRE常用的工具和技术栈</li>
     </ul>
   </div>
   
   <div class="tech-stack">
     <h2>📚 涉及领域</h2>
     <p>
-      这些文档涵盖了以下核心安全领域：
+      这些文档涵盖了以下核心SRE领域：
     </p>
     <ul>
-      <li><strong>网络安全</strong> - 防火墙、入侵检测、网络隔离技术</li>
-      <li><strong>数据保护</strong> - 数据加密、备份策略、隐私保护</li>
-      <li><strong>身份认证</strong> - 多因素认证、单点登录、权限管理</li>
-      <li><strong>应用安全</strong> - 代码审计、漏洞扫描、安全开发</li>
-      <li><strong>安全运维</strong> - 安全监控、日志分析、应急响应</li>
-      <li><strong>合规管理</strong> - 安全标准、法规遵循、风险评估</li>
+      <li><strong>可靠性原则</strong> - SLI/SLO/SLA定义与管理</li>
+      <li><strong>监控告警</strong> - 监控系统设计、告警策略优化</li>
+      <li><strong>容量规划</strong> - 性能测试、容量评估与扩展策略</li>
+      <li><strong>故障处理</strong> - 故障响应流程、事后分析与改进</li>
+      <li><strong>自动化运维</strong> - 部署自动化、配置管理、自愈系统</li>
+      <li><strong>混沌工程</strong> - 系统韧性测试与验证</li>
     </ul>
   </div>
 </div>
 
 ## 📖 文档概览
 
-信息安全在数字化时代变得越来越重要，无论是个人隐私保护还是企业数据安全都需要专业的安全技术支撑。这些文档将帮助您理解信息安全的核心原理和实践方法。
+站点可靠性工程（SRE）是Google提出的一套运维理念和方法论，它将软件工程的方法应用于运维问题，以创建可扩展和高可用的系统。
 
 ## 📚 文章列表
 
 <div class="posts-list">
-  {% assign sorted_pages = site.pages | where: "category", "security" | sort: "date" | reverse %}
+  {% assign sorted_pages = site.pages | where: "category", "sre" | sort: "date" | reverse %}
   {% for page in sorted_pages %}
     <div class="post-item">
       <h3><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h3>
@@ -68,7 +68,7 @@ permalink: /docs/security/
   padding: 1.5rem;
   background-color: #f6f8fa;
   border-radius: 8px;
-  border-left: 4px solid #e74c3c;
+  border-left: 4px solid #e67e22;
 }
 
 .category-intro h1 {

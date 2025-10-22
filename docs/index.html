@@ -14,6 +14,17 @@ permalink: /docs/
     </div>
   </header>
 
+  <div class="intro-section">
+    <h2>📘 关于技术文档中心</h2>
+    <p>
+      欢迎来到技术文档中心！这里汇集了我在 DevOps、大语言模型、Web3 等前沿技术领域的学习笔记和实践经验。
+      文档中心旨在提供一个结构化的知识库，帮助技术爱好者和从业者快速掌握相关技术要点。
+    </p>
+    <p>
+      所有文档均基于实际项目经验整理而成，注重理论与实践相结合，力求为读者提供有价值的参考。
+    </p>
+  </div>
+
   <div class="stats-bar">
     <div class="stat-item">
       <span class="stat-number">{{ site.categories | size }}</span>
@@ -140,6 +151,25 @@ permalink: /docs/
   font-size: 1.2rem;
   color: var(--light-text);
   margin-bottom: 2rem;
+}
+
+.intro-section {
+  background-color: #f6f8fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-left: 4px solid var(--primary-color);
+}
+
+.intro-section h2 {
+  margin-top: 0;
+  color: var(--text-color);
+}
+
+.intro-section p {
+  line-height: 1.6;
+  color: var(--light-text);
+  margin-bottom: 1rem;
 }
 
 .stats-bar {
@@ -315,6 +345,10 @@ permalink: /docs/
   
   .updates-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .intro-section {
+    padding: 1rem;
   }
 }
 </style>
