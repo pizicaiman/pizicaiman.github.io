@@ -2,6 +2,7 @@
 layout: doc
 title: Kubernetes多集群管理实践
 date: 2024-01-20
+author: Pizicai
 category: cloudnative
 tags: [kubernetes, multi-cluster, gitops]
 excerpt: 探讨在多云环境下Kubernetes集群的统一管理方案

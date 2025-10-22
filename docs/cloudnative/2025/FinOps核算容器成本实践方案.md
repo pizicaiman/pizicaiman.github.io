@@ -2,6 +2,7 @@
 layout: doc
 title: FinOps核算容器成本实践方案
 date: 2025-10-21
+author: Pizicai
 category: cloudnative
 tags: [kubernetes, cloud-native, alibaba-cloud, ack]
 excerpt: FinOps核算容器成本实践方案
