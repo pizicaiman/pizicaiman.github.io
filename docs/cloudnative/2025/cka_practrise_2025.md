@@ -5,7 +5,6 @@ date: 2025-01-20
 category: cloudnative
 tags: [kubernetes, certification, cka, cloud-native]
 excerpt: 详解CKA认证考试重点、核心概念及实战经验分享
-author: [pizicaiman](https://github.com/pizicaiman)
 ---
 
 # CKA (Certified Kubernetes Administrator) 认证实战指南

@@ -5,7 +5,6 @@ date: 2025-10-21
 category: cloudnative
 tags: [kubernetes, cloud-native, alibaba-cloud, ack]
 excerpt: FinOps核算容器成本实践方案
-author: [pizicaiman](https://github.com/pizicaiman)
 ---
 
 ## 一、背景与目标
