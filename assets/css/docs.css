@@ -57,6 +57,26 @@
   background-color: #9b59b6;
 }
 
+.category-header.maths {
+  background-color: #e67e22;
+}
+
+.category-header.physics {
+  background-color: #3498db;
+}
+
+.category-header.finance {
+  background-color: #27ae60;
+}
+
+.category-header.management {
+  background-color: #8e44ad;
+}
+
+.category-header.security {
+  background-color: #e74c3c;
+}
+
 .category-header.web3 {
   background-image: url('/assets/images/web3-bg.jpg');
   background-color: #2ecc71;

@@ -6,6 +6,8 @@ category: physics
 tags: [physics]
 excerpt: 量子力学基础
 ---
+
+
 # 量子力学基础
 
 量子力学是现代物理学的重要支柱之一，它描述了微观粒子的行为规律。

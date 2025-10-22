@@ -1,6 +1,6 @@
 # 基本配置
 title: Pizicai's Tech Blog
-description: 技术探索与实践 | DevOps | LLM | Web3 | Physics
+description: 技术探索与实践 | DevOps | LLM | Web3 | Physics | Finance | Management | Security
 author: Pizicai
 url: "https://pizicaiman.github.io"
 baseurl: ""
@@ -50,6 +50,24 @@ defaults:
       layout: "doc"
       category: "physics"
   - scope:
+      path: "docs/finance"
+      type: "pages"
+    values:
+      layout: "doc"
+      category: "finance"
+  - scope:
+      path: "docs/management"
+      type: "pages"
+    values:
+      layout: "doc"
+      category: "management"
+  - scope:
+      path: "docs/security"
+      type: "pages"
+    values:
+      layout: "doc"
+      category: "security"
+  - scope:
       path: ""
       type: "posts"
     values:
@@ -59,8 +77,6 @@ defaults:
 navigation:
   - title: 首页
     url: /
-  - title: 文档
-    url: /docs/
   - title: DevOps
     url: /docs/cloudnative/
     category: cloudnative
@@ -73,6 +89,15 @@ navigation:
   - title: Physics
     url: /docs/physics/
     category: physics
+  - title: Finance
+    url: /docs/finance/
+    category: finance
+  - title: Management
+    url: /docs/management/
+    category: management
+  - title: Security
+    url: /docs/security/
+    category: security
   - title: Web3
     url: /docs/web3/
     category: web3
@@ -85,6 +110,9 @@ categories:
   - llm
   - maths
   - physics
+  - finance
+  - management
+  - security
   - web3
 
 # 插件配置

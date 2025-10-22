@@ -39,7 +39,10 @@ permalink: /docs/
             {% when "llm" %}🤖
             {% when "web3" %}⛓️
             {% when "physics" %}⚛️
-            {% when "maths" %}📚
+            {% when "finance" %}💰
+            {% when "management" %}🎯
+            {% when "security" %}🔒
+            {% else %}📚
           {% endcase %}
         </div>
         <h2>
@@ -49,7 +52,10 @@ permalink: /docs/
               {% when "llm" %}大语言模型
               {% when "web3" %}Web3
               {% when "physics" %}物理学
-              {% when "maths" %}数学
+              {% when "finance" %}财经
+              {% when "management" %}管理
+              {% when "security" %}信息安全
+              {% else %}{{ category[0] | capitalize }}
             {% endcase %}
           </a>
         </h2>
@@ -63,8 +69,12 @@ permalink: /docs/
               区块链应用、智能合约开发、去中心化存储、跨链技术等 Web3 实践总结。
             {% when "physics" %}
               物理基础理论、计算物理、量子计算、相对论等物理科学知识与应用。
-            {% when "maths" %}
-              数学基础理论、计算物理、量子计算、相对论等数学科学知识与应用。
+            {% when "finance" %}
+              投资理财、经济分析、财务管理、金融市场等财经领域知识与实践。
+            {% when "management" %}
+              项目管理、团队管理、组织行为、领导力等管理学理论与实践。
+            {% when "security" %}
+              网络安全、数据保护、加密技术、安全运维等信息安全领域知识与实践。
             {% else %}
               更多技术文档正在整理中...
           {% endcase %}
