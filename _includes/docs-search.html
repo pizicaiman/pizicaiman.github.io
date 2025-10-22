@@ -2,7 +2,27 @@
 <div class="docs-search">
   <input type="text" id="docs-search-input" placeholder="搜索文档...">
   <div id="docs-search-results" class="search-results"></div>
+  <div id="search-stats" class="search-stats"></div>
 </div>
+
+<!-- 文档数据 -->
+<script type="application/json" id="docs-data">
+[
+  {% for page in site.pages %}
+    {% if page.category and page.title != 'DevOps & 云原生文档' and page.title != '大语言模型文档' and page.title != 'Web3 文档' and page.title != '技术文档中心' %}
+      {
+        "title": {{ page.title | jsonify }},
+        "url": {{ page.url | relative_url | jsonify }},
+        "category": {{ page.category | jsonify }},
+        "excerpt": {{ page.excerpt | strip_html | truncate: 120 | jsonify }},
+        "date": {{ page.date | date: "%Y-%m-%d" | jsonify }},
+        "tags": {{ page.tags | jsonify }},
+        "content": {{ page.content | strip_html | truncate: 200 | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endif %}
+  {% endfor %}
+]
+</script>
 
 <style>
 .docs-search {
@@ -12,10 +32,17 @@
 
 #docs-search-input {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #e1e4e8;
-  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e1e4e8;
+  border-radius: 8px;
   font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+#docs-search-input:focus {
+  outline: none;
+  border-color: #0366d6;
+  box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.1);
 }
 
 .search-results {
@@ -26,32 +53,87 @@
   background: white;
   border: 1px solid #e1e4e8;
   border-top: none;
-  border-radius: 0 0 6px 6px;
-  max-height: 300px;
+  border-radius: 0 0 8px 8px;
+  max-height: 400px;
   overflow-y: auto;
-  z-index: 100;
+  z-index: 1000;
   display: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .search-result-item {
-  padding: 0.75rem;
-  border-bottom: 1px solid #e1e4e8;
+  padding: 1rem;
+  border-bottom: 1px solid #f1f3f4;
   text-decoration: none;
   color: #24292e;
   display: block;
+  transition: background-color 0.2s ease;
 }
 
-.search-result-item:hover {
+.search-result-item:hover,
+.search-result-item.selected {
   background-color: #f6f8fa;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
 }
 
 .search-result-title {
   font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #24292e;
 }
 
 .search-result-category {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #6a737d;
+  margin-bottom: 0.25rem;
+}
+
+.search-result-excerpt {
+  font-size: 0.9rem;
+  color: #586069;
+  line-height: 1.4;
+  margin-top: 0.5rem;
+}
+
+.search-result-date {
+  font-size: 0.8rem;
+  color: #8b949e;
+}
+
+.search-no-results {
+  padding: 1rem;
+  text-align: center;
+  color: #6a737d;
+  font-style: italic;
+}
+
+.search-loading {
+  padding: 1rem;
+  text-align: center;
+  color: #6a737d;
+}
+
+/* 高亮搜索结果 */
+.search-highlight {
+  background-color: #fff3cd;
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+}
+
+/* 搜索统计信息 */
+.search-stats {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #6a737d;
+  text-align: center;
+  display: none;
+}
+
+.search-stats.show {
+  display: block;
 }
 </style>
 
@@ -59,57 +141,159 @@
 document.addEventListener('DOMContentLoaded', function() {
   const searchInput = document.getElementById('docs-search-input');
   const searchResults = document.getElementById('docs-search-results');
+  const searchStats = document.getElementById('search-stats');
   
-  // 获取所有文档数据
-  const docsData = [
-    {% for page in site.pages %}
-      {% if page.category %}
-        {
-          title: {{ page.title | jsonify }},
-          url: {{ page.url | relative_url | jsonify }},
-          category: {{ page.category | jsonify }},
-          content: {{ page.content | strip_html | jsonify }}
-        },
-      {% endif %}
-    {% endfor %}
-  ];
+  // 从JSON数据中获取文档信息
+  const docsDataElement = document.getElementById('docs-data');
+  const docsData = JSON.parse(docsDataElement.textContent);
   
+  let searchTimeout;
+  let selectedIndex = -1;
+  
+  // 搜索输入事件
   searchInput.addEventListener('input', function() {
-    const query = this.value.trim().toLowerCase();
+    const query = this.value.trim();
+    
+    // 清除之前的定时器
+    clearTimeout(searchTimeout);
     
     if (query.length === 0) {
-      searchResults.style.display = 'none';
+      hideResults();
       return;
     }
     
-    const results = docsData.filter(doc => 
-      doc.title.toLowerCase().includes(query) || 
-      doc.content.toLowerCase().includes(query)
-    );
+    // 显示加载状态
+    showLoading();
     
-    displayResults(results);
+    // 延迟搜索，避免频繁触发
+    searchTimeout = setTimeout(() => {
+      performSearch(query);
+    }, 300);
   });
   
-  function displayResults(results) {
+  // 执行搜索
+  function performSearch(query) {
+    const results = docsData.filter(doc => {
+      const searchText = `${doc.title} ${doc.excerpt} ${doc.content} ${doc.tags.join(' ')}`.toLowerCase();
+      return searchText.includes(query.toLowerCase());
+    });
+    
+    // 按相关性排序（标题匹配优先）
+    results.sort((a, b) => {
+      const aTitleMatch = a.title.toLowerCase().includes(query.toLowerCase());
+      const bTitleMatch = b.title.toLowerCase().includes(query.toLowerCase());
+      
+      if (aTitleMatch && !bTitleMatch) return -1;
+      if (!aTitleMatch && bTitleMatch) return 1;
+      
+      // 按日期排序
+      return new Date(b.date) - new Date(a.date);
+    });
+    
+    displayResults(results, query);
+    updateStats(results.length, query);
+  }
+  
+  // 显示搜索结果
+  function displayResults(results, query) {
     if (results.length === 0) {
-      searchResults.innerHTML = '<div class="search-result-item">未找到相关文档</div>';
+      searchResults.innerHTML = '<div class="search-no-results">未找到相关文档</div>';
     } else {
-      searchResults.innerHTML = results.map(doc => `
-        <a href="${doc.url}" class="search-result-item">
-          <div class="search-result-title">${doc.title}</div>
-          <div class="search-result-category">${doc.category}</div>
+      searchResults.innerHTML = results.map((doc, index) => `
+        <a href="${doc.url}" class="search-result-item" data-index="${index}">
+          <div class="search-result-title">${highlightText(doc.title, query)}</div>
+          <div class="search-result-category">${getCategoryName(doc.category)}</div>
+          ${doc.excerpt ? `<div class="search-result-excerpt">${highlightText(doc.excerpt, query)}</div>` : ''}
+          <div class="search-result-date">${doc.date}</div>
         </a>
       `).join('');
     }
     
     searchResults.style.display = 'block';
+    selectedIndex = -1;
   }
   
-  // 点击其他地方隐藏搜索结果
+  // 更新统计信息
+  function updateStats(count, query) {
+    if (count > 0) {
+      searchStats.innerHTML = `找到 <strong>${count}</strong> 个相关文档`;
+      searchStats.classList.add('show');
+    } else {
+      searchStats.classList.remove('show');
+    }
+  }
+  
+  // 显示加载状态
+  function showLoading() {
+    searchResults.innerHTML = '<div class="search-loading">搜索中...</div>';
+    searchResults.style.display = 'block';
+    searchStats.classList.remove('show');
+  }
+  
+  // 隐藏结果
+  function hideResults() {
+    searchResults.style.display = 'none';
+    searchStats.classList.remove('show');
+    selectedIndex = -1;
+  }
+  
+  // 高亮文本
+  function highlightText(text, query) {
+    if (!query) return text;
+    const regex = new RegExp(`(${query})`, 'gi');
+    return text.replace(regex, '<span class="search-highlight">$1</span>');
+  }
+  
+  // 获取分类名称
+  function getCategoryName(category) {
+    const categoryNames = {
+      'cloudnative': '🚀 DevOps & 云原生',
+      'llm': '🤖 大语言模型',
+      'web3': '⛓️ Web3'
+    };
+    return categoryNames[category] || category;
+  }
+  
+  // 点击外部隐藏结果
   document.addEventListener('click', function(e) {
-    if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-      searchResults.style.display = 'none';
+    if (!e.target.closest('.docs-search')) {
+      hideResults();
     }
   });
+  
+  // 键盘导航
+  searchInput.addEventListener('keydown', function(e) {
+    const items = searchResults.querySelectorAll('.search-result-item');
+    
+    switch(e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        selectedIndex = Math.min(selectedIndex + 1, items.length - 1);
+        updateSelection(items);
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        selectedIndex = Math.max(selectedIndex - 1, -1);
+        updateSelection(items);
+        break;
+      case 'Enter':
+        if (selectedIndex >= 0 && items[selectedIndex]) {
+          e.preventDefault();
+          items[selectedIndex].click();
+        }
+        break;
+      case 'Escape':
+        hideResults();
+        searchInput.blur();
+        break;
+    }
+  });
+  
+  // 更新选中状态
+  function updateSelection(items) {
+    items.forEach((item, index) => {
+      item.classList.toggle('selected', index === selectedIndex);
+    });
+  }
 });
 </script>

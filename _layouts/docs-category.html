@@ -1,7 +1,24 @@
 <!-- _layouts/docs-category.html -->
----
-layout: default
----
+
+<header>
+  <div class="container">
+    <div class="header-content">
+      <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
+      <nav>
+        <ul>
+          {% for item in site.navigation %}
+            <li>
+              <a href="{{ item.url | relative_url }}" 
+                 class="{% if page.url == item.url %}active{% endif %}">
+                {{ item.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
 
 <div class="docs-category">
   <div class="category-header {{ page.category }}">
@@ -17,6 +34,11 @@ layout: default
   
   <div class="docs-content">
     <div class="sidebar">
+      <div class="sidebar-section">
+        <h3>🔍 搜索文档</h3>
+        {% include docs-search.html %}
+      </div>
+      
       <div class="sidebar-section">
         <h3>📚 文档目录</h3>
         <ul class="docs-nav">
@@ -83,3 +105,70 @@ layout: default
 </div>
 
 <link rel="stylesheet" href="/assets/css/docs.css">
+
+<style>
+  /* 导航栏样式 */
+  header {
+    border-bottom: 1px solid #e1e4e8;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+  }
+  
+  .site-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #24292e;
+    text-decoration: none;
+  }
+  
+  .site-title:hover {
+    color: #0366d6;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+  }
+  
+  nav a {
+    color: #586069;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  nav a:hover,
+  nav a.active {
+    color: #0366d6;
+  }
+  
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    nav ul {
+      gap: 1rem;
+    }
+  }
+</style>

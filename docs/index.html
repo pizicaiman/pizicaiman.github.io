@@ -10,8 +10,7 @@ permalink: /docs/
     <p class="subtitle">探索云原生、人工智能与区块链的技术实践</p>
     
     <div class="search-box">
-      <input type="text" id="searchInput" placeholder="搜索文档...">
-      <span class="search-icon">🔍</span>
+      {% include docs-search.html %}
     </div>
   </header>
 
@@ -342,10 +341,3 @@ permalink: /docs/
   }
 }
 </style>
-
-<script>
-document.getElementById('searchInput').addEventListener('input', function(e) {
-  const searchTerm = e.target.value.toLowerCase();
-  // 实现搜索功能
-});
-</script>

@@ -1,0 +1,5 @@
+# Jekyll build output
+_site/
+
+# Other common files to ignore
+*.log
