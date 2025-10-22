@@ -18,7 +18,6 @@ layout: default
     <main class="doc-main">
       <article class="doc-content">
         <h1>{{ page.title }}</h1>
-        
         <div class="doc-meta">
           {% if page.date %}
             <span class="doc-date">更新时间: {{ page.date | date: site.date_format }}</span>
@@ -30,7 +29,6 @@ layout: default
             <span class="doc-category">分类: {{ page.category }}</span>
           {% endif %}
         </div>
-        
         <div class="doc-body">
           {{ content }}
         </div>
@@ -45,7 +43,7 @@ layout: default
 .doc-page {
   max-width: 100%;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 0.1rem 0.1rem;
 }
 
 .doc-layout {
@@ -64,7 +62,7 @@ layout: default
   max-height: calc(100vh - 4rem);
   overflow-y: auto;
   border-right: 1px solid #e1e4e8;
-  padding-right: 1rem;
+  padding-right: 2rem;
 }
 
 .doc-sidebar h3 {
@@ -148,32 +146,27 @@ layout: default
 
 .doc-content h1 {
   margin-top: 0;
-  border-bottom: 1px solid #e1e4e8;
-  padding-bottom: 1rem;
+  padding-bottom: 0rem;
 }
 
 .doc-meta {
   display: flex;
-  gap: 1.5rem;
-  margin: 1.5rem 0;
-  padding: 1rem 0;
-  border-top: 1px solid #e1e4e8;
-  border-bottom: 1px solid #e1e4e8;
+  gap: 0.75rem;
+  margin: 0.25rem 0;
+  padding: 0rem 0;
   color: #6a737d;
   font-size: 0.9rem;
 }
 
 .doc-body {
   line-height: 1.7;
-  margin-top: 2rem;
+  margin-top: 0.25rem;
   max-width: 100%;
 }
 
 .doc-body h2 {
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e1e4e8;
-  scroll-margin-top: 2rem;
 }
 
 .doc-body h3 {

@@ -30,13 +30,16 @@ permalink: /docs/
   </div>
   
   <div class="category-grid">
-    {% for category in site.categories %}
+    {% assign sorted_categories = site.categories | sort %}
+    {% for category in sorted_categories %}
       <div class="category-card">
         <div class="category-icon">
           {% case category[0] %}
             {% when "cloudnative" %}🚀
             {% when "llm" %}🤖
             {% when "web3" %}⛓️
+            {% when "physics" %}⚛️
+            {% when "maths" %}📚
           {% endcase %}
         </div>
         <h2>
@@ -45,6 +48,8 @@ permalink: /docs/
               {% when "cloudnative" %}DevOps & 云原生
               {% when "llm" %}大语言模型
               {% when "web3" %}Web3
+              {% when "physics" %}物理学
+              {% when "maths" %}数学
             {% endcase %}
           </a>
         </h2>
@@ -56,6 +61,12 @@ permalink: /docs/
               大模型应用开发、提示工程、向量数据库、AI 架构设计等前沿技术探索。
             {% when "web3" %}
               区块链应用、智能合约开发、去中心化存储、跨链技术等 Web3 实践总结。
+            {% when "physics" %}
+              物理基础理论、计算物理、量子计算、相对论等物理科学知识与应用。
+            {% when "maths" %}
+              数学基础理论、计算物理、量子计算、相对论等数学科学知识与应用。
+            {% else %}
+              更多技术文档正在整理中...
           {% endcase %}
         </p>
         <div class="category-meta">
@@ -87,70 +98,34 @@ permalink: /docs/
 
 <style>
 :root {
-  --primary-color: #2563eb;
-  --secondary-color: #3b82f6;
-  --text-color: #1f2937;
-  --light-bg: #f3f4f6;
-  --border-color: #e5e7eb;
-  --hover-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --primary-color: #0366d6;
+  --border-color: #e1e4e8;
+  --bg-color: #f6f8fa;
+  --text-color: #24292e;
+  --light-text: #586069;
 }
 
 .docs-home {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .docs-header {
   text-align: center;
   margin-bottom: 3rem;
-  padding: 2rem 0;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  border-radius: 1rem;
-  width: 100%;
 }
 
 .docs-header h1 {
   font-size: 2.5rem;
-  color: var(--text-color);
   margin-bottom: 1rem;
+  color: var(--text-color);
 }
 
 .subtitle {
   font-size: 1.2rem;
-  color: #64748b;
+  color: var(--light-text);
   margin-bottom: 2rem;
-}
-
-.search-box {
-  position: relative;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.search-box input {
-  width: 100%;
-  padding: 1rem 3rem 1rem 1.5rem;
-  border: 2px solid var(--border-color);
-  border-radius: 2rem;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-.search-box input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
-
-.search-icon {
-  position: absolute;
-  right: 1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .stats-bar {
@@ -158,11 +133,7 @@ permalink: /docs/
   justify-content: center;
   gap: 3rem;
   margin-bottom: 3rem;
-  padding: 2rem;
-  background: white;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  width: 100%;
+  flex-wrap: wrap;
 }
 
 .stat-item {
@@ -178,46 +149,42 @@ permalink: /docs/
 
 .stat-label {
   font-size: 0.9rem;
-  color: #64748b;
+  color: var(--light-text);
 }
 
 .category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin-bottom: 4rem;
-  width: 100%;
+  margin-bottom: 3rem;
 }
 
 .category-card {
-  background: white;
-  border-radius: 1rem;
-  padding: 2rem;
-  transition: all 0.3s ease;
   border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+  background: white;
 }
 
 .category-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--hover-shadow);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
 .category-icon {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
-  text-align: center;
 }
 
 .category-card h2 {
   margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-  text-align: center;
+  font-size: 1.3rem;
 }
 
 .category-card h2 a {
-  text-decoration: none;
   color: var(--text-color);
-  transition: color 0.3s ease;
+  text-decoration: none;
 }
 
 .category-card h2 a:hover {
@@ -225,107 +192,107 @@ permalink: /docs/
 }
 
 .category-card p {
-  color: #64748b;
+  color: var(--light-text);
   line-height: 1.6;
   margin-bottom: 1.5rem;
-  text-align: center;
 }
 
 .category-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-color);
+  font-size: 0.9rem;
 }
 
 .doc-count {
-  color: #64748b;
-  font-size: 0.9rem;
+  color: var(--light-text);
 }
 
 .read-more {
   color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
-  transition: opacity 0.3s ease;
 }
 
 .read-more:hover {
-  opacity: 0.8;
+  text-decoration: underline;
 }
 
 .recent-updates {
-  background: white;
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  width: 100%;
+  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
 }
 
 .recent-updates h2 {
+  text-align: center;
   margin-bottom: 2rem;
   color: var(--text-color);
-  text-align: center;
 }
 
 .updates-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .update-card {
-  padding: 1.5rem;
   border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
-}
-
-.update-card:hover {
-  box-shadow: var(--hover-shadow);
+  border-radius: 6px;
+  padding: 1.25rem;
+  background: white;
 }
 
 .update-date {
-  font-size: 0.9rem;
-  color: #64748b;
+  font-size: 0.85rem;
+  color: var(--light-text);
 }
 
 .update-card h3 {
-  margin: 0.5rem 0;
-  font-size: 1.2rem;
+  margin: 0.5rem 0 0.75rem 0;
+  font-size: 1.1rem;
 }
 
 .update-card h3 a {
   color: var(--text-color);
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
 .update-card h3 a:hover {
   color: var(--primary-color);
 }
 
+.update-card p {
+  color: var(--light-text);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 1rem;
-  justify-content: center;
 }
 
 .tag {
-  background: var(--light-bg);
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
+  background: var(--bg-color);
+  color: var(--light-text);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
   font-size: 0.8rem;
-  color: var(--text-color);
 }
 
 @media (max-width: 768px) {
+  .docs-home {
+    padding: 1rem;
+  }
+  
   .stats-bar {
-    flex-direction: column;
     gap: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
   }
   
   .category-grid {
@@ -334,10 +301,6 @@ permalink: /docs/
   
   .updates-grid {
     grid-template-columns: 1fr;
-  }
-  
-  .docs-home {
-    padding: 1rem 0.5rem;
   }
 }
 </style>

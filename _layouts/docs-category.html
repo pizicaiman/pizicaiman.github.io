@@ -26,7 +26,9 @@
       {% case page.category %}
         {% when "cloudnative" %}🚀 DevOps & 云原生文档
         {% when "llm" %}🤖 大语言模型文档
+        {% when "maths" %}🔢 数学文档
         {% when "web3" %}⛓️ Web3 文档
+        {% when "physics" %}⚛️ 物理文档
       {% endcase %}
     </h1>
     <p>{{ page.description }}</p>
@@ -49,20 +51,12 @@
           {% endfor %}
         </ul>
       </div>
+
     </div>
     
     <div class="main-content">
       <div class="doc-content">
         <h1>{{ page.title }}</h1>
-        
-        <!-- <div class="doc-meta">
-          {% if page.date %}
-            <span class="doc-date">📅 更新时间: {{ page.date | date: site.date_format }}</span>
-          {% endif %}
-          {% if page.author %}
-            <span class="doc-author">✍️ 作者: {{ page.author }}</span>
-          {% endif %}
-        </div> -->
         
         <div class="doc-body">
           {{ content }}

@@ -1,6 +1,6 @@
 # 基本配置
 title: Pizicai's Tech Blog
-description: 技术探索与实践 | DevOps | LLM | Web3
+description: 技术探索与实践 | DevOps | LLM | Web3 | Physics
 author: Pizicai
 url: "https://pizicaiman.github.io"
 baseurl: ""
@@ -32,11 +32,23 @@ defaults:
       layout: "doc"
       category: "llm"
   - scope:
+      path: "docs/maths"
+      type: "pages"
+    values:
+      layout: "doc"
+      category: "maths"
+  - scope:
       path: "docs/web3"
       type: "pages"
     values:
       layout: "doc"
       category: "web3"
+  - scope:
+      path: "docs/physics"
+      type: "pages"
+    values:
+      layout: "doc"
+      category: "physics"
   - scope:
       path: ""
       type: "posts"
@@ -47,17 +59,23 @@ defaults:
 navigation:
   - title: 首页
     url: /
+  - title: 文档
+    url: /docs/
   - title: DevOps
     url: /docs/cloudnative/
     category: cloudnative
   - title: LLM
     url: /docs/llm/
     category: llm
+  - title: Maths
+    url: /docs/maths/
+    category: maths
+  - title: Physics
+    url: /docs/physics/
+    category: physics
   - title: Web3
     url: /docs/web3/
     category: web3
-  - title: 文档
-    url: /docs/
   - title: 关于
     url: /about/
 
@@ -65,6 +83,8 @@ navigation:
 categories: 
   - cloudnative
   - llm
+  - maths
+  - physics
   - web3
 
 # 插件配置
@@ -99,19 +119,3 @@ social:
 # SEO 优化
 twitter:
   username: pizicaiman
-  card: summary_large_image
-
-# Google Analytics
-google_analytics: # 你的 GA ID
-
-# 评论系统设置
-comments:
-  provider: # 比如 disqus, gitalk 等
-
-# 站点地图设置
-sitemap:
-  filename: "/sitemap.xml"
-  exclude:
-    - "/atom.xml"
-    - "/feed.xml"
-    - "/feed/index.xml"
