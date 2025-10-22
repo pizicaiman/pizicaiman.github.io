@@ -35,7 +35,7 @@ permalink: /docs/
       <div class="category-card">
         <div class="category-icon">
           {% case category[0] %}
-            {% when "devops" %}🚀
+            {% when "cloudnative" %}🚀
             {% when "llm" %}🤖
             {% when "web3" %}⛓️
           {% endcase %}
@@ -43,7 +43,7 @@ permalink: /docs/
         <h2>
           <a href="/docs/{{ category[0] }}/">
             {% case category[0] %}
-              {% when "devops" %}DevOps & 云原生
+              {% when "cloudnative" %}DevOps & 云原生
               {% when "llm" %}大语言模型
               {% when "web3" %}Web3
             {% endcase %}
@@ -51,7 +51,7 @@ permalink: /docs/
         </h2>
         <p>
           {% case category[0] %}
-            {% when "devops" %}
+            {% when "cloudnative" %}
               容器编排、持续集成/部署、微服务架构、服务网格、云原生应用等技术实践。
             {% when "llm" %}
               大模型应用开发、提示工程、向量数据库、AI 架构设计等前沿技术探索。
