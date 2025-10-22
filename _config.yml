@@ -1,6 +1,6 @@
 # 基本配置
 title: Pizicai's Tech Blog
-description: 技术探索与实践 | DevOps | LLM | Web3 | Physics | Finance | Management | Security
+description: 技术探索与实践 | DevOps | LLM | Web3 | Physics | Finance | Management | Security | Philosophy
 author: Pizicai
 url: "https://pizicaiman.github.io"
 baseurl: ""
@@ -68,6 +68,12 @@ defaults:
       layout: "doc"
       category: "security"
   - scope:
+      path: "docs/philosophy"
+      type: "pages"
+    values:
+      layout: "doc"
+      category: "philosophy"
+  - scope:
       path: ""
       type: "posts"
     values:
@@ -98,6 +104,9 @@ navigation:
   - title: Security
     url: /docs/security/
     category: security
+  - title: Philosophy
+    url: /docs/philosophy/
+    category: philosophy
   - title: Web3
     url: /docs/web3/
     category: web3
@@ -113,6 +122,7 @@ categories:
   - finance
   - management
   - security
+  - philosophy
   - web3
 
 # 插件配置

@@ -42,6 +42,7 @@ permalink: /docs/
             {% when "finance" %}💰
             {% when "management" %}🎯
             {% when "security" %}🔒
+            {% when "philosophy" %}🧠
             {% else %}📚
           {% endcase %}
         </div>
@@ -55,6 +56,7 @@ permalink: /docs/
               {% when "finance" %}财经
               {% when "management" %}管理
               {% when "security" %}信息安全
+              {% when "philosophy" %}哲学文化
               {% else %}{{ category[0] | capitalize }}
             {% endcase %}
           </a>
@@ -75,6 +77,8 @@ permalink: /docs/
               项目管理、团队管理、组织行为、领导力等管理学理论与实践。
             {% when "security" %}
               网络安全、数据保护、加密技术、安全运维等信息安全领域知识与实践。
+            {% when "philosophy" %}
+              东西方哲学思想、文化比较研究、思辨方法、人文思考等哲学文化领域内容。
             {% else %}
               更多技术文档正在整理中...
           {% endcase %}

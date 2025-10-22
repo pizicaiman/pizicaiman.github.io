@@ -77,6 +77,10 @@
   background-color: #e74c3c;
 }
 
+.category-header.philosophy {
+  background-color: #34495e;
+}
+
 .category-header.web3 {
   background-image: url('/assets/images/web3-bg.jpg');
   background-color: #2ecc71;
