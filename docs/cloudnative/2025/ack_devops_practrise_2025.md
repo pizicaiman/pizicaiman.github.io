@@ -5,6 +5,7 @@ date: 2025-02-01
 category: cloudnative
 tags: [kubernetes, devops, alibaba-cloud, cicd]
 excerpt: 深入探讨阿里云ACK环境下的DevOps实践、持续集成/部署及自动化运维
+author: [pizicaiman](https://github.com/pizicaiman)
 ---
 
 ## 目录

@@ -5,6 +5,7 @@ date: 2025-02-05
 category: cloudnative
 tags: [kubernetes, llm, alibaba-cloud, ai]
 excerpt: 详细探讨在阿里云ACK环境中部署和运维大语言模型的最佳实践
+author: [pizicaiman](https://github.com/pizicaiman)
 ---
 
 ## 目录

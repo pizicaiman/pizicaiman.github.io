@@ -5,6 +5,7 @@ date: 2025-01-30
 category: cloudnative
 tags: [kubernetes, container, alibaba-cloud, docker]
 excerpt: 深入探讨阿里云ACK环境下的容器化最佳实践、镜像管理及运行时优化
+author: [pizicaiman](https://github.com/pizicaiman)
 ---
 
 ## 目录

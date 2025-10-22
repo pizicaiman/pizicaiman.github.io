@@ -5,6 +5,7 @@ date: 2025-01-25
 category: cloudnative
 tags: [kubernetes, cloud-native, alibaba-cloud, ack]
 excerpt: SRE运维技能与职业发展
+author: [pizicaiman](https://github.com/pizicaiman)
 ---
 
 ## 目录

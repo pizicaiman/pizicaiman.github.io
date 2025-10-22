@@ -5,6 +5,7 @@ date: 2025-01-15
 category: cloudnative
 tags: [kubernetes, security, certification, cks]
 excerpt: 全面解析CKS认证考试要点、核心概念及实战技巧
+author: [pizicaiman](https://github.com/pizicaiman)
 ---
 
 # CKS (Certified Kubernetes Security Specialist) 认证实战指南
