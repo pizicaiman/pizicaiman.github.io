@@ -2,6 +2,7 @@
 layout: doc
 title: 阿里云ACK DevOps实践指南
 date: 2025-02-01
+author: Pizicai
 category: cloudnative
 tags: [kubernetes, devops, alibaba-cloud, cicd]
 excerpt: 深入探讨阿里云ACK环境下的DevOps实践、持续集成/部署及自动化运维

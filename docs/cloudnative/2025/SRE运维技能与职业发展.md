@@ -2,6 +2,7 @@
 layout: doc
 title: SRE运维技能与职业发展
 date: 2025-01-25
+author: Pizicai
 category: cloudnative
 tags: [kubernetes, cloud-native, alibaba-cloud, ack]
 excerpt: SRE运维技能与职业发展

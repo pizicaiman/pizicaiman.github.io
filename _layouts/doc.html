@@ -39,70 +39,64 @@ layout: default
   </div>
 </div>
 
+<link rel="stylesheet" href="/assets/css/docs.css">
+
 <style>
 .doc-page {
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
 
 .doc-layout {
   display: grid;
-  grid-template-columns: 250px 1fr 280px;
-  gap: 3rem;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
   align-items: start;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 /* 左侧大纲导航 */
 .doc-sidebar {
   position: sticky;
   top: 2rem;
-  background: #f8f9fa;
-  border-radius: 8px;
-  padding: 1.5rem;
-  border: 1px solid #e1e4e8;
   max-height: calc(100vh - 4rem);
   overflow-y: auto;
-  margin-right: 1rem;
+  border-right: 1px solid #e1e4e8;
+  padding-right: 1rem;
 }
 
-.toc-container h3 {
-  margin: 0 0 1rem 0;
-  font-size: 1.1rem;
-  color: #24292e;
-  border-bottom: 1px solid #e1e4e8;
+.doc-sidebar h3 {
+  margin-top: 0;
   padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e1e4e8;
+  color: #24292e;
 }
 
-.toc-nav {
+.toc-nav ul {
   list-style: none;
-  padding: 0;
+  padding-left: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
 }
 
 .toc-nav li {
-  margin-bottom: 0.5rem;
-  display: block;
-  width: 100%;
+  margin-bottom: 0.25rem;
 }
 
 .toc-nav a {
   display: block;
-  width: 100%;
   padding: 0.5rem 0.75rem;
   text-decoration: none;
   color: #586069;
-  font-size: 0.9rem;
   border-radius: 4px;
   transition: all 0.2s;
-  border-left: 3px solid transparent;
-  box-sizing: border-box;
+  font-size: 0.9rem;
+  border-left: 2px solid transparent;
 }
 
 .toc-nav a:hover {
-  background-color: #e1e4e8;
+  background-color: #f6f8fa;
   color: #0366d6;
 }
 
@@ -114,6 +108,7 @@ layout: default
 
 .toc-nav .toc-h2 {
   padding-left: 1rem;
+  font-weight: 600;
 }
 
 .toc-nav .toc-h3 {
@@ -148,7 +143,7 @@ layout: default
 /* 中间文章内容 */
 .doc-main {
   min-width: 0;
-  margin-left: 1rem;
+  max-width: 100%;
 }
 
 .doc-content h1 {
@@ -171,6 +166,7 @@ layout: default
 .doc-body {
   line-height: 1.7;
   margin-top: 2rem;
+  max-width: 100%;
 }
 
 .doc-body h2 {
@@ -190,6 +186,11 @@ layout: default
   scroll-margin-top: 2rem;
 }
 
+.doc-body p {
+  line-height: 1.8;
+  text-align: justify;
+}
+
 .doc-body code {
   background-color: #f6f8fa;
   padding: 0.2em 0.4em;
@@ -207,16 +208,12 @@ layout: default
 /* 响应式设计 */
 @media (max-width: 1200px) {
   .doc-layout {
-    grid-template-columns: 200px 1fr 250px;
-    gap: 2.5rem;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
   }
   
   .doc-sidebar {
     margin-right: 0.75rem;
-  }
-  
-  .doc-main {
-    margin-left: 0.75rem;
   }
 }
 
@@ -231,18 +228,11 @@ layout: default
     max-height: none;
     margin-left: 0;
     margin-right: 0;
-  }
-  
-  .doc-main {
-    margin-left: 0;
-  }
-  
-  .doc-sidebar {
-    order: 2;
-  }
-  
-  .doc-main {
-    order: 1;
+    border-right: none;
+    border-bottom: 1px solid #e1e4e8;
+    padding-right: 0;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -294,7 +284,7 @@ function generateTableOfContents() {
     
     // 创建大纲项
     const li = document.createElement('li');
-    li.style.marginBottom = '0.5rem';
+    li.style.marginBottom = '0.25rem';
     li.style.display = 'block';
     li.style.width = '100%';
     
@@ -310,23 +300,10 @@ function generateTableOfContents() {
     a.style.fontSize = '0.9rem';
     a.style.borderRadius = '4px';
     a.style.transition = 'all 0.2s';
-    a.style.borderLeft = '3px solid transparent';
-    a.style.boxSizing = 'border-box';
+    a.style.borderLeft = '2px solid transparent';
     
-    // 根据标题级别设置不同的缩进
-    if (heading.tagName === 'H2') {
-      a.style.paddingLeft = '1rem';
-    } else if (heading.tagName === 'H3') {
-      a.style.paddingLeft = '1.5rem';
-      a.style.fontSize = '0.85rem';
-    } else if (heading.tagName === 'H4') {
-      a.style.paddingLeft = '2rem';
-      a.style.fontSize = '0.8rem';
-    }
-    
-    // 添加悬停效果
     a.addEventListener('mouseenter', function() {
-      this.style.backgroundColor = '#e1e4e8';
+      this.style.backgroundColor = '#f6f8fa';
       this.style.color = '#0366d6';
     });
     
@@ -341,7 +318,6 @@ function generateTableOfContents() {
     tocList.appendChild(li);
   });
   
-  tocNav.innerHTML = '';
   tocNav.appendChild(tocList);
 }
 

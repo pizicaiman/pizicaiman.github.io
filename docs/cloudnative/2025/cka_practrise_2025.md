@@ -2,6 +2,7 @@
 layout: doc
 title: CKA认证考试实战指南
 date: 2025-01-20
+author: Pizicai
 category: cloudnative
 tags: [kubernetes, certification, cka, cloud-native]
 excerpt: 详解CKA认证考试重点、核心概念及实战经验分享

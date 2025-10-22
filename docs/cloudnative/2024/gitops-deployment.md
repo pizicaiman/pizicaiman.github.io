@@ -2,6 +2,7 @@
 layout: doc
 title: GitOps持续部署方案
 date: 2024-01-25
+author: Pizicai
 category: cloudnative
 tags: [gitops, kubernetes, ci/cd]
 excerpt: 基于GitOps的持续部署实践方案

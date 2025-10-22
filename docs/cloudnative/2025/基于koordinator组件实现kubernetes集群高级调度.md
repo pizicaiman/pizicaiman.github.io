@@ -2,6 +2,7 @@
 layout: doc
 title: 基于 Koordinator 组件实现 Kubernetes 集群高级调度
 date: 2025-10-21
+author: Pizicai
 category: cloudnative
 tags: [kubernetes, cloud-native, alibaba-cloud, ack]
 excerpt: 基于 Koordinator 组件实现 Kubernetes 集群高级调度

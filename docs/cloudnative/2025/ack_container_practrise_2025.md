@@ -2,6 +2,7 @@
 layout: doc
 title: 阿里云ACK容器实践指南
 date: 2025-01-30
+author: Pizicai
 category: cloudnative
 tags: [kubernetes, container, alibaba-cloud, docker]
 excerpt: 深入探讨阿里云ACK环境下的容器化最佳实践、镜像管理及运行时优化

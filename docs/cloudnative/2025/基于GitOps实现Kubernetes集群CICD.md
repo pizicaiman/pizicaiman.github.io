@@ -2,6 +2,7 @@
 layout: doc
 title: 基于GitOps实现Kubernetes集群CICD
 date: 2025-10-21
+author: Pizicai
 category: cloudnative
 tags: [kubernetes, cloud-native, alibaba-cloud, ack]
 excerpt: 基于GitOps实现Kubernetes集群CICD
