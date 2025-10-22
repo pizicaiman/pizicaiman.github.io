@@ -2,7 +2,7 @@
 layout: doc
 title: CKS认证考试实战指南
 date: 2025-01-15
-category: devops
+category: cloudnative
 tags: [kubernetes, security, certification, cks]
 excerpt: 全面解析CKS认证考试要点、核心概念及实战技巧
 ---

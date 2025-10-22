@@ -2,7 +2,7 @@
 layout: doc
 title: Kubernetes下通过ArgoCD实现多集群部署
 date: 2025-01-25
-category: devops
+category: cloudnative
 tags: [kubernetes, cloud-native, alibaba-cloud, ack]
 excerpt: 深入解析阿里云ACK集群架构设计、最佳实践及企业级应用案例
 ---
