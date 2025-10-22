@@ -20,11 +20,11 @@ collections:
 # 默认布局设置
 defaults:
   - scope:
-      path: "docs/devops"
+      path: "docs/cloudnative"
       type: "pages"
     values:
       layout: "doc"
-      category: "devops"
+      category: "cloudnative"
   - scope:
       path: "docs/llm"
       type: "pages"
@@ -48,8 +48,8 @@ navigation:
   - title: 首页
     url: /
   - title: DevOps
-    url: /docs/devops/
-    category: devops
+    url: /docs/cloudnative/
+    category: cloudnative
   - title: LLM
     url: /docs/llm/
     category: llm
@@ -63,7 +63,7 @@ navigation:
 
 # 分类设置
 categories: 
-  - devops
+  - cloudnative
   - llm
   - web3
 

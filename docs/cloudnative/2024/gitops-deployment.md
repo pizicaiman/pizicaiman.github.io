@@ -2,10 +2,10 @@
 layout: doc
 title: GitOps持续部署方案
 date: 2024-01-25
-category: devops
+category: cloudnative
 tags: [gitops, kubernetes, ci/cd]
 excerpt: 基于GitOps的持续部署实践方案
-permalink: /docs/devops/2024/gitops-deployment/
+permalink: /docs/cloudnative/2024/gitops-deployment/
 ---
 
 # GitOps持续部署方案

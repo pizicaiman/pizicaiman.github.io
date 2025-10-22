@@ -2,7 +2,7 @@
 layout: doc
 title: 阿里云ACK大语言模型部署实践
 date: 2025-02-05
-category: devops
+category: cloudnative
 tags: [kubernetes, llm, alibaba-cloud, ai]
 excerpt: 详细探讨在阿里云ACK环境中部署和运维大语言模型的最佳实践
 ---

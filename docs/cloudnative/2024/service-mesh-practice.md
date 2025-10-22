@@ -2,7 +2,7 @@
 layout: post
 title: 服务网格实践指南
 date: 2024-01-20
-category: devops
+category: cloudnative
 tags: [service-mesh, istio, kubernetes, microservices]
 excerpt: 深入探讨服务网格技术原理、部署实践及最佳实践方案
 ---

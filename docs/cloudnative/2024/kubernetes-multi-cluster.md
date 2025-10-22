@@ -2,10 +2,10 @@
 layout: doc
 title: Kubernetes多集群管理实践
 date: 2024-01-20
-category: devops
+category: cloudnative
 tags: [kubernetes, multi-cluster, gitops]
 excerpt: 探讨在多云环境下Kubernetes集群的统一管理方案
-permalink: /docs/devops/2024/kubernetes-multi-cluster/
+permalink: /docs/cloudnative/2024/kubernetes-multi-cluster/
 ---
 
 ## 背景
