@@ -192,28 +192,6 @@ title: Pizicai's Tech Blog
     </ul>
   </div>
 
-  <div class="grid section">
-    <div class="panel">
-      <h3>🔍 最近更新</h3>
-      <ul class="recent-list">
-        {% for post in site.posts limit:5 %}
-          <li>
-            <time>{{ post.date | date: "%Y-%m-%d" }}</time>
-            <a href="{{ post.url }}">{{ post.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div class="panel">
-      <h3>🏷️ 标签云</h3>
-      <div class="tag-cloud">
-        {% for tag in site.tags %}
-          <a href="/tags/{{ tag[0] }}" style="font-size: {{ tag[1].size | times: 4 | plus: 80 }}%">{{ tag[0] }}</a>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-
   <div class="section github-stats">
     <h2>📊 GitHub 统计</h2>
     <img alt="GitHub统计" src="https://github-readme-stats.vercel.app/api?username=pizicaiman&show_icons=true" />
