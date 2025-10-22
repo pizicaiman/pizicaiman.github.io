@@ -1,199 +1,100 @@
-<!-- _layouts/default.html -->
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> - Pizicai's Tech Blog</title>
-    <meta name="description" content="技术探索与实践 | DevOps | LLM | Web3">
-    
-    <!-- SEO 标签 -->
-    <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Pizicai’s Tech Blog | 技术探索与实践 DevOps LLM Web3</title>
-<meta name="generator" content="Jekyll v3.9.5" />
-<meta property="og:title" content="Pizicai’s Tech Blog" />
-<meta name="author" content="Pizicai" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="技术探索与实践 DevOps LLM Web3" />
-<meta property="og:description" content="技术探索与实践 DevOps LLM Web3" />
-<link rel="canonical" href="http://localhost:4000/docs/llm/" />
-<meta property="og:url" content="http://localhost:4000/docs/llm/" />
-<meta property="og:site_name" content="Pizicai’s Tech Blog" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Pizicai’s Tech Blog" />
-<meta name="twitter:site" content="@pizicaiman" />
-<meta name="twitter:creator" content="@Pizicai" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Pizicai"},"description":"技术探索与实践 DevOps LLM Web3","headline":"Pizicai’s Tech Blog","url":"http://localhost:4000/docs/llm/"}</script>
-<!-- End Jekyll SEO tag -->
+<!-- _layouts/docs-category.html -->
+---
+layout: default
+---
 
-    
-    <!-- 代码高亮 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-    
-    <style>
-      /* 基础样式 */
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-        line-height: 1.5;
-        color: #24292e;
-        margin: 0;
-      }
-      
-      .container {
-        max-width: 1800px;
-        margin: 0 auto;
-        padding: 0 1rem;
-      }
-      
-      header {
-        border-bottom: 1px solid #e1e4e8;
-        background-color: white;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-      
-      .header-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 0;
-      }
-      
-      .site-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #24292e;
-        text-decoration: none;
-      }
-      
-      nav ul {
-        display: flex;
-        list-style: none;
-        gap: 1.5rem;
-      }
-      
-      nav a {
-        text-decoration: none;
-        color: #586069;
-        font-weight: 500;
-        transition: color 0.2s;
-      }
-      
-      nav a:hover {
-        color: #0366d6;
-      }
-      
-      main {
-        min-height: calc(100vh - 120px);
-        padding: 2rem 0;
-      }
-      
-      footer {
-        border-top: 1px solid #e1e4e8;
-        padding: 2rem 0;
-        text-align: center;
-        color: #6a737d;
-        font-size: 0.9rem;
-      }
-      
-      @media (max-width: 768px) {
-        .header-content {
-          flex-direction: column;
-          gap: 1rem;
-        }
+<div class="docs-category">
+  <div class="category-header llm">
+    <h1>
+      🤖 大语言模型文档
         
-        nav ul {
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <div class="header-content">
-          <a href="/" class="site-title">Pizicai's Tech Blog</a>
-          <nav>
-            <ul>
+    </h1>
+    <p>关于大语言模型应用、Prompt Engineering、向量数据库等 AI 技术的深入分析和实践指南。</p>
+  </div>
+  
+  <div class="docs-content">
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <h3>📚 文档目录</h3>
+        <ul class="docs-nav">
+          
+          
+            <li>
+              <a href="/docs/llm/2024/vector-db-comparison/" class="">
+                向量数据库选型对比
+              </a>
               
-                <li>
-                  <a href="/" 
-                     class="">
-                    首页
-                  </a>
-                </li>
+                <span class="doc-date">2024-02-20</span>
               
-                <li>
-                  <a href="/docs/devops/" 
-                     class="">
-                    DevOps
-                  </a>
-                </li>
+            </li>
+          
+            <li>
+              <a href="/docs/llm/2024/enterprise-llm-arch/" class="">
+                企业级LLM应用架构设计
+              </a>
               
-                <li>
-                  <a href="/docs/llm/" 
-                     class="active">
-                    LLM
-                  </a>
-                </li>
+                <span class="doc-date">2024-02-15</span>
               
-                <li>
-                  <a href="/docs/web3/" 
-                     class="">
-                    Web3
-                  </a>
-                </li>
+            </li>
+          
+            <li>
+              <a href="/docs/llm/2025/enterprise-llm-arch/" class="">
+                什么是N-Gram
+              </a>
               
-                <li>
-                  <a href="/docs/" 
-                     class="">
-                    文档
-                  </a>
-                </li>
+                <span class="doc-date">2024-02-15</span>
               
-                <li>
-                  <a href="/about/" 
-                     class="">
-                    关于
-                  </a>
-                </li>
+            </li>
+          
+            <li>
+              <a href="/docs/llm/2025/enterprise-llm-arch/" class="">
+                什么是Embedding
+              </a>
               
-            </ul>
-          </nav>
-        </div>
+                <span class="doc-date">2024-02-15</span>
+              
+            </li>
+          
+            <li>
+              <a href="/docs/llm/2025/enterprise-llm-arch/" class="">
+                什么是向量数据库
+              </a>
+              
+                <span class="doc-date">2024-02-15</span>
+              
+            </li>
+          
+            <li>
+              <a href="/docs/llm/2024/enterprise-llm-arch/" class="">
+                Fine-Tuning Guide for LLMs (2024)
+              </a>
+              
+                <span class="doc-date">2024-02-15</span>
+              
+            </li>
+          
+            <li>
+              <a href="/docs/llm/" class="active">
+                大语言模型文档
+              </a>
+              
+            </li>
+          
+        </ul>
       </div>
-    </header>
-    
-    <main>
-      <div class="container">
-        <div class="doc-page">
-  <article class="doc-content">
-    <h1></h1>
-    
-    <div class="doc-meta">
-      
-      
-      
-        <span class="doc-category">分类: llm</span>
-      
     </div>
     
-    <div class="doc-body">
-      <!-- docs/llm/index.md -->
-<hr />
-<p>layout: docs-category
-title: 大语言模型文档
-category: llm
-description: 关于大语言模型应用、Prompt Engineering、向量数据库等 AI 技术的深入分析和实践指南。
-permalink: /docs/llm/
-—</p>
-
-<p>本分类包含大语言模型相关的技术文档，涵盖模型应用架构、提示词工程、向量检索等关键技术和实践案例。</p>
+    <div class="main-content">
+      <div class="doc-content">
+        <h1>大语言模型文档</h1>
+        
+        <div class="doc-meta">
+          
+          
+        </div>
+        
+        <div class="doc-body">
+          <p>大语言模型相关的技术文档，涵盖模型应用架构、提示词工程、向量检索等关键技术和实践案例。</p>
 
 <h2 id="-文档概览">📖 文档概览</h2>
 
@@ -225,16 +126,6 @@ permalink: /docs/llm/
     </div>
   
     <div class="post-item">
-      <h3><a href="/docs/llm/2025/enterprise-llm-arch/">什么是向量数据库</a></h3>
-      <p class="post-meta">
-        <span class="post-date">📅 2024-02-15</span>
-      </p>
-      
-        <p class="post-excerpt">什么是向量数据库</p>
-      
-    </div>
-  
-    <div class="post-item">
       <h3><a href="/docs/llm/2025/enterprise-llm-arch/">什么是N-Gram</a></h3>
       <p class="post-meta">
         <span class="post-date">📅 2024-02-15</span>
@@ -255,6 +146,16 @@ permalink: /docs/llm/
     </div>
   
     <div class="post-item">
+      <h3><a href="/docs/llm/2025/enterprise-llm-arch/">什么是向量数据库</a></h3>
+      <p class="post-meta">
+        <span class="post-date">📅 2024-02-15</span>
+      </p>
+      
+        <p class="post-excerpt">什么是向量数据库</p>
+      
+    </div>
+  
+    <div class="post-item">
       <h3><a href="/docs/llm/2024/enterprise-llm-arch/">Fine-Tuning Guide for LLMs (2024)</a></h3>
       <p class="post-meta">
         <span class="post-date">📅 2024-02-15</span>
@@ -265,7 +166,7 @@ permalink: /docs/llm/
     </div>
   
     <div class="post-item">
-      <h3><a href="/docs/llm/"></a></h3>
+      <h3><a href="/docs/llm/">大语言模型文档</a></h3>
       <p class="post-meta">
         <span class="post-date">📅 </span>
       </p>
@@ -306,77 +207,41 @@ permalink: /docs/llm/
   </div>
 </div>
 
+        </div>
+        
+        <div class="doc-navigation">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+              
+              
+              
+                
+                <a href="/docs/llm/2024/enterprise-llm-arch/" class="prev-doc">
+                  ← Fine-Tuning Guide for LLMs ...
+                </a>
+              
+              
+              
+              
+              
+        </div>
+      </div>
     </div>
-  </article>
+  </div>
 </div>
 
-<style>
-.doc-page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-}
-
-.doc-meta {
-  display: flex;
-  gap: 1.5rem;
-  margin: 1.5rem 0;
-  padding: 1rem 0;
-  border-top: 1px solid #e1e4e8;
-  border-bottom: 1px solid #e1e4e8;
-  color: #6a737d;
-  font-size: 0.9rem;
-}
-
-.doc-body {
-  line-height: 1.7;
-  margin-top: 2rem;
-}
-
-.doc-body h2 {
-  margin-top: 2rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e1e4e8;
-}
-
-.doc-body h3 {
-  margin-top: 1.5rem;
-}
-
-.doc-body code {
-  background-color: #f6f8fa;
-  padding: 0.2em 0.4em;
-  border-radius: 3px;
-  font-family: monospace;
-}
-
-.doc-body pre {
-  background-color: #f6f8fa;
-  padding: 1rem;
-  border-radius: 6px;
-  overflow-x: auto;
-}
-</style>
-      </div>
-    </main>
-    
-    <footer>
-      <div class="container">
-        <p>&copy; 2025 Pizicai's Tech Blog. All rights reserved.</p>
-        <p>
-          <a href="https://github.com/pizicaiman" target="_blank">GitHub</a> | 
-          <a href="/about/">关于</a>
-        </p>
-      </div>
-    </footer>
-    
-    <script>
-      // 代码高亮
-      document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('pre code').forEach((block) => {
-          hljs.highlightElement(block);
-        });
-      });
-    </script>
-  </body>
-</html>
+<link rel="stylesheet" href="/assets/css/docs.css">
