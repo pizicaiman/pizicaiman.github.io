@@ -1,4 +1,12 @@
-# Transformer模型完整构建（以编码器-解码器结构为例）
+---
+layout: doc
+title: Transformer模型完整构建（以编码器-解码器结构为例）
+date: 2025-01-13
+category: llm
+tags: [llm, transformer, model, encoder, decoder]
+excerpt: 详解如何在PyTorch中搭建包含编码器和解码器的完整Transformer模型结构
+permalink: /docs/llm/2025/transformer-model/
+---
 
 Transformer模型由编码器（Encoder）和解码器（Decoder）堆叠构成，整体结构见下：
 
@@ -49,8 +57,6 @@ class Transformer(nn.Module):
 - 输入张量通常为(batch, seq_len)的token索引。
 - mask用于掩盖padding或因果推理需求。
 
----
-
 ## 结构总览图
 
 ```plantuml
@@ -77,7 +83,6 @@ DECODER -> OUT
 @enduml
 ```
 
----
 
 **典型流程：**
 1. 输入序列src/tgt分别经过嵌入和位置编码。
@@ -85,7 +90,6 @@ DECODER -> OUT
 3. tgt侧堆叠多层DecoderLayer，解码时可访问memory（经cross attention交互）。
 4. 输出经过线性映射得vocab维logits, 再做softmax即可生成目标序列。
 
----
 
 **参考资料：**
 - Vaswani et al. "Attention is All You Need" (2017)

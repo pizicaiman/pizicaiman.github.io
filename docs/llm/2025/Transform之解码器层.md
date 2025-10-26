@@ -1,10 +1,18 @@
-# Transformer解码器层（Decoder Layer）
+---
+layout: doc
+title: Transformer解码器层（Decoder Layer）
+date: 2025-01-12
+category: llm
+tags: [llm, transformer, decoder, layer]
+excerpt: 详解Transformer结构中的Decoder解码器层工作原理与代码实现
+permalink: /docs/llm/2025/transformer-decoder-layer/
+---
+
 
 解码器层是Transformer结构中的关键部分，用于自回归生成和处理带掩码的序列。与编码器层类似，但有如下不同点：  
 - **多一层“交互”注意力**：除了自注意力，还要对编码器输出做cross attention，实现encode-decode信息融合。
 - **自注意力带有因果掩码**：防止当前token看到未来信息，实现自回归生成。
 
----
 
 ## 1. 典型结构
 
@@ -48,7 +56,6 @@ class TransformerDecoderLayer(nn.Module):
 - `MultiHeadAttention`与`PositionwiseFeedForward`、掩码等可见相关章节说明。
 - 注意每一子层前都有归一化（**Pre-LN**，主流LLM采用）。
 
----
 
 ## 2. 层结构图
 
@@ -86,7 +93,6 @@ Add3 -> Out
 @enduml
 ```
 
----
 
 ## 3. 特点与注意事项
 
@@ -95,7 +101,6 @@ Add3 -> Out
 - 训练/推理流程可以借助官方mask生成工具或手动构造下三角矩阵。
 - Decoder层可堆叠多层，常见6-36层，根据模型大小调整。
 
----
 
 ## 4. 参考资料
 
@@ -103,5 +108,3 @@ Add3 -> Out
 - [PyTorch官方 nn.TransformerDecoderLayer](https://pytorch.org/docs/stable/generated/torch.nn.TransformerDecoderLayer.html)
 - Jay Alammar: [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)
 - [Huggingface Transformers源码](https://github.com/huggingface/transformers)
-
----
