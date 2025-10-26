@@ -1,6 +1,3 @@
-
-
-
 ---
 layout: doc
 title: Go+Wasm构建高性能边缘函数深入探索与应用实践
