@@ -135,3 +135,130 @@ Kubernetes 支持通过动态准入 webhook 扩展集群资源创建、更新、
 > 总结：Webhook 动态准入是 K8s 安全与企业策略落地的强力工具，二次开发时关注协议规范、性能与可追踪性，能快速实现“所见即所得”的资源合规与自动变更场景。
 
 如需示例工程、Patch 细节或复杂场景定制，欢迎留言交流！
+
+### 示例工程
+
+可参考如下简单的 Go 语言 Mutating Webhook 示例（支持 Patch 注入 Label）：
+
+```go
+// main.go
+package main
+
+import (
+    "crypto/tls"
+    "encoding/json"
+    "io/ioutil"
+    "net/http"
+    admissionv1 "k8s.io/api/admission/v1"
+    metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+)
+
+func serveMutate(w http.ResponseWriter, r *http.Request) {
+    body, _ := ioutil.ReadAll(r.Body)
+    review := admissionv1.AdmissionReview{}
+    _ = json.Unmarshal(body, &review)
+
+    // 构造 patch 操作，给 Pod 增加标签
+    patch := `[{"op": "add", "path": "/metadata/labels/webhook-injected", "value": "true"}]`
+    patchType := admissionv1.PatchTypeJSONPatch
+
+    resp := admissionv1.AdmissionReview{
+        TypeMeta: metav1.TypeMeta{
+            Kind:       "AdmissionReview",
+            APIVersion: "admission.k8s.io/v1",
+        },
+        Response: &admissionv1.AdmissionResponse{
+            UID:       review.Request.UID,
+            Allowed:   true,
+            Patch:     []byte(patch),
+            PatchType: &patchType,
+        },
+    }
+    respBytes, _ := json.Marshal(resp)
+    w.Header().Set("Content-Type", "application/json")
+    w.Write(respBytes)
+}
+
+func main() {
+    mux := http.NewServeMux()
+    mux.HandleFunc("/mutate", serveMutate)
+
+    server := &http.Server{
+        Addr:      ":9443",
+        Handler:   mux,
+        TLSConfig: &tls.Config{MinVersion: tls.VersionTLS12},
+    }
+    // cert.pem/key.pem 自行配置
+    server.ListenAndServeTLS("cert.pem", "key.pem")
+}
+```
+
+- 配套 Kubernetes 配置可见：[官方 admission webhook 示例](https://github.com/kubernetes/sample-controller/tree/master/admission-webhook-example)
+- 建议实际开发采用 [controller-runtime Webhook](https://book.kubebuilder.io/zh/cronjob-tutorial/webhook-implementation.html) 脚手架简化证书与接口逻辑
+
+// Patch 细节说明：  
+// 上例中的 patch 是一个 JSON Patch 格式数组，Kubernetes 审批控制器会按此修改对象：
+// 例如：`[{"op": "add", "path": "/metadata/labels/webhook-injected", "value": "true"}]`
+// - op: 操作类型，这里为 "add"（可选值有 add/replace/remove 等）
+// - path: 描述需要修改的字段路径，本例增加 Labels
+// - value: 新字段的值
+//
+// 更多 JSON Patch 语法详见：https://datatracker.ietf.org/doc/html/rfc6902
+// 可根据业务调整 op/path/value 用法，完成对资源对象的任意结构patch。
+//
+// 若需同时 patch 多个字段，可给 patch 数组添加多组操作元素。例如：
+// [
+//   {"op": "add", "path": "/metadata/labels/env", "value": "prod"},
+//   {"op": "replace", "path": "/spec/containers/0/image", "value": "yourrepo/yourimage:latest"}
+// ]
+
+
+// 复杂场景定制范例：根据资源内容定制 patch 动作
+//
+// 你可以根据 AdmissionReview 里的对象内容动态构造 patch，实现按需变更。比如：
+// - 判断命名空间只对特定命名空间 patch
+// - 检查 label/annotation 是否存在再 patch 或跳过
+// - 根据 spec 字段内容有条件地变更
+//
+// 伪代码参考
+/*
+func serveMutate(w http.ResponseWriter, r *http.Request) {
+    // ...解码 review 省略
+    var patches []map[string]interface{}
+
+    // 条件 patch 示例
+    if review.Request.Namespace == "prod" {
+        patches = append(patches, map[string]interface{}{
+            "op":    "add",
+            "path":  "/metadata/labels/production-injected",
+            "value": "true",
+        })
+    }
+
+    // 检查自定义 annotation，不存在则添加
+    if _, ok := review.Request.Object.Object["metadata"].(map[string]interface{})["annotations"].(map[string]interface{})["your-annotation"]; !ok {
+        patches = append(patches, map[string]interface{}{
+            "op":    "add",
+            "path":  "/metadata/annotations/your-annotation",
+            "value": "yes",
+        })
+    }
+
+    // 根据 spec 容器镜像字段 patch
+    containers := review.Request.Object.Object["spec"].(map[string]interface{})["containers"].([]interface{})
+    for i, c := range containers {
+        container := c.(map[string]interface{})
+        if container["image"] == "forbidden/image:tag" {
+            patches = append(patches, map[string]interface{}{
+                "op":    "replace",
+                "path":  fmt.Sprintf("/spec/containers/%d/image", i),
+                "value": "safe/image:latest",
+            })
+        }
+    }
+
+    patchBytes, _ := json.Marshal(patches)
+    // ...构造 AdmissionReview Response Patch 字段
+}
+*/
+// 实际代码实现时可根据业务复杂度按需扩展逻辑流程。
