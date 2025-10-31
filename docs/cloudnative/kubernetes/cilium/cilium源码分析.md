@@ -1,3 +1,13 @@
+---
+layout: doc
+title: Cilium 源码分析
+date: 2024-06-25
+category: kubernetes
+tags: [calico, kubernetes, cni, source-code]
+excerpt: 深入解析Cilium核心组件架构与关键源码实现，助力理解Kubernetes网络方案底层原理。
+permalink: /docs/cloudnative/kubernetes/cilium/source-code-analysis/
+---
+
 # Cilium 源码分析
 
 Cilium 是基于 eBPF 技术实现的云原生容器网络与安全方案，具备高性能数据面、强安全性和丰富网络可观测能力。下面简要梳理 Cilium 的核心架构与主要源码实现路径，并提供源码分析及追踪建议。

@@ -1,4 +1,13 @@
-# Kubernetes v1.34 apiserver 源码简要分析
+---
+layout: doc
+title: Kubernetes v1.34 apiserver 源码简要分析
+date: 2024-06-25
+category: kubernetes
+tags: [calico, kubernetes, cni, source-code]
+excerpt: Kubernetes v1.34 apiserver 源码简要分析
+permalink: /docs/cloudnative/kubernetes/apiserver源码分析/
+---
+ 
 
 Kubernetes apiserver 是 K8s 控制面的核心组件，负责所有 API 请求的接收、校验、授权、存储与分发。
 以 v1.34 为例，核心源码分布于 `staging/src/k8s.io/apiserver/` 与 `cmd/kube-apiserver/`。
