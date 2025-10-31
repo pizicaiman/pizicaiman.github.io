@@ -1,5 +1,11 @@
-# Kubernetes Controller v1.34 源码分析
-
+---
+layout: doc
+title: Kubernetes Controller v1.34 源码分析
+date: 2024-06-25
+category: kubernetes
+tags: [calico, kubernetes, cni, source-code]
+excerpt: Kubernetes Controller v1.34 源码分析
+permalink: /docs/cloudnative/kubernetes/controller源码分析/
 ---
 
 ## 1. Controller 作用与设计概览
