@@ -1,25 +1,22 @@
 ---
 permalink: /internships/
-title: "Internships"
-excerpt: "My internship experiences"
+title: ""
+excerpt: ""
 author_profile: true
 ---
 
-# Internships
+# 💻 Internships
 
-Here are my internship experiences:
+- *2019.05 - 2020.02*, [Lorem](https://github.com/), China.
+  - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.
+  - Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-## Summer 2023 - Software Engineering Intern at Tech Company
-- Developed backend services using Python and Django
-- Implemented REST APIs for new features
-- Participated in agile development processes
+- *2018.06 - 2018.08*, [Tech Startup](https://example.com), Beijing, China.
+  - Developed web applications using React and Node.js
+  - Implemented RESTful APIs for customer management system
+  - Participated in agile development and code reviews
 
-## Spring 2022 - Research Intern at University Lab
-- Conducted research on machine learning algorithms
-- Published a paper on neural network optimization
-- Presented findings at a conference
-
-## Fall 2021 - DevOps Intern at Cloud Provider
-- Automated deployment pipelines using Jenkins
-- Managed Kubernetes clusters
-- Implemented monitoring with Prometheus and Grafana
+- *2017.07 - 2017.09*, [Research Institute](https://example.org), Shanghai, China.
+  - Conducted data analysis using Python and pandas
+  - Created visualizations for research findings
+  - Assisted in writing research papers and documentation
