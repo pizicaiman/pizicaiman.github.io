@@ -15,6 +15,7 @@ redirect_from:
 {% endif %}
 {% assign url = gsDataBaseUrl | append: "google-scholar-stats/gs_data_shieldsio.json" %}
 
+# 🔥 About Me
 <span class='anchor' id='about-me'></span>
 
 1、践行 Cloud Native IT 理念，深入掌握 DevOps 文化与实践，熟练设计并落地基于 GitLab CI/Jenkins + Helm + Argo CD 的 CI/CD 流水线；主导微服务架构治理，推动服务拆分、接口标准化与容器化改造，实现从代码提交到生产部署的端到端自动化交付。

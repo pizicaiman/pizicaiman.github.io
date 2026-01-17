@@ -14,43 +14,25 @@ This page showcases my projects and research work.
 
 ### 1. Web Development Projects
 
-<div class='paper-box'>
-<div class='paper-box-image'>
-<div><div class="badge">Web App</div><img src='images/500x300.png' alt="Web Project" width="100%"></div>
-</div>
-<div class='paper-box-text' markdown="1">
-
 **Responsive Portfolio Website**
 
 A fully responsive personal portfolio website built with Jekyll and Sass.
 
-**Technologies**: Jekyll, Sass, JavaScript, Git
+**Technologies**: Jekyll, Sass, JavaScript, Git  
 **Features**: Responsive design, SEO optimization, Google Analytics integration
 
-[**Live Demo**](https://example.com) | [**GitHub Repository**](https://github.com/example)
-
-</div>
-</div>
+**Links**: [Live Demo](https://example.com) | [GitHub Repository](https://github.com/example)
 
 ### 2. Research Projects
-
-<div class='paper-box'>
-<div class='paper-box-image'>
-<div><div class="badge">Research</div><img src='images/500x300.png' alt="Research Project" width="100%"></div>
-</div>
-<div class='paper-box-text' markdown="1">
 
 **Machine Learning Model for Image Recognition**
 
 Development of a deep learning model for image classification tasks.
 
-**Technologies**: Python, TensorFlow, OpenCV
+**Technologies**: Python, TensorFlow, OpenCV  
 **Results**: Achieved 95% accuracy on test dataset
 
-[**Paper**](https://arxiv.org/example) | [**Code**](https://github.com/example)
-
-</div>
-</div>
+**Links**: [Paper](https://arxiv.org/example) | [Code](https://github.com/example)
 
 ## Skills and Technologies
 
