@@ -24,56 +24,53 @@ redirect_from:
 
 3、高度关注容器系统安全与服务间通信安全，实施 Pod 安全策略（PodSecurity）、网络策略（NetworkPolicy）、镜像漏洞扫描（Trivy）及 TLS 双向认证（mTLS）；在服务网格中强化服务间身份认证与细粒度访问控制，确保微服务通信符合零信任安全模型。
 
-# 🔥 News
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 
 # 💼 核心技能与专业能力
 
-## DevOps & CI/CD 流程建设
+## 🎉🎉 DevOps & CI/CD 流程建设
 - 熟练掌握容器化技术（Docker）及容器编排工具（Kubernetes）
 - 设计并实施基于 GitLab CI/Jenkins + Helm + ArgoCD 的 GitOps 流水线
 - 具备基础设施即代码（IaC）实践经验，使用 Terraform、Ansible 等工具管理云资源
 - 持续集成与持续部署（CI/CD）流程优化，实现从代码提交到生产部署的全自动化
 - 熟悉 CI/CD 工具链（Jenkins、GitHub Actions、GitLab CI），具备定制化插件开发经验
 
-## 云原生与容器编排
+## 🎉🎉 云原生与容器编排
 - 精通 Kubernetes 集群部署、运维及故障排查
 - 实施弹性伸缩策略（HPA/VPA）、节点亲和性调度、污点容忍机制
 - 服务网格（Istio/Linkerd）实践经验，实现流量管理与服务治理
 - 微服务架构拆分与治理，推动服务标准化与容器化改造
 - 熟悉 Linux/Unix 系统管理和网络管理，具备高并发系统调优经验
 
-## 云平台与多云管理
+## 🎉🎉 云平台与多云管理
 - 熟悉主流公有云平台（AWS、GCP、Azure、阿里云）的核心服务与最佳实践
 - 跨地域多集群统一管理，涵盖组件升级、网络配置、安全策略等
 - 云成本优化策略，包括资源超卖、混部调度、Spot 实例整合等
 - 多区域架构设计及数据合规要求（如 GDPR），保障全球业务合规运行
 
-## 监控与可观测性
+## 🎉🎉 监控与可观测性
 - 构建全栈监控体系（Prometheus + Grafana + Loki + Tempo）
 - 实施分布式链路追踪（Jaeger/OpenTelemetry）
 - 日志采集与分析（Filebeat、Loki），告警降噪与动态阈值设置
 - SLO/SLI 指标体系建设，故障自愈与应急预案自动化
 - 线上重大故障快速定位能力，保障业务连续性
 
-## 安全与合规
+## 🎉🎉 安全与合规
 - 实施 Pod 安全策略（PodSecurity）与网络策略（NetworkPolicy）
 - 镜像安全扫描（Trivy）与漏洞管理
 - TLS 双向认证（mTLS）与零信任安全模型实践
 - 符合 GDPR 等国际数据合规要求的架构设计
 
-## 编程与脚本
+## 🎉🎉 编程与脚本
 - 熟练掌握 Python、Go 等编程语言，用于自动化脚本与工具开发
 - 使用 Shell/Bash 脚本实现日常运维自动化任务
 - 具备定制化运维工具开发能力，提高运维效率
 
-## 数据库与中间件
+## 🎉🎉 数据库与中间件
 - 精通 MySQL/PostgreSQL 等关系型数据库的高可用架构与性能调优
 - 具备 Redis、MongoDB 等 NoSQL 数据库运维经验
 - 消息队列（Kafka/RabbitMQ）配置与性能优化
 
-## SRE 实践与运维优化
+## 🎉🎉 SRE 实践与运维优化
 - 设计并实施 SLI/SLO/SLA 指标体系，推动 SRE 文化落地
 - 故障响应与快速恢复，MTTR 缩短超过 50%
 - 混沌工程演练与系统韧性提升
