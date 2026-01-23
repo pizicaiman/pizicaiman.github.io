@@ -80,19 +80,6 @@ redirect_from:
 
 # 📝 Publications 
 
-<!-- 
-这是在 Markdown 文件中嵌入的 HTML 代码块。
-在 Markdown 里，普通的 Markdown 语法（如#标题、- 列表、[链接](url)等）主要用于文本格式化；
-但是，当你需要实现更复杂的布局、样式，或者 Markdown 本身不支持的效果时，就会直接写原生 HTML标签。
-例如：
-<div> ... </div>
-
-同时，这个例子中 `<div class='paper-box-text' markdown="1">` 这种写法的意思是：
-- 在 Jekyll（或部分支持该写法的 Markdown 渲染器，如 kramdown）里，给 div 标签加上属性 `markdown="1"`，就代表 **div 内部的内容会被当作 markdown 再渲染**。
-- 比如你可以在该 div 里正常写 Markdown 语法（如粗体、链接、列表），最终会被转成对应的 HTML。
-
-所以，这种写法本质上是为了在 HTML 容器中继续用 markdown 风格写内容，同时还能通过 HTML 标签实现样式或布局自定义扩展。
--->
 <div class='paper-box'>
   <div class='paper-box-image'>
     <div>
@@ -109,6 +96,8 @@ redirect_from:
   - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 </div>
 </div>
+
+- [LumeoFS - A distributed file system for large-scale storage](https://github.com/pizicaiman/LumeoFS)
 
 - [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet](https://github.com)
 
