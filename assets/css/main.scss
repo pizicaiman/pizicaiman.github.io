@@ -107,3 +107,238 @@ h1:before, .anchor:before {
     background-color: #00369f;
     font-size: .8em;
 }
+
+.badge-kubernetes {
+    background-color: #326ce5;
+}
+
+.badge-devops {
+    background-color: #0db7ed;
+}
+
+.badge-monitoring {
+    background-color: #e6522c;
+}
+
+.badge-security {
+    background-color: #f44336;
+}
+
+.badge-cloud {
+    background-color: #ff9800;
+}
+
+.badge-python {
+    background-color: #3776ab;
+}
+
+.badge-go {
+    background-color: #00add8;
+}
+
+.badge-javascript {
+    background-color: #f7df1e;
+    color: #333;
+}
+
+.honors-list {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5em;
+    margin: 1.5em 0;
+    
+    ol {
+        padding-left: 1.5em;
+        
+        li {
+            margin-bottom: 1.5em;
+            line-height: 1.8;
+            
+            strong {
+                color: #333;
+                font-weight: 600;
+            }
+            
+            code {
+                background-color: #f0f0f0;
+                padding: 0.2em 0.4em;
+                border-radius: 3px;
+                font-family: 'Courier New', monospace;
+                font-size: 0.9em;
+            }
+        }
+    }
+}
+
+.alert-box {
+    padding: 1em 1.5em;
+    margin: 1.5em 0;
+    border-radius: 6px;
+    border-left: 4px solid;
+    
+    &.alert-info {
+        background-color: #e3f2fd;
+        border-color: #2196f3;
+        color: #0d47a1;
+    }
+    
+    &.alert-warning {
+        background-color: #fff3e0;
+        border-color: #ff9800;
+        color: #e65100;
+    }
+    
+    &.alert-error {
+        background-color: #ffebee;
+        border-color: #f44336;
+        color: #b71c1c;
+    }
+    
+    &.alert-success {
+        background-color: #e8f5e9;
+        border-color: #4caf50;
+        color: #1b5e20;
+    }
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5em;
+    margin: 1.5em 0;
+    
+    .feature-item {
+        background-color: #f5f5f5;
+        padding: 1.5em;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        h4 {
+            margin-top: 0;
+            color: #333;
+        }
+    }
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8em;
+    margin: 1em 0;
+    
+    .tech-item {
+        background-color: #e8eaf6;
+        color: #3f51b5;
+        padding: 0.5em 1em;
+        border-radius: 20px;
+        font-size: 0.9em;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+        
+        &:hover {
+            background-color: #3f51b5;
+            color: white;
+        }
+    }
+}
+
+.code-block {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1em;
+    margin: 1em 0;
+    overflow-x: auto;
+    
+    pre {
+        margin: 0;
+        padding: 0;
+        
+        code {
+            background-color: transparent;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+    }
+}
+
+.tutorial-steps {
+    counter-reset: step-counter;
+    
+    .step {
+        position: relative;
+        padding-left: 3em;
+        margin-bottom: 1.5em;
+        
+        &::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2em;
+            height: 2em;
+            background-color: #3f51b5;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        h4 {
+            margin-top: 0;
+            color: #333;
+        }
+    }
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    
+    th, td {
+        padding: 0.8em 1em;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    th {
+        background-color: #f5f5f5;
+        font-weight: 600;
+        color: #333;
+    }
+    
+    tr:hover {
+        background-color: #f9f9f9;
+    }
+}
+
+.blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin: 1em 0;
+    padding: 1em;
+    background-color: #f5f5f5;
+    border-radius: 6px;
+    font-size: 0.9em;
+    color: #666;
+    
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.3em;
+    }
+}

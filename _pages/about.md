@@ -152,3 +152,70 @@ redirect_from:
 
 # 💻 Internships
 - *2019.05 - 2020.02*, [Lorem](https://github.com/), China.
+
+# 📚 技术博客
+
+欢迎访问我的技术博客，分享云原生、DevOps、Kubernetes 等领域的技术见解和实践经验。
+
+## 最新文章
+
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <div>
+      <div class="badge">Kubernetes</div>
+      <img src='images/Kubernetes.png' alt="Kubernetes" width="100%">
+    </div>
+  </div>
+  <div class='paper-box-text' markdown="1">
+[Kubernetes 集群管理最佳实践](/blog/2024-01-15-kubernetes-cluster-management/)
+
+深入探讨 Kubernetes 集群的规划、部署和运维最佳实践，涵盖生产环境实战经验。
+
+[**阅读全文**](/blog/2024-01-15-kubernetes-cluster-management/) <strong><span class='show_paper_citations' data='k8s-cluster-mgmt'></span></strong>
+  - 集群架构设计与节点规划
+  - 资源调度与性能优化
+  - 安全配置与访问控制
+</div>
+</div>
+
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <div>
+      <div class="badge">DevOps</div>
+      <img src='images/DevOps.png' alt="DevOps" width="100%">
+    </div>
+  </div>
+  <div class='paper-box-text' markdown="1">
+[DevOps CI/CD 流水线设计](/blog/2024-01-10-devops-cicd-pipeline/)
+
+基于 GitOps 理念设计现代化的 CI/CD 流水线，实现从代码到生产的全自动化交付。
+
+[**阅读全文**](/blog/2024-01-10-devops-cicd-pipeline/) <strong><span class='show_paper_citations' data='devops-cicd'></span></strong>
+  - GitLab CI/Jenkins 流水线设计
+  - Helm Chart 模板化管理
+  - ArgoCD GitOps 实践
+</div>
+</div>
+
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <div>
+      <div class="badge">Monitoring</div>
+      <img src='images/Monitoring.png' alt="Monitoring" width="100%">
+    </div>
+  </div>
+  <div class='paper-box-text' markdown="1">
+[构建全栈可观测性体系](/blog/2024-01-05-observability-stack/)
+
+使用 Prometheus + Grafana + Loki + Tempo 构建企业级可观测性平台。
+
+[**阅读全文**](/blog/2024-01-05-observability-stack/) <strong><span class='show_paper_citations' data='observability'></span></strong>
+  - 指标采集与告警策略
+  - 日志聚合与分析
+  - 分布式链路追踪
+</div>
+</div>
+
+## 更多文章
+
+查看完整技术博客：[📚 技术博客](/blog/)
