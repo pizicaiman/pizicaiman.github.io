@@ -1,6 +1,6 @@
 ---
 permalink: /projects/
-title: "Projects"
+title: "项目实战"
 excerpt: "My projects and research work"
 author_profile: true
 layout: default

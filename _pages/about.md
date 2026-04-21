@@ -78,24 +78,8 @@ redirect_from:
 - 基于服务网格（Istio）的全链路流量治理实战经验
 - 分布式系统设计和管理经验，保障复杂系统的稳定运行
 
-# 📝 Publications 
-
-<div class='paper-box'>
-  <div class='paper-box-image'>
-    <div>
-      <div class="badge">CVPR 2016</div>
-      <img src='images/20246241456216835.jpg' alt="sym" width="100%">
-    </div>
-  </div>
-  <div class='paper-box-text' markdown="1">
-[Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)
-
-**Kaiming He**, Xiangyu Zhang, Shaoqing Ren, Jian Sun
-
-[**Project**](https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=DhtAFkwAAAAJ&citation_for_view=DhtAFkwAAAAJ:ALROH1vI_8AC) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-  - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-</div>
-</div>
+# 📝 Publications
+<span class='anchor' id='publications'></span>
 
 - [LumeoFS - A distributed file system for large-scale storage](https://github.com/pizicaiman/LumeoFS)
 
@@ -120,6 +104,7 @@ redirect_from:
 - [积极探索 LLM 在智能运维（AIOps）中的应用潜力，通过本地实验（基于开源模型如 Qwen2-7B + vLLM + RAG 架构），验证其在 Prometheus 告警解读、Kubernetes 事件分析、运维知识问答等场景的可行性；强调"检索增强"对降低幻觉、提升可操作性的价值，为未来 AIOps 落地积累技术认知。](https://github.com)
 
 # 🏅 荣誉与奖项
+<span class='anchor' id='honors'></span>
 
 <div class="honors-list">
   <ol>
@@ -143,15 +128,19 @@ redirect_from:
 </div>
 
 # 📖 Educations
+<span class='anchor' id='educations'></span>
 - *2019.06 - 2022.04 (now)*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 - *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 
 # 💬 Invited Talks
+<span class='anchor' id='talks'></span>
 - *2021.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 - *2021.03*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.  \| [\[video\]](https://github.com/)
 
 # 💻 Internships
+<span class='anchor' id='internships'></span>
 - *2019.05 - 2020.02*, [Lorem](https://github.com/), China.
+
 
 # 📚 技术博客
 
