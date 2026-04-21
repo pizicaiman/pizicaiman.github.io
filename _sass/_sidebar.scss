@@ -76,8 +76,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-content: flex-start;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .author__avatar {
@@ -156,8 +156,9 @@
   font-family: $sans-serif;
   z-index: 10;
   position: relative;
-  margin-left: auto;
+  margin-left: 0;
   cursor: pointer;
+  text-align: left;
 
   li:last-child {
     a {
@@ -182,7 +183,7 @@
 .author__urls {
   display: none;
   position: absolute;
-  right: 0;
+  left: 0;
   margin-top: 15px;
   padding: 10px;
   list-style-type: none;
@@ -192,6 +193,7 @@
   z-index: -1;
   box-shadow: 0 0 10px rgba(#000, 0.25);
   cursor: default;
+  text-align: left;
 
   @include breakpoint($large) {
     display: block;
@@ -201,6 +203,7 @@
     border: 0;
     background: transparent;
     box-shadow: none;
+    text-align: left;
   }
 
   &:before {
