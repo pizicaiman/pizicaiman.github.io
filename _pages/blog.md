@@ -18,7 +18,7 @@ layout: default
   <div class='paper-box-image'>
     <div>
       <div class="badge">Kubernetes</div>
-      <img src='images/Kubernetes.png' alt="Kubernetes" style="max-width: 500px; max-height: 300px; object-fit: cover;">
+      <img src='images/Kubernetes.png' alt="Kubernetes" style="max-width: 300px; max-height: 300px; object-fit: cover;">
     </div>
   </div>
   <div class='paper-box-text' markdown="1">
@@ -38,7 +38,7 @@ layout: default
   <div class='paper-box-image'>
     <div>
       <div class="badge">DevOps</div>
-      <img src='images/DevOps.png' alt="DevOps" style="max-width: 500px; max-height: 300px; object-fit: cover;">
+      <img src='images/DevOps.png' alt="DevOps" style="max-width: 300px; max-height: 300px; object-fit: cover;">
     </div>
   </div>
   <div class='paper-box-text' markdown="1">
@@ -60,7 +60,7 @@ layout: default
   <div class='paper-box-image'>
     <div>
       <div class="badge">Monitoring</div>
-      <img src='images/Monitoring.png' alt="Monitoring" style="max-width: 500px; max-height: 300px; object-fit: cover;">
+      <img src='images/Monitoring.png' alt="Monitoring" style="max-width: 300px; max-height: 300px; object-fit: cover;">
     </div>
   </div>
   <div class='paper-box-text' markdown="1">
