@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /* ==========================================================================
    Variables
    ========================================================================== */
@@ -131,7 +133,7 @@ $right-sidebar-width-wide   : 0px;
 $susy: (
   columns: 12,
   column-width: 120px,
-  gutters: 1/4,
+  gutters: math.div(1, 4),
   math: fluid,
   output: float,
   gutter-position: after,
