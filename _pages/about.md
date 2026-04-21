@@ -154,6 +154,16 @@ redirect_from:
 - *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 - *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 
+# 📖 Work Experience
+<span class='anchor' id='work-experience'></span>
+- *2019.06 - 2022.04 (now)*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+
 # 💬 Invited Talks
 <span class='anchor' id='talks'></span>
 - *2021.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
@@ -182,7 +192,7 @@ redirect_from:
   <div class='paper-box-image'>
     <div>
       <div class="badge">Kubernetes</div>
-      <img src='images/Kubernetes.png' alt="Kubernetes" style="max-width: 300px; max-height: 300px; object-fit: cover;">
+      <img src='images/Kubernetes.png' alt="Kubernetes" style="max-width: 500px; max-height: 300px; object-fit: cover;">
     </div>
   </div>
   <div class='paper-box-text' markdown="1">
@@ -201,7 +211,7 @@ redirect_from:
   <div class='paper-box-image'>
     <div>
       <div class="badge">DevOps</div>
-      <img src='images/DevOps.png' alt="DevOps" style="max-width: 300px; max-height: 300px; object-fit: cover;">
+      <img src='images/DevOps.png' alt="DevOps" style="max-width: 500px; max-height: 300px; object-fit: cover;">
     </div>
   </div>
   <div class='paper-box-text' markdown="1">
@@ -220,7 +230,7 @@ redirect_from:
   <div class='paper-box-image'>
     <div>
       <div class="badge">Monitoring</div>
-      <img src='images/Monitoring.png' alt="Monitoring" style="max-width: 300px; max-height: 300px; object-fit: cover;">
+      <img src='images/Monitoring.png' alt="Monitoring" style="max-width: 500px; max-height: 300px; object-fit: cover;">
     </div>
   </div>
   <div class='paper-box-text' markdown="1">

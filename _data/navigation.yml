@@ -6,8 +6,6 @@ main:
   - title: "About Me"
     url: "/#about-me"
 
-
-
   - title: "Publications"
     url: "/#publications"
 
@@ -17,11 +15,14 @@ main:
   - title: "Educations"
     url: "/#educations"
 
+  - title: "Work Experience"
+    url: "/#work-experience"
+
   - title: "Invited Talks"
     url: "/#talks"
 
   - title: "Internships"
-    url: "/#internships"
+    url: "/internships/"
 
   - title: "Blog"
     url: "/blog/"
