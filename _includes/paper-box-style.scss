@@ -1,0 +1,25 @@
+/* 论文/文章卡片样式 - 用于展示带图片和文字的内容块 */
+.paper-box {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    border-bottom: 1px #efefef solid;
+    padding: 2em 0 2em 0;
+
+    .paper-box-image{
+        display: flex;
+        min-width: 200px;
+        max-width: 40%;
+        img {
+            max-width: 400px;
+            box-shadow: 3px 3px 6px #888;
+            object-fit: cover;
+        }
+    }
+    
+    .paper-box-text{
+        max-width: 60%;
+        vertical-align: middle;
+    }
+}

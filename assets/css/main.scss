@@ -37,89 +37,52 @@
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
 
+/* CSS变量定义 */
+:root {
+    --spacing: 20px;
+}
+
 /* 论文/文章卡片样式 - 用于展示带图片和文字的内容块 */
 .paper-box {
     /* 使用 Flexbox 布局 */
     display: flex;
-    /* 水平左对齐 */
-    justify-content: left;
-    /* 垂直居中对齐 */
-    align-items: center;
     /* 水平排列 */
     flex-direction: row;
-    /* 使用 CSS 变量设置间距 */
-    gap: var(--spacing);
-    /* 禁止内容换行 */
-    flex-wrap: nowrap;
+    /* 使用间距 */
+    gap: 20px;
+    /* 垂直居中对齐 */
+    align-items: center;
     /* 底部边框 */
     border-bottom: 1px #efefef solid;
     /* 上下内边距 */
     padding: 2em 0 2em 0;
+}
 
-    /* 论文/文章图片容器 */
-    .paper-box-image{
-        /* 水平居中对齐图片 */
-        justify-content: center;
-        /* 使用 Flex 布局 */
-        display: flex;
-        /* 占满整行宽度 */
-        width: 100%;
-        /* 排列顺序 - 在文字下方 */
-        order: 2;
-        img {
-            /* 图片最大宽度 */
-            max-width: 400px;
-            /* 图片阴影效果 */
-            box-shadow: 3px 3px 6px #888;
-            /* 图片填充模式 - 覆盖容器 */
-            object-fit: cover;
-            /* 垂直对齐 */
-            vertical-align: middle;
-        }
-    }
+/* 论文/文章图片容器 */
+.paper-box-image {
+    /* 使用 Flex 布局 */
+    display: flex;
+    /* 图片区域占40% */
+    flex: 0 0 40%;
+    /* 垂直居中对齐 */
+    align-items: center;
     
-    /* 论文/文章文字内容容器 */
-    .paper-box-text{
-        /* 最大宽度 - 占满整行 */
+    img {
+        /* 图片最大宽度 */
         max-width: 100%;
-        /* 排列顺序 - 在图片上方 */
-        order: 1;
-        /* 垂直对齐 */
-        vertical-align: middle;
+        /* 图片阴影效果 */
+        box-shadow: 3px 3px 6px #888;
+        /* 图片填充模式 - 覆盖容器 */
+        object-fit: cover;
     }
-    
-    /* 响应式设计 - 中等屏幕及以上 */
-    @include breakpoint($medium) {
-        /* 图片容器样式调整 */
-        .paper-box-image{
-            /* 水平左对齐 */
-            justify-content: left;
-            /* 最小宽度 */
-            min-width: 200px;
-            /* 最大宽度 - 占容器的 40% */
-            max-width: 40%;
-            /* 排列顺序 - 在文字左侧 */
-            order: 1;
-            /* 垂直居中对齐 */
-            align-items: center;
-        }
-        
-        /* 文字内容容器样式调整 */
-        .paper-box-text{
-            /* 水平左对齐 */
-            justify-content: left;
-            /* 左侧内边距 - 与图片保持间距 */
-            padding-left: 0;
-            /* 最大宽度 - 占容器的 60% */
-            max-width: 60%;
-            /* 排列顺序 - 在图片右侧 */
-            order: 2;
-            /* 垂直居中对齐 */
-            align-items: center;
-            /* 顶部内边距 - 清除默认间距 */
-            padding-top: 0;
-        }
-    }
+}
+
+/* 论文/文章文字内容容器 */
+.paper-box-text {
+    /* 文字区域占60% */
+    flex: 0 0 60%;
+    /* 垂直居中对齐 */
+    vertical-align: middle;
 }
 
 $scroll_offset : 2em;
