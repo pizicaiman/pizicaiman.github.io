@@ -73,11 +73,9 @@
     display: block;
   }
   display: flex;
-  flex-direction: column;
   justify-content: flex-start;
   align-content: flex-start;
   align-items: center;
-  text-align: center;
 }
 
 .author__avatar {
@@ -112,14 +110,12 @@
   min-width: 120px;
   // padding-right: 25px;
   line-height: 1;
-  text-align: left;
 
   @include breakpoint($large) {
     display: block;
     width: 100%;
     padding-left: 0;
     padding-right: 0;
-    text-align: center;
   }
 }
 
