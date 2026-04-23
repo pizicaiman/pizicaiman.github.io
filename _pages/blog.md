@@ -76,14 +76,52 @@ layout: default
 </div>
 </div>
 
+### 网络与架构
 
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <div>
+      <div class="badge">Kubernetes</div>
+      <img src='/images/Kubernetes.png' alt="K8s" style="max-width: 500px; max-height: 300px; object-fit: cover;">
+    </div>
+  </div>
+  <div class='paper-box-text' markdown="1">
+[K8s 1.35 + Cilium + KubeVIP + Containerd 高可用集群实现](/blog/2025-01-01-k8s-1.35-cilium-kubevip-containerd-high-availability-cluster/)
+
+深入探讨基于 K8s 1.35、Cilium、KubeVIP 和 Containerd 的高可用集群架构设计与实现。
+
+[**阅读全文**](/blog/2025-01-01-k8s-1.35-cilium-kubevip-containerd-high-availability-cluster/)
+  - Cilium eBPF 网络插件配置
+  - KubeVIP 高可用负载均衡
+  - Containerd 容器运行时优化
+</div>
+</div>
+
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <div>
+      <div class="badge">Network</div>
+      <img src='/images/Network.png' alt="Network" style="max-width: 500px; max-height: 300px; object-fit: cover;">
+    </div>
+  </div>
+  <div class='paper-box-text' markdown="1">
+[多网关流量隔离拆分和链路规划](/blog/2025-04-23-multi-gateway-traffic-isolation-and-link-planning/)
+
+探讨多网关环境下的流量隔离、拆分策略及链路规划最佳实践。
+
+[**阅读全文**](/blog/2025-04-23-multi-gateway-traffic-isolation-and-link-planning/)
+  - 网关流量隔离方案
+  - 链路规划与优化
+  - 流量监控与分析
+</div>
+</div>
 
 ## 📂 文章分类
 
 ### 云原生技术
 - [Kubernetes 集群管理](/blog/2024-01-15-kubernetes-cluster-management/)
-- [服务网格实践](/blog/2024-01-08-service-mesh-practice/)
-- [容器安全最佳实践](/blog/2024-01-03-container-security/)
+- [K8s 1.35 + Cilium 高可用集群](/blog/2025-01-01-k8s-1.35-cilium-kubevip-containerd-high-availability-cluster/)
+- [多网关流量隔离方案](/blog/2025-04-23-multi-gateway-traffic-isolation-and-link-planning/)
 
 ### DevOps 实践
 - [CI/CD 流水线设计](/blog/2024-01-10-devops-cicd-pipeline/)
