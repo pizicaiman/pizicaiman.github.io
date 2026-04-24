@@ -12,6 +12,28 @@ layout: default
 
 ## 🎯 最新文章
 
+### 社会学与社区治理
+
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <div>
+      <div class="badge">Community</div>
+      <img src='/images/Kubernetes.png' alt="Community" style="max-width: 500px; max-height: 300px; object-fit: cover;">
+    </div>
+  </div>
+  <div class='paper-box-text' markdown="1" >
+[睦邻友好：构建和谐社会关系的理论与实践](/blog/2026-04-24-friendly-neighouber/)
+
+探讨睦邻友好在现代社会治理中的重要价值，分析构建良好邻里关系的理论框架与实践路径。
+
+[**阅读全文**](/blog/2026-04-24-friendly-neighouber/)
+  - 睦邻友好的理论基础与分析框架
+  - 现代邻里关系的现实困境与成因
+  - 构建睦邻友好的实践路径与案例
+  - 未来发展趋势与挑战应对
+</div>
+</div>
+
 ### 云原生与容器编排
 
 <div class='paper-box'>
@@ -118,6 +140,9 @@ layout: default
 
 ## 📂 文章分类
 
+### 社会学与社区治理
+- [睦邻友好：构建和谐社会关系](/blog/2026-04-24-friendly-neighouber/)
+
 ### 云原生技术
 - [Kubernetes 集群管理](/blog/2024-01-15-kubernetes-cluster-management/)
 - [K8s 1.35 + Cilium 高可用集群](/blog/2025-01-01-k8s-1.35-cilium-kubevip-containerd-high-availability-cluster/)
@@ -154,5 +179,5 @@ layout: default
 
 ---
 
-**文章统计：** 9 篇技术文章  
-**最后更新：** 2024-01-15
+**文章统计：** 10 篇技术文章  
+**最后更新：** 2026-04-24
