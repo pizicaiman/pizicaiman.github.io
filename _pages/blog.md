@@ -18,7 +18,7 @@ layout: default
   <div class='paper-box-image'>
     <div>
       <div class="badge">Community</div>
-      <img src='/images/Kubernetes.png' alt="Community" style="max-width: 500px; max-height: 300px; object-fit: cover;">
+      <img src='/images/Community.png' alt="Community" style="max-width: 500px; max-height: 300px; object-fit: cover;">
     </div>
   </div>
   <div class='paper-box-text' markdown="1" >
@@ -123,7 +123,7 @@ layout: default
   <div class='paper-box-image'>
     <div>
       <div class="badge">Network</div>
-      <img src='/images/Network.png' alt="Network" style="max-width: 500px; max-height: 300px; object-fit: cover;">
+      <img src='/images/Gateway.png' alt="Network" style="max-width: 500px; max-height: 300px; object-fit: cover;">
     </div>
   </div>
   <div class='paper-box-text' markdown="1">
