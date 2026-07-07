@@ -3,11 +3,11 @@ schema_version: 1
 locale: zh-CN
 branch: main
 nodes_managed: true
-exported_at: "2026-07-07T09:00:49Z"
+exported_at: "2026-07-07T09:59:44Z"
 modules:
     "":
-        dir_name: AcadHomepage Jekyll 站点根与构建配置
-        title: AcadHomepage Jekyll 站点根与构建配置
+        dir_name: AcadHomepage Jekyll 站点根工程
+        title: AcadHomepage Jekyll 站点根工程
         scope:
             - _config.yml
             - Gemfile

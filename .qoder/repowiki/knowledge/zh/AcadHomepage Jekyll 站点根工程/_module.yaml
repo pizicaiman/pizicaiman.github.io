@@ -1,6 +1,6 @@
 schema_version: 1
 module_path: ""
-title: AcadHomepage Jekyll 站点根与构建配置
+title: AcadHomepage Jekyll 站点根工程
 scope:
     - _config.yml
     - Gemfile
