@@ -14,7 +14,7 @@ source "https://rubygems.org"
 # If you want to use Jekyll native, uncomment the line below.
 # To upgrade, run `bundle update`.
 
-gem "jekyll", "~> 3.9.0"
+gem "jekyll", "~> 4.3"
 
 # gem "wdm", "~> 0.1.0" if Gem.win_platform?
 
@@ -36,18 +36,15 @@ gem "kramdown-parser-gfm"
 gem "rouge"
 gem "jekyll-watch"
 gem "jekyll-sass-converter"
-gem "jekyll-seo-tag"
-gem "jekyll-feed"
-gem "jekyll-sitemap"
-gem "jekyll-paginate"
-gem "jekyll-gist"
-gem "jekyll-redirect-from"
 gem "minima"
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   # gem "jekyll-archives"
   gem "jekyll-feed"
-  gem 'jekyll-sitemap'
-  gem 'hawkins'
+  gem "jekyll-sitemap"
+  gem "jekyll-seo-tag"
+  gem "jekyll-paginate"
+  gem "jekyll-gist"
+  gem "jekyll-redirect-from"
 end

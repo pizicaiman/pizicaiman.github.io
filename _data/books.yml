@@ -1,0 +1,84 @@
+# Books 读书笔记数据配置
+# 新增分类：在 categories 下添加新的分类块即可，/books 页面会自动渲染
+# 新增书籍：在对应分类的 entries 下添加新条目
+
+categories:
+  - slug: aiops
+    title: "AIOps"
+    subtitle: "智能运维与 LLM 实践"
+    description: "探索 AI 在运维领域的应用，包括 LLM 驱动的告警分析、事件诊断与运维知识问答。"
+    icon: "🤖"
+    image: "/images/Kubernetes.png"
+    permalink: "/books/aiops/"
+    entries:
+      - title: "LLM 驱动的 Prometheus 告警智能解读"
+        date: 2025-06-15
+        excerpt: "基于 Qwen2-7B + vLLM + RAG 架构，实现 Prometheus 告警的自动化智能解读与根因分析。"
+        tags: [LLM, RAG, Prometheus, AIOps]
+        status: "reading"  # reading / completed / planned
+        link: ""
+
+      - title: "Kubernetes 事件智能分析与故障诊断"
+        date: 2025-05-20
+        excerpt: "利用大语言模型对 Kubernetes 集群事件进行语义分析，实现故障自动诊断与修复建议生成。"
+        tags: [Kubernetes, LLM, 故障诊断]
+        status: "planned"
+        link: ""
+
+  - slug: devops
+    title: "DevOps"
+    subtitle: "CI/CD 与 GitOps 实践"
+    description: "涵盖持续集成、持续部署、GitOps 工作流及基础设施即代码的读书笔记与实践经验。"
+    icon: "🚀"
+    image: "/images/DevOps.png"
+    permalink: "/books/devops/"
+    entries:
+      - title: "GitOps 实战：从理论到落地"
+        date: 2025-04-10
+        excerpt: "系统梳理 GitOps 核心理念，结合 ArgoCD 与 Flux 实现声明式基础设施管理。"
+        tags: [GitOps, ArgoCD, Flux, CI/CD]
+        status: "completed"
+        link: ""
+
+      - title: "Helm Chart 模板化最佳实践"
+        date: 2025-03-15
+        excerpt: "深入 Helm 模板语法与 Chart 结构设计，实现可复用、可组合的 Kubernetes 应用包管理。"
+        tags: [Helm, Kubernetes, 模板化]
+        status: "completed"
+        link: ""
+
+      - title: "Jenkins Pipeline 高级用法"
+        date: 2025-02-20
+        excerpt: "Jenkins Shared Library、声明式流水线与并行阶段的高级实践。"
+        tags: [Jenkins, Pipeline, CI/CD]
+        status: "reading"
+        link: ""
+
+  - slug: sre
+    title: "SRE"
+    subtitle: "站点可靠性工程"
+    description: "Google SRE 方法论、SLI/SLO 体系设计、故障响应与混沌工程实践。"
+    icon: "🛡️"
+    image: "/images/Monitoring.png"
+    permalink: "/books/sre/"
+    entries:
+      - title: "Google SRE：运维之道读书笔记"
+        date: 2025-05-01
+        excerpt: "Google 站点可靠性工程核心理念：错误预算、TOIL 消除、自动化运维与 on-call 实践。"
+        tags: [Google SRE, 错误预算, TOIL, On-call]
+        status: "completed"
+        link: ""
+
+      - title: "SLI/SLO 指标体系设计实战"
+        date: 2025-04-18
+        excerpt: "从用户视角定义服务质量指标，构建可量化、可告警、可度量的 SLO 体系。"
+        tags: [SLI, SLO, 可观测性]
+        status: "reading"
+        link: ""
+
+      - title: "混沌工程：系统韧性验证"
+        date: 2025-03-25
+        excerpt: "基于 Chaos Mesh 的故障注入实验设计，验证分布式系统在异常场景下的自愈能力。"
+        tags: [混沌工程, Chaos Mesh, 韧性]
+        status: "planned"
+        link: ""

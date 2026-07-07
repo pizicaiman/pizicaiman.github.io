@@ -1,0 +1,16 @@
+schema_version: 1
+module_path: ""
+title: AcadHomepage Jekyll 站点根配置
+scope:
+    - _config.yml
+    - Gemfile
+    - Gemfile.lock
+    - README.md
+    - .gitignore
+    - .vercelignore
+    - vercel.json
+    - run_server.sh
+    - LICENSE
+source_files: []
+depends_on: []
+related_to: []
