@@ -127,6 +127,20 @@ defaults:
       layout: default
       author_profile: true
 
+  # _books articles
+  - scope:
+      path: ""
+      type: books
+    values:
+      author_profile: true
+
+
+# Collections
+collections:
+  books:
+    output: true
+    permalink: /books/:path/
+
 
 # Sass/SCSS
 sass:

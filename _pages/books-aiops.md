@@ -31,7 +31,7 @@ layout: default
     {% if entry.status == "completed" %}已读{% elsif entry.status == "reading" %}在读{% else %}待读{% endif %}
   </div>
   <div class="entry-content">
-    <h4>{% if entry.link and entry.link != "" %}[{{ entry.title }}]({{ entry.link }}){% else %}{{ entry.title }}{% endif %}</h4>
+    <h4>{% if entry.link and entry.link != "" %}<a href="{{ entry.link }}">{{ entry.title }}</a>{% else %}{{ entry.title }}{% endif %}</h4>
     <p class="entry-date">📅 {{ entry.date | date: "%Y-%m-%d" }}</p>
     <p class="entry-excerpt">{{ entry.excerpt }}</p>
     <div class="entry-tags">

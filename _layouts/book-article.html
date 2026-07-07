@@ -1,0 +1,128 @@
+---
+---
+
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+  <head>
+    {% include head.html %}
+    {% include head/custom.html %}
+  </head>
+
+  <body>
+    {% include browser-upgrade.html %}
+    {% include masthead.html %}
+
+    <div id="main" role="main">
+      {% include sidebar.html %}
+
+      <article class="page book-article-page" itemscope itemtype="http://schema.org/CreativeWork">
+        {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+
+        <div class="page__inner-wrap">
+          <section class="page__content" itemprop="text">
+
+            <!-- 文章头部 -->
+            <div class="book-article-header">
+              <a href="{{ page.category_link }}" class="book-article-back">← 返回 {{ page.category_title }}</a>
+              <h1 class="book-article-title">{{ page.icon }} {{ page.title }}</h1>
+              <div class="book-article-meta">
+                <span>📅 {{ page.date | date: "%Y-%m-%d" }}</span>
+                <span>📖 {{ page.chapters | size }} 个章节</span>
+                {% if page.status %}
+                <span class="book-status book-status-{{ page.status }}">
+                  {% if page.status == "completed" %}已读完{% elsif page.status == "reading" %}在读{% else %}待读{% endif %}
+                </span>
+                {% endif %}
+              </div>
+              {% if page.excerpt %}
+              <p class="book-article-excerpt">{{ page.excerpt }}</p>
+              {% endif %}
+            </div>
+
+            <!-- 章节目录 -->
+            <nav class="book-chapter-nav" id="chapter-nav">
+              <h3>📑 章节目录</h3>
+              <ol class="chapter-list">
+                {% for chapter in page.chapters %}
+                <li class="chapter-item {% if forloop.first %}chapter-active{% endif %}">
+                  <a href="#chapter-{{ forloop.index }}" class="chapter-link">
+                    <span class="chapter-number">第{{ forloop.index }}章</span>
+                    <span class="chapter-title-text">{{ chapter.title }}</span>
+                  </a>
+                </li>
+                {% endfor %}
+              </ol>
+            </nav>
+
+            <!-- 章节内容 -->
+            <div class="book-chapters-content">
+              {% for chapter in page.chapters %}
+              <div class="book-chapter" id="chapter-{{ forloop.index }}">
+                <h2 class="chapter-heading">
+                  <span class="chapter-badge">第{{ forloop.index }}章</span>
+                  {{ chapter.title }}
+                </h2>
+                {% if chapter.subtitle %}
+                <p class="chapter-subtitle">{{ chapter.subtitle }}</p>
+                {% endif %}
+                <div class="chapter-body">
+                  {{ chapter.content | markdownify }}
+                </div>
+                {% unless forloop.last %}
+                <hr class="chapter-divider">
+                {% endunless %}
+              </div>
+              {% endfor %}
+            </div>
+
+            <!-- 上下章导航 -->
+            {% if page.chapters.size > 1 %}
+            <div class="book-chapter-pagination">
+              <div class="pagination-hint">💡 每天阅读一个章节，循序渐进掌握知识体系</div>
+            </div>
+            {% endif %}
+
+          </section>
+        </div>
+      </article>
+    </div>
+
+    {% include scripts.html %}
+
+    <script>
+      // 章节导航高亮
+      document.addEventListener('DOMContentLoaded', function() {
+        var chapters = document.querySelectorAll('.book-chapter');
+        var navItems = document.querySelectorAll('.chapter-item');
+        var nav = document.getElementById('chapter-nav');
+
+        function updateActiveChapter() {
+          var scrollPos = window.scrollY + 120;
+          chapters.forEach(function(chapter, index) {
+            var top = chapter.offsetTop;
+            var bottom = top + chapter.offsetHeight;
+            if (scrollPos >= top && scrollPos < bottom) {
+              navItems.forEach(function(item) { item.classList.remove('chapter-active'); });
+              if (navItems[index]) navItems[index].classList.add('chapter-active');
+            }
+          });
+        }
+
+        window.addEventListener('scroll', updateActiveChapter);
+        updateActiveChapter();
+
+        // 平滑滚动
+        document.querySelectorAll('.chapter-link').forEach(function(link) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          });
+        });
+      });
+    </script>
+
+  </body>
+</html>

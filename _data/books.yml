@@ -67,7 +67,7 @@ categories:
         excerpt: "Google 站点可靠性工程核心理念：错误预算、TOIL 消除、自动化运维与 on-call 实践。"
         tags: [Google SRE, 错误预算, TOIL, On-call]
         status: "completed"
-        link: ""
+        link: "/books/sre/google-sre/"
 
       - title: "SLI/SLO 指标体系设计实战"
         date: 2025-04-18
