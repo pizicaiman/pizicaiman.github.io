@@ -15,15 +15,15 @@ categories:
         date: 2025-06-15
         excerpt: "基于 Qwen2-7B + vLLM + RAG 架构，实现 Prometheus 告警的自动化智能解读与根因分析。"
         tags: [LLM, RAG, Prometheus, AIOps]
-        status: "reading"  # reading / completed / planned
-        link: ""
+        status: "reading"
+        link: "/books/aiops/prometheus-llm-alert/"
 
       - title: "Kubernetes 事件智能分析与故障诊断"
         date: 2025-05-20
         excerpt: "利用大语言模型对 Kubernetes 集群事件进行语义分析，实现故障自动诊断与修复建议生成。"
         tags: [Kubernetes, LLM, 故障诊断]
         status: "planned"
-        link: ""
+        link: "/books/aiops/k8s-event-diagnosis/"
 
   - slug: devops
     title: "DevOps"
@@ -38,21 +38,21 @@ categories:
         excerpt: "系统梳理 GitOps 核心理念，结合 ArgoCD 与 Flux 实现声明式基础设施管理。"
         tags: [GitOps, ArgoCD, Flux, CI/CD]
         status: "completed"
-        link: ""
+        link: "/books/devops/gitops-practice/"
 
       - title: "Helm Chart 模板化最佳实践"
         date: 2025-03-15
         excerpt: "深入 Helm 模板语法与 Chart 结构设计，实现可复用、可组合的 Kubernetes 应用包管理。"
         tags: [Helm, Kubernetes, 模板化]
         status: "completed"
-        link: ""
+        link: "/books/devops/helm-chart-best-practices/"
 
       - title: "Jenkins Pipeline 高级用法"
         date: 2025-02-20
         excerpt: "Jenkins Shared Library、声明式流水线与并行阶段的高级实践。"
         tags: [Jenkins, Pipeline, CI/CD]
         status: "reading"
-        link: ""
+        link: "/books/devops/jenkins-pipeline-advanced/"
 
   - slug: sre
     title: "SRE"
@@ -74,11 +74,11 @@ categories:
         excerpt: "从用户视角定义服务质量指标，构建可量化、可告警、可度量的 SLO 体系。"
         tags: [SLI, SLO, 可观测性]
         status: "reading"
-        link: ""
+        link: "/books/sre/sli-slo-design/"
 
       - title: "混沌工程：系统韧性验证"
         date: 2025-03-25
         excerpt: "基于 Chaos Mesh 的故障注入实验设计，验证分布式系统在异常场景下的自愈能力。"
         tags: [混沌工程, Chaos Mesh, 韧性]
         status: "planned"
-        link: ""
+        link: "/books/sre/chaos-engineering/"

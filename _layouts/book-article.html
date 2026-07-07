@@ -21,66 +21,71 @@
         <div class="page__inner-wrap">
           <section class="page__content" itemprop="text">
 
-            <!-- 文章头部 -->
+            <!-- 文章头部（紧凑） -->
             <div class="book-article-header">
-              <a href="{{ page.category_link }}" class="book-article-back">← 返回 {{ page.category_title }}</a>
-              <h1 class="book-article-title">{{ page.icon }} {{ page.title }}</h1>
-              <div class="book-article-meta">
-                <span>📅 {{ page.date | date: "%Y-%m-%d" }}</span>
-                <span>📖 {{ page.chapters | size }} 个章节</span>
+              <div class="book-header-top">
+                <a href="{{ page.category_link }}" class="book-article-back">← 返回 {{ page.category_title }}</a>
                 {% if page.status %}
                 <span class="book-status book-status-{{ page.status }}">
                   {% if page.status == "completed" %}已读完{% elsif page.status == "reading" %}在读{% else %}待读{% endif %}
                 </span>
                 {% endif %}
               </div>
+              <h1 class="book-article-title">{{ page.icon }} {{ page.title }}</h1>
+              <div class="book-article-meta">
+                <span>📅 {{ page.date | date: "%Y-%m-%d" }}</span>
+                <span>📖 {{ page.chapters | size }} 个章节</span>
+              </div>
               {% if page.excerpt %}
               <p class="book-article-excerpt">{{ page.excerpt }}</p>
               {% endif %}
             </div>
 
-            <!-- 章节目录 -->
-            <nav class="book-chapter-nav" id="chapter-nav">
-              <h3>📑 章节目录</h3>
-              <ol class="chapter-list">
+            <!-- 两栏布局：左侧目录 + 右侧内容 -->
+            <div class="book-article-layout">
+              <!-- 左侧章节目录（sticky） -->
+              <aside class="book-chapter-nav" id="chapter-nav">
+                <h3>📑 章节目录</h3>
+                <ol class="chapter-list">
+                  {% for chapter in page.chapters %}
+                  <li class="chapter-item {% if forloop.first %}chapter-active{% endif %}">
+                    <a href="#chapter-{{ forloop.index }}" class="chapter-link">
+                      <span class="chapter-number">第{{ forloop.index }}章</span>
+                      <span class="chapter-title-text">{{ chapter.title }}</span>
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ol>
+              </aside>
+
+              <!-- 右侧章节内容 -->
+              <div class="book-chapters-content">
                 {% for chapter in page.chapters %}
-                <li class="chapter-item {% if forloop.first %}chapter-active{% endif %}">
-                  <a href="#chapter-{{ forloop.index }}" class="chapter-link">
-                    <span class="chapter-number">第{{ forloop.index }}章</span>
-                    <span class="chapter-title-text">{{ chapter.title }}</span>
-                  </a>
-                </li>
-                {% endfor %}
-              </ol>
-            </nav>
-
-            <!-- 章节内容 -->
-            <div class="book-chapters-content">
-              {% for chapter in page.chapters %}
-              <div class="book-chapter" id="chapter-{{ forloop.index }}">
-                <h2 class="chapter-heading">
-                  <span class="chapter-badge">第{{ forloop.index }}章</span>
-                  {{ chapter.title }}
-                </h2>
-                {% if chapter.subtitle %}
-                <p class="chapter-subtitle">{{ chapter.subtitle }}</p>
-                {% endif %}
-                <div class="chapter-body">
-                  {{ chapter.content | markdownify }}
+                <div class="book-chapter" id="chapter-{{ forloop.index }}">
+                  <h2 class="chapter-heading">
+                    <span class="chapter-badge">第{{ forloop.index }}章</span>
+                    {{ chapter.title }}
+                  </h2>
+                  {% if chapter.subtitle %}
+                  <p class="chapter-subtitle">{{ chapter.subtitle }}</p>
+                  {% endif %}
+                  <div class="chapter-body">
+                    {{ chapter.content | markdownify }}
+                  </div>
+                  {% unless forloop.last %}
+                  <hr class="chapter-divider">
+                  {% endunless %}
                 </div>
-                {% unless forloop.last %}
-                <hr class="chapter-divider">
-                {% endunless %}
-              </div>
-              {% endfor %}
-            </div>
+                {% endfor %}
 
-            <!-- 上下章导航 -->
-            {% if page.chapters.size > 1 %}
-            <div class="book-chapter-pagination">
-              <div class="pagination-hint">💡 每天阅读一个章节，循序渐进掌握知识体系</div>
+                <!-- 底部提示 -->
+                {% if page.chapters.size > 1 %}
+                <div class="book-chapter-pagination">
+                  <div class="pagination-hint">💡 每天阅读一个章节，循序渐进掌握知识体系</div>
+                </div>
+                {% endif %}
+              </div>
             </div>
-            {% endif %}
 
           </section>
         </div>
